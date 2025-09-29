@@ -11,3 +11,4 @@ Audit de sécurité
 BrandCache  
 Stratégies de groupe - GPO (centralisation, scripts personnalisés, politiques sécurité, déploiement logiciel)  
 Gestion de MAJ - Windows Update for Business, WSUS  
+déploiement -> sécurisation -> administration -> dépannage 
