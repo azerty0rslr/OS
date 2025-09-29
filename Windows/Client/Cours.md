@@ -1,4 +1,5 @@
-# Introduction
+# Windows client
+## Introduction
 Sysprep - System Preparation Tool (installation windows, SID,  
 MDT - Microsoft Deployment Technique  
 WDS - Windows Deployment Services  
