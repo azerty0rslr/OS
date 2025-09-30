@@ -11,6 +11,10 @@
 
 
 - Créer une image de référence avec Sysprep.
+<img width="871" height="359" alt="image" src="https://github.com/user-attachments/assets/e423a517-f18f-4418-9fc8-140852f7cf64" />
+<img width="380" height="291" alt="image" src="https://github.com/user-attachments/assets/6f760dbc-d513-4f8e-968e-f46a728e3947" />
+
+
 - Déployer l’image sur au moins 2 postes via MDT ou WDS.
 - Joindre les postes au domaine Active Directory.
 - Créer des OU spécifiques (Stagiaires, IT, Direction).
