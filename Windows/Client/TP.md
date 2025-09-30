@@ -16,6 +16,7 @@
 
 
 - Déployer l’image sur au moins 2 postes via MDT ou WDS.
+
 - Joindre les postes au domaine Active Directory.
 - Créer des OU spécifiques (Stagiaires, IT, Direction).
 - Affecter des GPO de base (mot de passe fort, verrouillage de session).
