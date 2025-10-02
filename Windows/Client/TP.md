@@ -28,8 +28,8 @@
 Configuration ordinateur -> Modèles d'administration -> Système -> Device Guard  
 <img width="775" height="542" alt="image" src="https://github.com/user-attachments/assets/1629fc31-f563-40f4-82b9-7fd461170210" />  
 <img width="698" height="631" alt="image" src="https://github.com/user-attachments/assets/c8897429-18d5-445e-9678-6b9a98193914" />
-<img width="1170" height="581" alt="image" src="https://github.com/user-attachments/assets/d0a4f0da-6826-4c82-8f73-0b760926b05d" />  
-
+<img width="1170" height="581" alt="image" src="https://github.com/user-attachments/assets/d0a4f0da-6826-4c82-8f73-0b760926b05d" />
+<img width="1177" height="570" alt="image" src="https://github.com/user-attachments/assets/9d03236f-3e98-4cb2-8dd9-518de6c2a59e" />  
 
 - Configurer Windows Defender avec exclusions et analyse planifiée
 - Déployer et tester des GPO supplémentaires :  
