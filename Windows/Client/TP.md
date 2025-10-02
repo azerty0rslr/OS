@@ -17,7 +17,8 @@
 
 ## Jour 2 : Sécurisation et GPO avancées
 - Activer bitlocker
-<img width="775" height="470" alt="image" src="https://github.com/user-attachments/assets/137ae358-95d6-41ff-80e2-724ca08958d4" /> 
+<img width="775" height="470" alt="image" src="https://github.com/user-attachments/assets/137ae358-95d6-41ff-80e2-724ca08958d4" />
+<img width="627" height="495" alt="image" src="https://github.com/user-attachments/assets/3352707f-128c-4c58-b77d-a35a7c50dfce" />
 <img width="892" height="508" alt="image" src="https://github.com/user-attachments/assets/5d00b92d-0491-48f2-9c3e-e38b17d20a77" />  
 <img width="611" height="472" alt="image" src="https://github.com/user-attachments/assets/f706da97-1d6d-4dd6-8e3b-c911d79b55bb" />  
 <img width="623" height="486" alt="image" src="https://github.com/user-attachments/assets/864b0e65-6c12-41a2-888e-79fba4a3323e" />
