@@ -33,6 +33,9 @@ Configuration ordinateur -> Modèles d'administration -> Système -> Device Guar
 <img width="1177" height="570" alt="image" src="https://github.com/user-attachments/assets/9d03236f-3e98-4cb2-8dd9-518de6c2a59e" />  
 
 - Configurer Windows Defender avec exclusions et analyse planifiée
+<img width="803" height="633" alt="image" src="https://github.com/user-attachments/assets/dc8200c3-75cd-47b7-9a4f-5b927e26736b" />
+
+
 - Déployer et tester des GPO supplémentaires :  
   * Redirection de dossiers utilisateurs (Documents, Bureau) vers un partage réseau.  
   * Déploiement d’un script de connexion/déconnexion.  
