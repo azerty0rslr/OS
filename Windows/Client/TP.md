@@ -43,7 +43,7 @@ Configuration ordinateur -> Modèles d'administration -> Système -> Device Guar
 <img width="635" height="491" alt="image" src="https://github.com/user-attachments/assets/7c8cddac-02d4-4c3e-931f-d6f37ca2efa7" />  
 <img width="592" height="518" alt="image" src="https://github.com/user-attachments/assets/49994ce5-ad57-4108-a6f2-5f2f1db7019b" />
 
--- Ajouter des exclusions
+-- Ajouter des exclusions  
 <img width="759" height="652" alt="image" src="https://github.com/user-attachments/assets/1c7850c3-056a-4ba5-8827-85d11077c0c9" />  
 <img width="808" height="644" alt="image" src="https://github.com/user-attachments/assets/806f1043-5df9-45bf-8321-cdbcea1cea12" />  
 <img width="815" height="636" alt="image" src="https://github.com/user-attachments/assets/5e97170b-19ad-4e98-8e33-de5775099c85" />  
