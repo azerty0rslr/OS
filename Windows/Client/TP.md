@@ -1,4 +1,5 @@
 # TP 
+serveur mdp : admin2025.
 ## Jour 1 : déploiement et préparation
 - Installer un poste Windows 10, 11 -- problème à rebouter un nouvel ISO sur VMware, nous avons donc récupéré une ancienne VM windows 11  
 - Configurer les partitions correctement (UEFI/GPT, préparation pour BitLocker).  
@@ -82,5 +83,17 @@ Configuration ordinateur -> Modèles d'administration -> Système -> Device Guar
 - Scénarios de dépannage :  
   * Poste qui ne démarre plus : réparer avec BCD, SFC, DISM ou WinRE.  
   * Perte de profil utilisateur : recréer et restaurer les données.  
+  --- recréer un profil - ici nous simulon la perte du profil utilisateur Manon qui est remplacé par le profil TestUser  
+<img width="997" height="530" alt="image" src="https://github.com/user-attachments/assets/b573c702-a378-407a-8933-9924b661f37e" />  
+
+  --- restauration (copier coller les données de l'utilisateur en question)  
+  <img width="860" height="626" alt="image" src="https://github.com/user-attachments/assets/a276c363-c9e0-4d18-a462-a194b10a37cf" />  
+
   * GPO qui ne s’applique pas : analyse avec gpresult /h et Event Viewer.  
-  * Lenteurs réseau : diagnostic avec Resmon, BranchCache et tests complémentaires.  
+  * Lenteurs réseau : diagnostic avec Resmon, BranchCache et tests complémentaires.
+ <img width="782" height="592" alt="image" src="https://github.com/user-attachments/assets/c5378613-b533-400a-b018-b8a0f539ff37" />  
+ <img width="795" height="598" alt="image" src="https://github.com/user-attachments/assets/10624a0a-7241-4a99-ba30-ec66ddccb7e8" />
+
+--- commandes de test de connectivité  
+2 commandes : ping et tracert  
+<img width="1000" height="533" alt="image" src="https://github.com/user-attachments/assets/2c270866-09a7-42dc-81d8-d37fe3efa7f5" />  
