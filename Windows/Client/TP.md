@@ -24,7 +24,8 @@
 <img width="623" height="486" alt="image" src="https://github.com/user-attachments/assets/864b0e65-6c12-41a2-888e-79fba4a3323e" />  
 
 - Activer Credential Guard et Virtualization-Based Security (VBS)
-<img width="762" height="541" alt="image" src="https://github.com/user-attachments/assets/c0bd572b-259a-4b85-b3bc-cd92fe49411c" />  
+<img width="762" height="541" alt="image" src="https://github.com/user-attachments/assets/c0bd572b-259a-4b85-b3bc-cd92fe49411c" />
+
 Configuration ordinateur -> Modèles d'administration -> Système -> Device Guard  
 <img width="775" height="542" alt="image" src="https://github.com/user-attachments/assets/1629fc31-f563-40f4-82b9-7fd461170210" />  
 <img width="698" height="631" alt="image" src="https://github.com/user-attachments/assets/c8897429-18d5-445e-9678-6b9a98193914" />
