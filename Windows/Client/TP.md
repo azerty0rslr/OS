@@ -82,6 +82,18 @@ Configuration ordinateur -> Modèles d'administration -> Système -> Device Guar
 
 - Scénarios de dépannage :  
   * Poste qui ne démarre plus : réparer avec BCD, SFC, DISM ou WinRE.  
+--- Sur PowerShell (en administrateur)  
+    Vérifier l'intégrité du système (sfc)  
+    <img width="1020" height="347" alt="image" src="https://github.com/user-attachments/assets/8389a2d1-b736-434a-97af-a7fa5f7e139a" />  
+    Réparer l'image Windows si nécessaire (dism)  
+    <img width="867" height="180" alt="image" src="https://github.com/user-attachments/assets/bf44f757-2cce-42d2-8d4e-160c49417f20" />  
+    Réparer le BCD via WinRE si nécessaire avec les commandes suivantes
+    ```cmd
+    bootrec /fixmbr  
+    bootrec /fixboot  
+    bootrec /rebuildbcd
+    ```
+
   * Perte de profil utilisateur : recréer et restaurer les données.  
   --- recréer un profil - ici nous simulon la perte du profil utilisateur Manon qui est remplacé par le profil TestUser  
 <img width="997" height="530" alt="image" src="https://github.com/user-attachments/assets/b573c702-a378-407a-8933-9924b661f37e" />  
