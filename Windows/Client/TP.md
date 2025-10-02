@@ -33,7 +33,22 @@ Configuration ordinateur -> Modèles d'administration -> Système -> Device Guar
 <img width="1177" height="570" alt="image" src="https://github.com/user-attachments/assets/9d03236f-3e98-4cb2-8dd9-518de6c2a59e" />  
 
 - Configurer Windows Defender avec exclusions et analyse planifiée
-<img width="803" height="633" alt="image" src="https://github.com/user-attachments/assets/dc8200c3-75cd-47b7-9a4f-5b927e26736b" />
+<img width="803" height="633" alt="image" src="https://github.com/user-attachments/assets/dc8200c3-75cd-47b7-9a4f-5b927e26736b" />  
+<img width="805" height="635" alt="image" src="https://github.com/user-attachments/assets/fe019683-2ac6-496e-8313-1b880092fb0d" />  
+<img width="722" height="635" alt="image" src="https://github.com/user-attachments/assets/56810809-09db-4401-b393-a9686a86d10e" />
+
+-- Créer analyse planifiée  
+<img width="795" height="573" alt="image" src="https://github.com/user-attachments/assets/6193e82c-a280-4f48-a9bf-408dd22f40fa" />  
+<img width="787" height="567" alt="image" src="https://github.com/user-attachments/assets/118fdf9f-f633-4d8f-ba30-fdaa51cf057c" />  
+<img width="635" height="491" alt="image" src="https://github.com/user-attachments/assets/7c8cddac-02d4-4c3e-931f-d6f37ca2efa7" />  
+<img width="592" height="518" alt="image" src="https://github.com/user-attachments/assets/49994ce5-ad57-4108-a6f2-5f2f1db7019b" />
+
+-- Ajouter des exclusions
+<img width="759" height="652" alt="image" src="https://github.com/user-attachments/assets/1c7850c3-056a-4ba5-8827-85d11077c0c9" />  
+<img width="808" height="644" alt="image" src="https://github.com/user-attachments/assets/806f1043-5df9-45bf-8321-cdbcea1cea12" />  
+<img width="815" height="636" alt="image" src="https://github.com/user-attachments/assets/5e97170b-19ad-4e98-8e33-de5775099c85" />  
+<img width="493" height="478" alt="image" src="https://github.com/user-attachments/assets/34ccc0eb-94ac-42fe-9329-8fe6c1d8bba9" />  
+<img width="462" height="362" alt="image" src="https://github.com/user-attachments/assets/a7a2d130-bc6c-4518-b24d-ea02981d2df4" />  
 
 
 - Déployer et tester des GPO supplémentaires :  
