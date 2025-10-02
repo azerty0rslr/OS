@@ -19,9 +19,9 @@
 - Activer bitlocker  
 <img width="892" height="508" alt="image" src="https://github.com/user-attachments/assets/5d00b92d-0491-48f2-9c3e-e38b17d20a77" />  
 <img width="611" height="472" alt="image" src="https://github.com/user-attachments/assets/f706da97-1d6d-4dd6-8e3b-c911d79b55bb" />  
-<img width="623" height="486" alt="image" src="https://github.com/user-attachments/assets/864b0e65-6c12-41a2-888e-79fba4a3323e" />  
-- Activer Credential Guard et Virtualization-Based Security (VBS).  
-- Configurer Windows Defender avec exclusions et analyse planifiée.  
+<img width="623" height="486" alt="image" src="https://github.com/user-attachments/assets/864b0e65-6c12-41a2-888e-79fba4a3323e" />
+- Activer Credential Guard et Virtualization-Based Security (VBS).
+- Configurer Windows Defender avec exclusions et analyse planifiée.
 - Déployer et tester des GPO supplémentaires :  
   * Redirection de dossiers utilisateurs (Documents, Bureau) vers un partage réseau.  
   * Déploiement d’un script de connexion/déconnexion.  
