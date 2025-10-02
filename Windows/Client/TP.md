@@ -61,7 +61,14 @@ Configuration ordinateur -> Modèles d'administration -> Système -> Device Guar
   * Déploiement de préférences GPO (lecteurs réseaux, imprimantes par défaut, fond d’écran de l’entreprise).  
 
  ## Jour 3 : Administration distante, mise à jour et dépannage
- - Configurer et tester le Bureau à distance (RDP sécurisé avec NLA).  
+- Configurer et tester le Bureau à distance (RDP sécurisé avec NLA).
+<img width="817" height="642" alt="image" src="https://github.com/user-attachments/assets/bb5de989-17b5-43cb-872a-a806907fcb7a" />  
+<img width="747" height="357" alt="image" src="https://github.com/user-attachments/assets/6445811c-90f9-4528-9f58-9e58aa8266f9" />
+<img width="812" height="642" alt="image" src="https://github.com/user-attachments/assets/634c694c-8d2f-47aa-9f9f-a28a984bcada" />
+
+
+
+
 - Créer et tester un accès VPN vers le réseau pédagogique.  
 - Mettre en place un serveur WSUS, approuver des mises à jour et forcer leur application via GPO.  
 - Vérifier et personnaliser les règles du pare-feu Windows Defender (in/out).  
