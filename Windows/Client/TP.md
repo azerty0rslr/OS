@@ -6,14 +6,11 @@
 <img width="1160" height="382" alt="image" src="https://github.com/user-attachments/assets/d6c39f1d-9eb8-43b6-a209-754988e957dc" />  
 <img width="775" height="470" alt="image" src="https://github.com/user-attachments/assets/137ae358-95d6-41ff-80e2-724ca08958d4" />  
 
-
 - Créer une image de référence avec Sysprep.
 <img width="871" height="359" alt="image" src="https://github.com/user-attachments/assets/e423a517-f18f-4418-9fc8-140852f7cf64" />
 <img width="380" height="291" alt="image" src="https://github.com/user-attachments/assets/6f760dbc-d513-4f8e-968e-f46a728e3947" />
 
-
 - Déployer l’image sur au moins 2 postes via MDT ou WDS.
-
 - Joindre les postes au domaine Active Directory.
 - Créer des OU spécifiques (Stagiaires, IT, Direction).
 - Affecter des GPO de base (mot de passe fort, verrouillage de session).
@@ -31,7 +28,7 @@
   * Restriction d’accès au Panneau de configuration et aux paramètres Windows.  
   * Mise en place d’AppLocker avec règles différenciées (Stagiaires vs IT).  
   * Interdiction des périphériques USB sauf pour l’équipe IT.  
-  * Déploiement de préférences GPO (lecteurs réseaux, imprimantes par défaut, fond d’écran de l’entreprise).
+  * Déploiement de préférences GPO (lecteurs réseaux, imprimantes par défaut, fond d’écran de l’entreprise).  
 
  ## Jour 3 : Administration distante, mise à jour et dépannage
  - Configurer et tester le Bureau à distance (RDP sécurisé avec NLA).  
