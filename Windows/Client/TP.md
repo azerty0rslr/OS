@@ -70,7 +70,7 @@ Configuration ordinateur -> Modèles d'administration -> Système -> Device Guar
 
 - Créer et tester un accès VPN vers le réseau pédagogique.  
 - Mettre en place un serveur WSUS, approuver des mises à jour et forcer leur application via GPO.  
-- Vérifier et personnaliser les règles du pare-feu Windows Defender (in/out).
+- Vérifier et personnaliser les règles du pare-feu Windows Defender (in/out).  
 --- Autorisation de trafic entrant depuis le port TCP 80
 <img width="1060" height="586" alt="image" src="https://github.com/user-attachments/assets/fd83b1c4-56e9-43ef-bf33-107cd0488e8f" />  
 <img width="747" height="477" alt="image" src="https://github.com/user-attachments/assets/702ecf2e-9633-458a-b85f-8cc5c3220a83" />  
