@@ -26,11 +26,14 @@ Dans C:\Windows\System32\Sysprep sélectionner  sysprep.exe puis pour créer l�
   
 ## Jour 2 : Sécurisation et GPO avancées
 **- Activer bitlocker**  
-Dans « Panneau de configuration » sélectionner « Chiffrement de lecteur BitLocker » puis sélectionner « Activer BitLocker », on récupère la clé de récupération BitLocker. Ensuite je sélectionne « Ne chiffrer que l’espace disque utilisé » puis « Nouveau mode de chiffrement ». On exécute la vérification du système BitLocker.  
+Dans « Panneau de configuration » sélectionner « Chiffrement de lecteur BitLocker » puis sélectionner « Activer BitLocker », on récupère la clé de récupération BitLocker.  
   
 <img width="651" height="362" alt="image" src="https://github.com/user-attachments/assets/bb4adb48-24b2-40f5-a236-c9fdf90803e9" />  
 <img width="775" height="470" alt="image" src="https://github.com/user-attachments/assets/137ae358-95d6-41ff-80e2-724ca08958d4" />  
 <img width="892" height="508" alt="image" src="https://github.com/user-attachments/assets/5d00b92d-0491-48f2-9c3e-e38b17d20a77" />
+
+Ensuite je sélectionne « Ne chiffrer que l’espace disque utilisé » puis « Nouveau mode de chiffrement ». On exécute la vérification du système BitLocker.  
+  
 <img width="627" height="495" alt="image" src="https://github.com/user-attachments/assets/3352707f-128c-4c58-b77d-a35a7c50dfce" />  
 <img width="611" height="472" alt="image" src="https://github.com/user-attachments/assets/f706da97-1d6d-4dd6-8e3b-c911d79b55bb" />  
 <img width="623" height="486" alt="image" src="https://github.com/user-attachments/assets/864b0e65-6c12-41a2-888e-79fba4a3323e" />  
