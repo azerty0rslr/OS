@@ -17,3 +17,27 @@ https://learn.microsoft.com/fr-fr/windows-server/identity/ad-ds/manage/active-di
 https://myitknowledge.fr/creer-gerer-ou-active-directory/
 https://www.it-connect.fr/troubleshooting-gpo-utilisation-de-gpresult/
 https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/deploy/install-active-directory-domain-services--level-100-
+
+### MDT 
+https://www.it-connect.fr/cours-tutoriels/administration-systemes/windows-server/deploiement-mdt-wds/
+
+### Déployer l'image sur  au moins 2 postes via MDT au WDS
+```
+# Installer le rôle WDS
+Install-WindowsFeature -Name WDS -IncludeManagementTools
+
+# Installer les outils MDT (nécessite téléchargement manuel de MDT + ADK)
+# Tu peux automatiser l’installation si les fichiers sont disponibles localement :
+Start-Process "C:\Installers\MicrosoftDeploymentToolkit_x64.msi" -ArgumentList "/quiet" -Wait
+Start-Process "C:\Installers\adksetup.exe" -ArgumentList "/quiet" -Wait
+```
+
+
+# Dossier de déploiement
+New-Item -Path "D:\DeploymentShare" -ItemType Directory
+
+# Partage MDT
+New-SmbShare -Name "DeploymentShare$" -Path "D:\DeploymentShare" -FullAccess "Administrators"
+
+# Importer l’image Windows dans MDT via PowerShell (il faut le module MDT)
+Import-MDTOperatingSystem -Path "D:\DeploymentShare\Operating Systems" -SourcePath "D:\Sources\Windows11" -DestinationFolder "Win11"
