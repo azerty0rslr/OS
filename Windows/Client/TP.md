@@ -96,16 +96,25 @@ Dans « Sécurité Windows » sélectionner « Protection contre les virus et me
 
  ## Jour 3 : Administration distante, mise à jour et dépannage
 **- Configurer et tester le Bureau à distance (RDP sécurisé avec NLA).**  
+
+Dans les paramètres, aller dans « Système » puis « Bureau à distance ». Activer « Bureau à distance ».  
+  
 <img width="817" height="642" alt="image" src="https://github.com/user-attachments/assets/bb5de989-17b5-43cb-872a-a806907fcb7a" />  
 <img width="747" height="357" alt="image" src="https://github.com/user-attachments/assets/6445811c-90f9-4528-9f58-9e58aa8266f9" />
 <img width="812" height="642" alt="image" src="https://github.com/user-attachments/assets/634c694c-8d2f-47aa-9f9f-a28a984bcada" />  
---- Depuis mon PC hôte, je peux désormais mettre l'adresse IP de la VM sur "Connexion Bureau à distance"  et me connecter à la VM  
+
+Depuis mon PC hôte, je peux désormais mettre l'adresse IP de la VM sur "Connexion Bureau à distance" et me connecter à la VM.  
+  
  <img width="562" height="313" alt="image" src="https://github.com/user-attachments/assets/fc4062a7-2de0-4142-90d4-0622b8d103dd" />  
 
 **- Créer et tester un accès VPN vers le réseau pédagogique.**  
 **- Mettre en place un serveur WSUS, approuver des mises à jour et forcer leur application via GPO.**  
 **- Vérifier et personnaliser les règles du pare-feu Windows Defender (in/out).**  
---- Autorisation de trafic entrant depuis le port TCP 80
+
+| _Autoriser trafic entrant depuis le port TCP 80_  
+Dans « Pare-feu Windows Defender avec fonctions avancées de sécurité » puis dans « Règles de trafic entrant » faire « Nouvelle règle de trafic entrant » et créer la règle de trafic (ici sur le Port, TCP 80 qu’on autorise sur le domaine, privé et public).  
+Même principe pour les Règles de trafic sortant.  
+  
 <img width="1060" height="586" alt="image" src="https://github.com/user-attachments/assets/fd83b1c4-56e9-43ef-bf33-107cd0488e8f" />  
 <img width="747" height="477" alt="image" src="https://github.com/user-attachments/assets/702ecf2e-9633-458a-b85f-8cc5c3220a83" />  
 <img width="728" height="583" alt="image" src="https://github.com/user-attachments/assets/01efcb86-a545-4e8a-92f5-22f446777a3c" />  
@@ -114,12 +123,13 @@ Dans « Sécurité Windows » sélectionner « Protection contre les virus et me
 <img width="737" height="602" alt="image" src="https://github.com/user-attachments/assets/b9d83935-b111-4474-b194-194c1f7ecad2" />  
 
 **- Scénarios de dépannage :**  
-  * Poste qui ne démarre plus : réparer avec BCD, SFC, DISM ou WinRE.  
---- Sur PowerShell (en administrateur)  
-    Vérifier l'intégrité du système (sfc)  
+  * Poste qui ne démarre plus : réparer avec BCD, SFC, DISM ou WinRE.
+
+Sur PowerShell (en administrateur), vérifier l’intégrité du système avec la commande sfc /scannow. Si nécessaire de réparer l’image Windows faire DISM /Online /Cleanup-Image /RestoreHealth.  
+  
     <img width="1020" height="347" alt="image" src="https://github.com/user-attachments/assets/8389a2d1-b736-434a-97af-a7fa5f7e139a" />  
-    Réparer l'image Windows si nécessaire (dism)  
     <img width="867" height="180" alt="image" src="https://github.com/user-attachments/assets/bf44f757-2cce-42d2-8d4e-160c49417f20" />  
+  
     Réparer le BCD via WinRE si nécessaire avec les commandes suivantes
     ```cmd
     bootrec /fixmbr  
@@ -128,17 +138,28 @@ Dans « Sécurité Windows » sélectionner « Protection contre les virus et me
     ```
 
   * Perte de profil utilisateur : recréer et restaurer les données.  
-  --- recréer un profil - ici nous simulon la perte du profil utilisateur Manon qui est remplacé par le profil TestUser  
+
+| _Recréer un profil (simulation de la perte du profil utilisateur Manon qui est remplacé par le profil TestUser)_  
+Dans PowerShell en administrateur faire :  
+```cmd
+net user TestUser /add
+net localgroup Administrateurs TestUser /add
+```
+
 <img width="997" height="530" alt="image" src="https://github.com/user-attachments/assets/b573c702-a378-407a-8933-9924b661f37e" />  
 
-  --- restauration (copier coller les données de l'utilisateur en question)  
-  <img width="860" height="626" alt="image" src="https://github.com/user-attachments/assets/a276c363-c9e0-4d18-a462-a194b10a37cf" />  
+Puis dans C:\Utilisateurs, copier coller les données du profil perdu sur le nouveau profil.  
+  
+<img width="860" height="626" alt="image" src="https://github.com/user-attachments/assets/a276c363-c9e0-4d18-a462-a194b10a37cf" />  
 
   * GPO qui ne s’applique pas : analyse avec gpresult /h et Event Viewer.  
   * Lenteurs réseau : diagnostic avec Resmon, BranchCache et tests complémentaires.
+  
+Pour vérifier le fonctionnement du réseau en cas de lenteur, dans « Gestionnaire des tâches » pour voir la gestion de la performance de connexion (ici Ethernet) dans « resmon » /« Moniteur de ressources » pour voir la gestion des ressources par le PC.  
+  
  <img width="782" height="592" alt="image" src="https://github.com/user-attachments/assets/c5378613-b533-400a-b018-b8a0f539ff37" />  
  <img width="795" height="598" alt="image" src="https://github.com/user-attachments/assets/10624a0a-7241-4a99-ba30-ec66ddccb7e8" />
-
---- commandes de test de connectivité  
-2 commandes : ping et tracert  
+  
+Pour tester la connectivité : 2 commandes possibles dans le CMD « ping » et « tracert ».  
+  
 <img width="1000" height="533" alt="image" src="https://github.com/user-attachments/assets/2c270866-09a7-42dc-81d8-d37fe3efa7f5" />  
