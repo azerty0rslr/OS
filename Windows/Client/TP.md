@@ -11,18 +11,19 @@ Sur la configuration de la VM nous avons bien activé EFI. Dans informations sys
 Pour vérifier que GPT est bien activé sur les disques : dans DISKPART entrer list disk et vérifier que GPT est bien en *.  
   
 <img width="663" height="161" alt="image" src="https://github.com/user-attachments/assets/b83c99bd-15d2-4a8b-85bb-2a90abcd465f" />  
-
- 
-
-- Créer une image de référence avec Sysprep.
-<img width="871" height="359" alt="image" src="https://github.com/user-attachments/assets/e423a517-f18f-4418-9fc8-140852f7cf64" />
-<img width="380" height="291" alt="image" src="https://github.com/user-attachments/assets/6f760dbc-d513-4f8e-968e-f46a728e3947" />
-
-- Déployer l’image sur au moins 2 postes via MDT ou WDS.
-- Joindre les postes au domaine Active Directory.
-- Créer des OU spécifiques (Stagiaires, IT, Direction).
-- Affecter des GPO de base (mot de passe fort, verrouillage de session).
-
+  
+  
+**- Créer une image de référence avec Sysprep.**  
+Dans C:\Windows\System32\Sysprep sélectionner  sysprep.exe puis pour créer l’image de référence sélectionner « Généraliser » et mettre « Arrêter le système ».  
+  
+<img width="871" height="359" alt="image" src="https://github.com/user-attachments/assets/e423a517-f18f-4418-9fc8-140852f7cf64" />  
+<img width="380" height="291" alt="image" src="https://github.com/user-attachments/assets/6f760dbc-d513-4f8e-968e-f46a728e3947" />  
+  
+**- Déployer l’image sur au moins 2 postes via MDT ou WDS.**  
+**- Joindre les postes au domaine Active Directory.**  
+**- Créer des OU spécifiques (Stagiaires, IT, Direction).**  
+**- Affecter des GPO de base (mot de passe fort, verrouillage de session).**  
+  
 ## Jour 2 : Sécurisation et GPO avancées
 - Activer bitlocker
 <img width="651" height="362" alt="image" src="https://github.com/user-attachments/assets/bb4adb48-24b2-40f5-a236-c9fdf90803e9" />  
