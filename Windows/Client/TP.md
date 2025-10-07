@@ -130,12 +130,12 @@ Sur PowerShell (en administrateur), vérifier l’intégrité du système avec l
     <img width="1020" height="347" alt="image" src="https://github.com/user-attachments/assets/8389a2d1-b736-434a-97af-a7fa5f7e139a" />  
     <img width="867" height="180" alt="image" src="https://github.com/user-attachments/assets/bf44f757-2cce-42d2-8d4e-160c49417f20" />  
   
-    Réparer le BCD via WinRE si nécessaire avec les commandes suivantes
-    ```cmd
-    bootrec /fixmbr  
-    bootrec /fixboot  
-    bootrec /rebuildbcd
-    ```
+    Réparer le BCD via WinRE si nécessaire avec les commandes suivantes :  
+```cmd
+bootrec /fixmbr  
+bootrec /fixboot  
+bootrec /rebuildbcd
+```
 
   * Perte de profil utilisateur : recréer et restaurer les données.  
 
