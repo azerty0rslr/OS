@@ -1,11 +1,11 @@
 # TP 
 serveur mdp : admin2025.
 ## Jour 1 : déploiement et préparation
-**- Installer un poste Windows 10, 11**  
+### - Installer un poste Windows 10, 11 
   
 Nous avons utilisé un iso de Windows 11.  
   
-**- Configurer les partitions correctement (UEFI/GPT, préparation pour BitLocker).**  
+### - Configurer les partitions correctement (UEFI/GPT, préparation pour BitLocker).
   
 Sur la configuration de la VM nous avons bien activé EFI. Dans informations système, vérifier que Mode BIOS est bien en UEFI.  
   
@@ -16,7 +16,7 @@ Pour vérifier que GPT est bien activé sur les disques : dans DISKPART entrer l
 <img width="663" height="161" alt="image" src="https://github.com/user-attachments/assets/b83c99bd-15d2-4a8b-85bb-2a90abcd465f" />  
   
   
-**- Créer une image de référence avec Sysprep.**  
+### - Créer une image de référence avec Sysprep.
   
 Dans C:\Windows\System32\Sysprep sélectionner  sysprep.exe puis pour créer l’image de référence sélectionner « Généraliser » et mettre « Arrêter le système ».  
   
@@ -24,13 +24,13 @@ Dans C:\Windows\System32\Sysprep sélectionner  sysprep.exe puis pour créer l�
 <img width="380" height="291" alt="image" src="https://github.com/user-attachments/assets/6f760dbc-d513-4f8e-968e-f46a728e3947" />  
 
   
-**- Déployer l’image sur au moins 2 postes via MDT ou WDS.**  
-**- Joindre les postes au domaine Active Directory.**  
-**- Créer des OU spécifiques (Stagiaires, IT, Direction).**  
-**- Affecter des GPO de base (mot de passe fort, verrouillage de session).**  
+### - Déployer l’image sur au moins 2 postes via MDT ou WDS.  
+### - Joindre les postes au domaine Active Directory.  
+### - Créer des OU spécifiques (Stagiaires, IT, Direction).  
+### - Affecter des GPO de base (mot de passe fort, verrouillage de session).  
   
 ## Jour 2 : Sécurisation et GPO avancées
-**- Activer bitlocker**  
+### - Activer bitlocker  
   
 Dans « Panneau de configuration » sélectionner « Chiffrement de lecteur BitLocker » puis sélectionner « Activer BitLocker », on récupère la clé de récupération BitLocker.  
   
@@ -44,7 +44,7 @@ Ensuite je sélectionne « Ne chiffrer que l’espace disque utilisé » puis «
 <img width="611" height="472" alt="image" src="https://github.com/user-attachments/assets/f706da97-1d6d-4dd6-8e3b-c911d79b55bb" />  
 <img width="623" height="486" alt="image" src="https://github.com/user-attachments/assets/864b0e65-6c12-41a2-888e-79fba4a3323e" />  
   
-**- Activer Credential Guard et Virtualization-Based Security (VBS)**  
+### - Activer Credential Guard et Virtualization-Based Security (VBS)  
   
 Dans « Editeur de stratégie de groupe locale » je vais dans Configuration ordinateur -> Modèles d’administration -> Système -> Device Guard.  
   
@@ -60,7 +60,7 @@ Dans « Information système » vérifier que « Sécurité basée sur la virtua
 <img width="1170" height="581" alt="image" src="https://github.com/user-attachments/assets/d0a4f0da-6826-4c82-8f73-0b760926b05d" />
 <img width="1177" height="570" alt="image" src="https://github.com/user-attachments/assets/9d03236f-3e98-4cb2-8dd9-518de6c2a59e" />  
 
-**- Configurer Windows Defender avec exclusions et analyse planifiée**  
+### - Configurer Windows Defender avec exclusions et analyse planifiée  
   
 Dans « Sécurité Windows » sélectionner « Protection contre les virus et menaces » puis « Paramètres de protection contre les virus et menaces ».  
   
@@ -86,7 +86,7 @@ Dans « Sécurité Windows » sélectionner « Protection contre les virus et me
 <img width="462" height="362" alt="image" src="https://github.com/user-attachments/assets/a7a2d130-bc6c-4518-b24d-ea02981d2df4" />  
 
 
-**- Déployer et tester des GPO supplémentaires :**  
+### - Déployer et tester des GPO supplémentaires :  
   * Redirection de dossiers utilisateurs (Documents, Bureau) vers un partage réseau.  
   * Déploiement d’un script de connexion/déconnexion.  
   * Restriction d’accès au Panneau de configuration et aux paramètres Windows.  
@@ -95,7 +95,7 @@ Dans « Sécurité Windows » sélectionner « Protection contre les virus et me
   * Déploiement de préférences GPO (lecteurs réseaux, imprimantes par défaut, fond d’écran de l’entreprise).  
 
  ## Jour 3 : Administration distante, mise à jour et dépannage
-**- Configurer et tester le Bureau à distance (RDP sécurisé avec NLA).**  
+### - Configurer et tester le Bureau à distance (RDP sécurisé avec NLA).  
 
 Dans les paramètres, aller dans « Système » puis « Bureau à distance ». Activer « Bureau à distance ».  
   
@@ -107,9 +107,9 @@ Depuis mon PC hôte, je peux désormais mettre l'adresse IP de la VM sur "Connex
   
  <img width="562" height="313" alt="image" src="https://github.com/user-attachments/assets/fc4062a7-2de0-4142-90d4-0622b8d103dd" />  
 
-**- Créer et tester un accès VPN vers le réseau pédagogique.**  
-**- Mettre en place un serveur WSUS, approuver des mises à jour et forcer leur application via GPO.**  
-**- Vérifier et personnaliser les règles du pare-feu Windows Defender (in/out).**  
+### - Créer et tester un accès VPN vers le réseau pédagogique.  
+### - Mettre en place un serveur WSUS, approuver des mises à jour et forcer leur application via GPO.  
+### - Vérifier et personnaliser les règles du pare-feu Windows Defender (in/out).  
 
 | _Autoriser trafic entrant depuis le port TCP 80_  
 Dans « Pare-feu Windows Defender avec fonctions avancées de sécurité » puis dans « Règles de trafic entrant » faire « Nouvelle règle de trafic entrant » et créer la règle de trafic (ici sur le Port, TCP 80 qu’on autorise sur le domaine, privé et public).  
@@ -122,7 +122,7 @@ Même principe pour les Règles de trafic sortant.
 <img width="726" height="587" alt="image" src="https://github.com/user-attachments/assets/ceb731e5-d46b-4d2d-ac2b-977896dd3aef" />  
 <img width="737" height="602" alt="image" src="https://github.com/user-attachments/assets/b9d83935-b111-4474-b194-194c1f7ecad2" />  
 
-**- Scénarios de dépannage :**  
+### - Scénarios de dépannage :  
   * Poste qui ne démarre plus : réparer avec BCD, SFC, DISM ou WinRE.
   
 Sur PowerShell (en administrateur), vérifier l’intégrité du système avec la commande sfc /scannow. Si nécessaire de réparer l’image Windows faire DISM /Online /Cleanup-Image /RestoreHealth.  
