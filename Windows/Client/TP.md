@@ -2,8 +2,11 @@
 serveur mdp : admin2025.
 ## Jour 1 : déploiement et préparation
 **- Installer un poste Windows 10, 11**  
-Nous avons utilisé un iso de Windows 11.    
+  
+Nous avons utilisé un iso de Windows 11.  
+  
 **- Configurer les partitions correctement (UEFI/GPT, préparation pour BitLocker).**  
+  
 Sur la configuration de la VM nous avons bien activé EFI. Dans informations système, vérifier que Mode BIOS est bien en UEFI.  
   
 <img width="1160" height="382" alt="image" src="https://github.com/user-attachments/assets/d6c39f1d-9eb8-43b6-a209-754988e957dc" />  
@@ -14,10 +17,12 @@ Pour vérifier que GPT est bien activé sur les disques : dans DISKPART entrer l
   
   
 **- Créer une image de référence avec Sysprep.**  
+  
 Dans C:\Windows\System32\Sysprep sélectionner  sysprep.exe puis pour créer l’image de référence sélectionner « Généraliser » et mettre « Arrêter le système ».  
   
 <img width="871" height="359" alt="image" src="https://github.com/user-attachments/assets/e423a517-f18f-4418-9fc8-140852f7cf64" />  
 <img width="380" height="291" alt="image" src="https://github.com/user-attachments/assets/6f760dbc-d513-4f8e-968e-f46a728e3947" />  
+
   
 **- Déployer l’image sur au moins 2 postes via MDT ou WDS.**  
 **- Joindre les postes au domaine Active Directory.**  
@@ -26,6 +31,7 @@ Dans C:\Windows\System32\Sysprep sélectionner  sysprep.exe puis pour créer l�
   
 ## Jour 2 : Sécurisation et GPO avancées
 **- Activer bitlocker**  
+  
 Dans « Panneau de configuration » sélectionner « Chiffrement de lecteur BitLocker » puis sélectionner « Activer BitLocker », on récupère la clé de récupération BitLocker.  
   
 <img width="651" height="362" alt="image" src="https://github.com/user-attachments/assets/bb4adb48-24b2-40f5-a236-c9fdf90803e9" />  
@@ -39,29 +45,40 @@ Ensuite je sélectionne « Ne chiffrer que l’espace disque utilisé » puis «
 <img width="623" height="486" alt="image" src="https://github.com/user-attachments/assets/864b0e65-6c12-41a2-888e-79fba4a3323e" />  
   
 **- Activer Credential Guard et Virtualization-Based Security (VBS)**  
+  
 Dans « Editeur de stratégie de groupe locale » je vais dans Configuration ordinateur -> Modèles d’administration -> Système -> Device Guard.  
+  
 <img width="762" height="541" alt="image" src="https://github.com/user-attachments/assets/c0bd572b-259a-4b85-b3bc-cd92fe49411c" />
   
 Sélectionner “Activer la sécurité basée sur la virtualization” puis dans “Configuration Credential Guard” mettre Activé.  
+  
 <img width="775" height="542" alt="image" src="https://github.com/user-attachments/assets/1629fc31-f563-40f4-82b9-7fd461170210" />  
 <img width="698" height="631" alt="image" src="https://github.com/user-attachments/assets/c8897429-18d5-445e-9678-6b9a98193914" />
 
 Dans « Information système » vérifier que « Sécurité basée sur la virtualisation » est activé et que « Services configurés pour la sécurité » est bien sur Credential Guard.  
+  
 <img width="1170" height="581" alt="image" src="https://github.com/user-attachments/assets/d0a4f0da-6826-4c82-8f73-0b760926b05d" />
 <img width="1177" height="570" alt="image" src="https://github.com/user-attachments/assets/9d03236f-3e98-4cb2-8dd9-518de6c2a59e" />  
 
 **- Configurer Windows Defender avec exclusions et analyse planifiée**  
+  
+Dans « Sécurité Windows » sélectionner « Protection contre les virus et menaces » puis « Paramètres de protection contre les virus et menaces ».  
+  
 <img width="803" height="633" alt="image" src="https://github.com/user-attachments/assets/dc8200c3-75cd-47b7-9a4f-5b927e26736b" />  
 <img width="805" height="635" alt="image" src="https://github.com/user-attachments/assets/fe019683-2ac6-496e-8313-1b880092fb0d" />  
 <img width="722" height="635" alt="image" src="https://github.com/user-attachments/assets/56810809-09db-4401-b393-a9686a86d10e" />
-
--- Créer analyse planifiée  
+  
+| _Créer analyse planifiée_  
+Aller dans « Planificateur de tâches » puis dans Bibliothèque du Planificateur -> Microsoft -> Windows -> Windows Defender -> Windows Defender Scheduled Scan -> Déclencheurs. Puis dans nouveau créer un nouveau déclencheur pour créer une analyse planifiée au moment désiré.  
+  
 <img width="795" height="573" alt="image" src="https://github.com/user-attachments/assets/6193e82c-a280-4f48-a9bf-408dd22f40fa" />  
 <img width="787" height="567" alt="image" src="https://github.com/user-attachments/assets/118fdf9f-f633-4d8f-ba30-fdaa51cf057c" />  
 <img width="635" height="491" alt="image" src="https://github.com/user-attachments/assets/7c8cddac-02d4-4c3e-931f-d6f37ca2efa7" />  
 <img width="592" height="518" alt="image" src="https://github.com/user-attachments/assets/49994ce5-ad57-4108-a6f2-5f2f1db7019b" />
-
--- Ajouter des exclusions  
+  
+| _Ajouter des exclusions_  
+Dans « Sécurité Windows » sélectionner « Protection contre les virus et menaces » puis descendre jusqu’à « Exclusions » et faire « Ajouter ou supprimer des exclusions » puis ajouter une exclusion sur un Fichier/Dossier/Type de fichier/Processus (ici j’ai mis une exclusion sur le dossier Temp).  
+  
 <img width="759" height="652" alt="image" src="https://github.com/user-attachments/assets/1c7850c3-056a-4ba5-8827-85d11077c0c9" />  
 <img width="808" height="644" alt="image" src="https://github.com/user-attachments/assets/806f1043-5df9-45bf-8321-cdbcea1cea12" />  
 <img width="815" height="636" alt="image" src="https://github.com/user-attachments/assets/5e97170b-19ad-4e98-8e33-de5775099c85" />  
