@@ -1,8 +1,11 @@
 # TP 
 serveur mdp : admin2025.
 ## Jour 1 : déploiement et préparation
-- Installer un poste Windows 10, 11 -- problème à rebouter un nouvel ISO sur VMware, nous avons donc récupéré une ancienne VM windows 11  
+- Installer un poste Windows 10, 11
+Nous avons utilisé un iso de Windows 11.    
 - Configurer les partitions correctement (UEFI/GPT, préparation pour BitLocker).  
+Sur la configuration de la VM nous avons bien activé EFI. Dans informations système, vérifier que Mode BIOS est bien en UEFI.
+Pour vérifier que GPT est bien activé sur les disques : dans DISKPART entrer list disk et vérifier que GPT est bien en *.
 <img width="663" height="161" alt="image" src="https://github.com/user-attachments/assets/b83c99bd-15d2-4a8b-85bb-2a90abcd465f" />  
 <img width="1160" height="382" alt="image" src="https://github.com/user-attachments/assets/d6c39f1d-9eb8-43b6-a209-754988e957dc" />  
  
