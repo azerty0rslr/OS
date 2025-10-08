@@ -116,6 +116,18 @@ Vérifier et personnaliser les règles du pare-feu Windows Defender (inbound/out
 ```
 netsh advfirewall firewall show rule name=all
 ```
+Vérifier et personnaliser les règles du pare-feu Windows Defender (in/out).
+
+```
+# Vérifier les régles existantes
+netsh advfirewall firewall show rule name=all
+
+#création d'une régle example autorisation d'utilisation d'un port
+netsh advfirewall firewall add rule name="Autoriser RDP" dir=in action=allow protocol=TCP localport=3389
+
+# création d'une régle bloquer un port
+netsh advfirewall firewall add rule name="Bloquer FTP" dir=out action=block protocol=TCP remoteport=21
+```
 
 Sénario de dépanage BCD, SFC
 ```
