@@ -22,11 +22,58 @@ Dans C:\Windows\System32\Sysprep sélectionner  sysprep.exe puis pour créer l�
   
 <img width="871" height="359" alt="image" src="https://github.com/user-attachments/assets/e423a517-f18f-4418-9fc8-140852f7cf64" />  
 <img width="380" height="291" alt="image" src="https://github.com/user-attachments/assets/6f760dbc-d513-4f8e-968e-f46a728e3947" />  
-
+  
   
 ### - Déployer l’image sur au moins 2 postes via MDT ou WDS.  
+```
+New-Item -Path "D:\DeploymentShare" -ItemType Directory
+```
+#### Créé le partage 
+```
+New-SmbShare -Name "DeploymentShare$" -Path "D:\DeploymentShare" -FullAccess "Administrators"
+```
+
+#### Importer l'image Windows dans MDT 
+```
+Import-MDTOperatingSystem -Path "D:\DeploymentShare\Operating Systems" `
+  -SourcePath "D:\Sources\Windows11" `
+  -DestinationFolder "Win11"
+
+```
+Étape qui ne peut pas se faire via Powershell, ouvrir le dépoyment Workbench:  
+DeploymentShare > Update Deployment Share> LiteTouchEP_x643.win  
+  
+Ajouter l'image LiteTouchPE au serveur  
+
+```
+wdsutil /Add-Image /ImageType:Boot /ImageFile:"D:\DeploymentShare\Boot\LiteTouchPE_x64.wim" /ImageName:"LiteTouch PE x64"
+````
+
+  
 ### - Joindre les postes au domaine Active Directory.  
+Joindre le nom de domaine  
+```
+netdom join %Cam% /domain:camelia.local /userd:Administrateur /passwordd:Admin1234
+```
+Redémarrer le poste
+```
+shutdown /r /t 0
+```
+
+  
 ### - Créer des OU spécifiques (Stagiaires, IT, Direction).  
+```
+dsadd ou "OU=Stagiaires,DC=camelia,DC=local"
+```
+GPO étape manuel  
+Créer et lier la GPO  
+Apporter les modifications  
+Configuration ordinateur -> Paramètres Windows -> Paramètres de sécurité  
+  
+Pour un mot de passe plus fort aller dans  Stratégies de compte -> Stratégie de mot de passe  
+Verouiller session après inactivité Configuration utilisateur -> Modèles d'administration -> Composants Windows → Session -> Délai d’inactivité  
+
+  
 ### - Affecter des GPO de base (mot de passe fort, verrouillage de session).  
   
 ## Jour 2 : Sécurisation et GPO avancées
