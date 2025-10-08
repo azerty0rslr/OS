@@ -175,7 +175,11 @@ Set-GPRegistryValue -Name "USB_IT_Autorisé" `
  -ValueName "Start" -Type DWord -Value 3
 ```
   
-  * Déploiement de préférences GPO (lecteurs réseaux, imprimantes par défaut, fond d’écran de l’entreprise).  
+  * Déploiement de préférences GPO (lecteurs réseaux, imprimantes par défaut, fond d’écran de l’entreprise).
+Vérifier et personnaliser les règles du pare-feu Windows Defender (inbound/outbound)  
+```
+netsh advfirewall firewall show rule name=all
+```
 
  ## Jour 3 : Administration distante, mise à jour et dépannage
 ### - Configurer et tester le Bureau à distance (RDP sécurisé avec NLA).  
@@ -192,6 +196,58 @@ Depuis mon PC hôte, je peux désormais mettre l'adresse IP de la VM sur "Connex
 
 ### - Créer et tester un accès VPN vers le réseau pédagogique.  
 ### - Mettre en place un serveur WSUS, approuver des mises à jour et forcer leur application via GPO.  
+```
+# Installer WSUS   
+Install-WindowsFeature -Name UpdateServices, UpdateServices-WidDB, UpdateServices-Services -IncludeManagementTools
+
+# crée le dossier de stockage
+New-Item -Path "C:\WSUS" -ItemType Directory
+
+# lancer la configuration WSUS
+"C:\Program Files\Update Services\Tools\wsusutil.exe" postinstall CONTENT_DIR=C:\WSUS
+
+# appouver les mise a jour
+$wsus = Get-WsusServer
+$updates = $wsus.GetUpdates() | Where-Object { $_.UpdateClassificationTitle -eq "Critical Updates" -and $_.IsApproved -eq $false }
+$group = $wsus.GetComputerTargetGroups() | Where-Object { $_.Name -eq "Tous les ordinateurs" }
+
+foreach ($update in $updates) {
+    $update.Approve($group, [Microsoft.UpdateServices.Administration.ApprovalAction]::Install)
+}
+```
+```
+# creartion du lien entre la GPO et OU
+New-GPLink -Name "GPO_WSUS" -Target "OU=Serveurs,DC=camelia,DC=local"
+```
+Déploiement d’un script de connexion/déconnexion. 
+```
+# connexion
+$User = $env:USERNAME
+$Time = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+$Computer = $env:COMPUTERNAME
+$LogPath = "C:\Logs\SessionLog.txt"
+
+Add-Content -Path $LogPath -Value "$Time - Connexion de $User sur $Computer"
+
+#Déconnexion
+$User = $env:USERNAME
+$Time = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+$Computer = $env:COMPUTERNAME
+$LogPath = "C:\Logs\SessionLog.txt"
+
+Add-Content -Path $LogPath -Value "$Time - Déconnexion de $User sur $Computer"
+```
+le script doit se stocker dans -> Configuration utilisateur > Paramètres Windows > Scripts (ouverture/fermeture de session)
+
+on utilisera : 
+```
+powershell.exe -ExecutionPolicy Bypass -File "\\Serveur\Scripts\Session\connexion.ps1"
+
+# ou
+
+powershell.exe -ExecutionPolicy Bypass -File "\\Serveur\Scripts\Session\deconnexion.ps1"
+```
+
 ### - Vérifier et personnaliser les règles du pare-feu Windows Defender (in/out).  
 
 | _Autoriser trafic entrant depuis le port TCP 80_  
@@ -235,7 +291,11 @@ Puis dans C:\Utilisateurs, copier coller les données du profil perdu sur le nou
   
 <img width="860" height="626" alt="image" src="https://github.com/user-attachments/assets/a276c363-c9e0-4d18-a462-a194b10a37cf" />  
 
-  * GPO qui ne s’applique pas : analyse avec gpresult /h et Event Viewer.  
+  * GPO qui ne s’applique pas : analyse avec gpresult /h et Event Viewer.
+Vérification de l'Event Viwer :  
+Journaux Windows > Application / Systémé > GroupPolicy > eventvwr.msc
+  
+  
   * Lenteurs réseau : diagnostic avec Resmon, BranchCache et tests complémentaires.
   
 Pour vérifier le fonctionnement du réseau en cas de lenteur, dans « Gestionnaire des tâches » pour voir la gestion de la performance de connexion (ici Ethernet) dans « resmon » /« Moniteur de ressources » pour voir la gestion des ressources par le PC.  
