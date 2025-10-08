@@ -75,6 +75,7 @@ Verouiller session après inactivité Configuration utilisateur -> Modèles d'ad
 
   
 ### - Affecter des GPO de base (mot de passe fort, verrouillage de session).  
+
   
 ## Jour 2 : Sécurisation et GPO avancées
 ### - Activer bitlocker  
@@ -136,9 +137,45 @@ Dans « Sécurité Windows » sélectionner « Protection contre les virus et me
 ### - Déployer et tester des GPO supplémentaires :  
   * Redirection de dossiers utilisateurs (Documents, Bureau) vers un partage réseau.  
   * Déploiement d’un script de connexion/déconnexion.  
-  * Restriction d’accès au Panneau de configuration et aux paramètres Windows.  
-  * Mise en place d’AppLocker avec règles différenciées (Stagiaires vs IT).  
-  * Interdiction des périphériques USB sauf pour l’équipe IT.  
+  * Restriction d’accès au Panneau de configuration et aux paramètres Windows.
+``` Powershell
+Set-GPRegistryValue -Name "Sécurité de base" `
+ -Key "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" `
+ -ValueName "NoControlPanel" -Type DWord -Value 1
+```
+  
+  * Mise en place d’AppLocker avec règles différenciées (Stagiaires vs IT).
+```
+Set-GPRegistryValue -Name "AppLocker_Politique" `
+ -Key "HKLM\Software\Policies\Microsoft\Windows\SrpV2" `
+ -ValueName "EnforcementMode" -Type DWord -Value 1
+```
+```
+# Stagiaire
+New-AppLockerPolicy -RuleType Executable -User "Stagiaires" -ReferenceFilePath "C:\Program Files" -RuleName "Blocage_Stagiaires" -Action Deny
+
+# IT
+New-AppLockerPolicy -RuleType Executable -User "IT" -ReferenceFilePath "*" -RuleName "Autorisation_IT" -Action Allow
+```
+  
+  * Interdiction des périphériques USB sauf pour l’équipe IT.
+```
+# appel de la GPO
+Get-GPO -All
+
+# Bloquer le péripherique usb pour tout les postes
+Set-GPRegistryValue -Name "Sécurité de base" `
+ -Key "HKLM\SYSTEM\CurrentControlSet\Services\USBSTOR" `
+ -ValueName "Start" -Type DWord -Value 4
+```
+Créé une autre GPO pour l'IT et ajouter cela :
+```
+# débloquer pour le IT
+Set-GPRegistryValue -Name "USB_IT_Autorisé" `
+ -Key "HKLM\SYSTEM\CurrentControlSet\Services\USBSTOR" `
+ -ValueName "Start" -Type DWord -Value 3
+```
+  
   * Déploiement de préférences GPO (lecteurs réseaux, imprimantes par défaut, fond d’écran de l’entreprise).  
 
  ## Jour 3 : Administration distante, mise à jour et dépannage
