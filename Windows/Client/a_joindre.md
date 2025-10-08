@@ -47,3 +47,66 @@ Ajouter l'image LiteTouchPE au serveur
 ```
 wdsutil /Add-Image /ImageType:Boot /ImageFile:"D:\DeploymentShare\Boot\LiteTouchPE_x64.wim" /ImageName:"LiteTouch PE x64"
 ````
+
+### Joindre les postes au domaine Active Directory
+
+```
+# Joindre le nom de domaine
+netdom join %Cam% /domain:camelia.local /userd:Administrateur /passwordd:Admin1234
+```
+```
+# Redemarrer le poste
+shutdown /r /t 0
+```
+
+```
+# Créer des OU spécifiques (Stagiaires, IT, Direction).
+dsadd ou "OU=Stagiaires,DC=camelia,DC=local"
+```
+GPO étape manuel
+créé et lier la GPO
+Apporter les modifications
+Configuration ordinateur -> Paramètres Windows -> Paramètres de sécurité
+
+Pour un mot de passe plus fort aller dans  Stratégies de compte -> Stratégie de mot de passe
+Verouiller session après inactivité Configuration utilisateur -> Modèles d'administration -> Composants Windows → Session -> Délai d’inactivité
+
+### GPO Restriction accés panneau de configuration et paramete windows
+
+``` Powershell
+Set-GPRegistryValue -Name "Sécurité de base" `
+ -Key "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" `
+ -ValueName "NoControlPanel" -Type DWord -Value 1
+```
+
+### mise en place d'applocker 
+```
+Set-GPRegistryValue -Name "AppLocker_Politique" `
+ -Key "HKLM\Software\Policies\Microsoft\Windows\SrpV2" `
+ -ValueName "EnforcementMode" -Type DWord -Value 1
+```
+```
+# Stagiaure
+New-AppLockerPolicy -RuleType Executable -User "Stagiaires" -ReferenceFilePath "C:\Program Files" -RuleName "Blocage_Stagiaires" -Action Deny
+
+#IT
+New-AppLockerPolicy -RuleType Executable -User "IT" -ReferenceFilePath "*" -RuleName "Autorisation_IT" -Action Allow
+```
+
+### Bloquer les cles USB
+```
+# appel de la GPO
+Get-GPO -All
+
+# Bloquer le péripherique usb pour tout les postes
+Set-GPRegistryValue -Name "Sécurité de base" `
+ -Key "HKLM\SYSTEM\CurrentControlSet\Services\USBSTOR" `
+ -ValueName "Start" -Type DWord -Value 4
+```
+Créé une autre GPO Pour les IT et ajouter cela :
+```
+# débloquer pour le IT
+Set-GPRegistryValue -Name "USB_IT_Autorisé" `
+ -Key "HKLM\SYSTEM\CurrentControlSet\Services\USBSTOR" `
+ -ValueName "Start" -Type DWord -Value 3
+```
