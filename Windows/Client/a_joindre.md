@@ -110,3 +110,35 @@ Set-GPRegistryValue -Name "USB_IT_Autorisé" `
  -Key "HKLM\SYSTEM\CurrentControlSet\Services\USBSTOR" `
  -ValueName "Start" -Type DWord -Value 3
 ```
+Dépoiment de préférence GPO (lecteur réseaux, imprimante par défaut, ...)
+
+Vérifier et personnaliser les règles du pare-feu Windows Defender (inbound/outbound)
+```
+netsh advfirewall firewall show rule name=all
+```
+
+Sénario de dépanage BCD, SFC
+```
+bootrec /fixmbr
+bootrec /fixboot
+bootrec /scanos
+bootrec /rebuildbcd
+sfc /scannow
+ ```
+Commande suppression un dossier corompu dans un profil
+```
+regedit
+```
+Vérifier BranchCache 
+
+```
+netsh branchcache show status all
+```
+Vérification de l'Event Viwer :
+
+Journaux Windows > Application / Systémé > GroupPolicy > eventvwr.msc
+
+Pour les teste complementaire on peut :
+
+  - Commande pour tester la latence 'Ping'
+  - Commande 'Tracert' pour voir le chemin réseau
