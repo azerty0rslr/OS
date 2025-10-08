@@ -1,5 +1,4 @@
 # TP 
-serveur mdp : admin2025.
 ## Jour 1 : déploiement et préparation
 ### - Installer un poste Windows 10, 11 
   
