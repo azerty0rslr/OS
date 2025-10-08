@@ -154,3 +154,56 @@ Pour les teste complementaire on peut :
 
   - Commande pour tester la latence 'Ping'
   - Commande 'Tracert' pour voir le chemin réseau
+
+Mettre en place un serveur WSUS, approuver des mises à jour et forcer leur application via GPO.
+
+```
+#Installer WSUS
+Install-WindowsFeature -Name UpdateServices, UpdateServices-WidDB, UpdateServices-Services -IncludeManagementTools
+
+# crée le dossier de stockage
+New-Item -Path "C:\WSUS" -ItemType Directory
+
+# lancer la configuration WSUS
+"C:\Program Files\Update Services\Tools\wsusutil.exe" postinstall CONTENT_DIR=C:\WSUS
+
+# appouver les mise a jour
+$wsus = Get-WsusServer
+$updates = $wsus.GetUpdates() | Where-Object { $_.UpdateClassificationTitle -eq "Critical Updates" -and $_.IsApproved -eq $false }
+$group = $wsus.GetComputerTargetGroups() | Where-Object { $_.Name -eq "Tous les ordinateurs" }
+
+foreach ($update in $updates) {
+    $update.Approve($group, [Microsoft.UpdateServices.Administration.ApprovalAction]::Install)
+}
+
+# creartion du lien entre la GPO et OU
+New-GPLink -Name "GPO_WSUS" -Target "OU=Serveurs,DC=camelia,DC=local"
+```
+Déploiement d’un script de connexion/déconnexion. 
+```
+# connexion
+$User = $env:USERNAME
+$Time = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+$Computer = $env:COMPUTERNAME
+$LogPath = "C:\Logs\SessionLog.txt"
+
+Add-Content -Path $LogPath -Value "$Time - Connexion de $User sur $Computer"
+
+#Déconnexion
+$User = $env:USERNAME
+$Time = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+$Computer = $env:COMPUTERNAME
+$LogPath = "C:\Logs\SessionLog.txt"
+
+Add-Content -Path $LogPath -Value "$Time - Déconnexion de $User sur $Computer"
+```
+le script doit se stocker dans -> Configuration utilisateur > Paramètres Windows > Scripts (ouverture/fermeture de session)
+
+on utilisera : 
+```
+powershell.exe -ExecutionPolicy Bypass -File "\\Serveur\Scripts\Session\connexion.ps1"
+
+# ou
+
+powershell.exe -ExecutionPolicy Bypass -File "\\Serveur\Scripts\Session\deconnexion.ps1"
+```
