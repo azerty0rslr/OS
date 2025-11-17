@@ -1,3 +1,4 @@
+```bash
 (myenv) root@vbox:~/mealie# history
     1  sudo apt install python3
     2  sudo apt install python3-pip
@@ -142,10 +143,12 @@
   141  mkdir -p /run/secrets
   142  pip install -r dist/requirements.txt
   143  history
+  ```
 
 
 
 ////////////////////////////////////////////////////////// le docker file /////////////////////////////////////////////////////////////////////////////////
+```
 ###############################################
 # Frontend Build
 ###############################################
@@ -299,3 +302,4 @@ COPY ./docker/entry.sh $MEALIE_HOME/run.sh
 
 RUN chmod +x $MEALIE_HOME/run.sh
 ENTRYPOINT ["/app/run.sh"]
+```
