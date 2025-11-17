@@ -19,10 +19,25 @@ yarn generate
 
 ## 3/ Créer les variables d'environnement 
 ```bash
-env MEALIE_HOME="/app"
-env VENV_PATH="/opt/mealie"
-env NLTK_DATA="/nltk_data/"
-env APP_PORT=9000
+export VENV_PATH="/opt/mealie"
+export NLTK_DATA="/nltk_data/"
+export APP_PORT=9000
+export PYTHONUNBUFFERED=1 \
+export PYTHONDONTWRITEBYTECODE=1 \
+export PIP_NO_CACHE_DIR=off \
+export PIP_DISABLE_PIP_VERSION_CHECK=on \
+export PIP_DEFAULT_TIMEOUT=100 \
+export VENV_PATH="/opt/mealie"
+````
+
+## 4/ Créer un environnement virtuel Python avec venv pour installer uv
+```bash
+# Création de l'environnement
+python3 -m venv myenv
+# Rentrer dans l'environnement
+source myenv/bin/activate
+# Installer UV
+pip install uv
 ````
 
 
