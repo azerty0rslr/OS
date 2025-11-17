@@ -38,7 +38,24 @@ python3 -m venv myenv
 source myenv/bin/activate
 # Installer UV
 pip install uv
-````
+```
+```bash
+# COpier les fichiers
+cp uv.lock mealie/uv.lock
+cp pyproject.toml mealie/pyproject.toml
+cp mealie mealie/mealie
+uv build --out-dir dist
+
+# Create the requirements file, which is used to install the built package and
+# its pinned dependencies later. mealie is included to ensure the built one is
+# what's installed.
+uv export --no-editable --no-emit-project --extra pgsql --format requirements-txt --output-file dist/requirements.txt \
+    && MEALIE_VERSION=$(python -c "import tomllib; print(tomllib.load(open('pyproject.toml', 'rb'))['project']['version'])") \
+    && echo "mealie[pgsql]==${MEALIE_VERSION} \\" >> dist/requirements.txt \
+    && pip hash dist/mealie-${MEALIE_VERSION}-py3-none-any.whl | tail -n1 | tr -d '\n' >> dist/requirements.txt \
+    && echo " \\" >> dist/requirements.txt \
+    && pip hash dist/mealie-${MEALIE_VERSION}.tar.gz | tail -n1 >> dist/requirements.txt
+```
 
 
 
