@@ -9,8 +9,23 @@ Sur notre serveur Debian, nous avons commencé par installer les dépendances
 - Curl
 - Postgressql
 - Yarn
-  
-Clôner le projet : git clone https://github.com/mealie-recipes/mealie/
+
+Clôner le projet : ``git clone https://github.com/mealie-recipes/mealie/``
+## 2/ Compiler le front-end de l'application
+```bash
+yarn install --prefer-offline --frozen-lockfile --non-interactive --production=false
+yarn generate
+````
+
+## 3/ Créer les variables d'environnement 
+```bash
+env MEALIE_HOME="/app"
+env VENV_PATH="/opt/mealie"
+env NLTK_DATA="/nltk_data/"
+env APP_PORT=9000
+````
+
+
 
 1. Installer le logiciel sur le serveur, le compiler à partir des sources directement  
 2. Valider le bon fonctionnement du logiciel et de toutes ses fonctionnalités  
