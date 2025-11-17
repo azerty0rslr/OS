@@ -7,7 +7,7 @@ Sur notre serveur Debian, nous avons commencé par installer les dépendances
 - python3 avec pip et venv
 - Node.JS
 - Postgressql
-- Yarn
+- Yarn  
 clone le projet - cd
 
 1. Installer le logiciel sur le serveur, le compiler à partir des sources directement  
