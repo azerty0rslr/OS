@@ -8,7 +8,7 @@ Sur notre serveur Debian, nous avons commencé par installer les dépendances
 - Node.JS
 - Postgressql
 - Yarn  
-clone le projet - cd
+clone le projet : git clone https://github.com/mealie-recipes/mealie/
 
 1. Installer le logiciel sur le serveur, le compiler à partir des sources directement  
 2. Valider le bon fonctionnement du logiciel et de toutes ses fonctionnalités  
