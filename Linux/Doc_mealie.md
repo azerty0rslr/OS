@@ -3,7 +3,7 @@ Sur un serveur Debian 13 (trixie) nous devons installer un logiciel (Mealie) qui
 Projet réalisé par Manon ROUSSELIERE et Meven DESBOIS.  
 
 ## 1/ Installation du logiciel
-Sur notre serveur Debian, 
+Sur notre serveur Debian, nous avons commencé par installer python3 pip et vnev.
 
 1. Installer le logiciel sur le serveur, le compiler à partir des sources directement  
 2. Valider le bon fonctionnement du logiciel et de toutes ses fonctionnalités  
