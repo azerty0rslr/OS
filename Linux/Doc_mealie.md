@@ -6,6 +6,7 @@ Projet réalisé par Manon ROUSSELIERE et Meven DESBOIS.
 Sur notre serveur Debian, nous avons commencé par installer les dépendances
 - python3 avec pip et venv
 - Node.JS
+- Curl
 - Postgressql
 - Yarn
   
