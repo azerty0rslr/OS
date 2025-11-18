@@ -3,21 +3,28 @@ Sur un serveur Debian 13 (trixie) nous devons installer un logiciel (Mealie) qui
 Projet réalisé par Manon ROUSSELIERE et Meven DESBOIS.  
 
 ## 1/ Installation du logiciel
-Sur notre serveur Debian, nous avons commencé par installer les dépendances
-- python3 avec pip et venv
-- Node.JS
-- Curl
-- Postgressql
-- Yarn
 
-Clôner le projet : ``git clone https://github.com/mealie-recipes/mealie/``
-## 2/ Compiler le front-end de l'application
-```bash
-yarn install --prefer-offline --frozen-lockfile --non-interactive --production=false
-yarn generate
-````
+## Jour 1 : 
+### Mealie
+La documentation nous donne uniquement un dockerfile que nous avons essayer de traduire. Voici les étapes que nous avons suivis :
 
-## 3/ Créer les variables d'environnement 
+#### 1/ Instalation des dépendances et clone du projet 
+- Sur notre serveur Debian, nous avons commencé par installer les dépendances
+    - python3 avec pip et venv
+    - Node.JS
+    - Curl
+    - Postgressql
+    - Yarn
+
+- Clôner le projet : ``git clone https://github.com/mealie-recipes/mealie/``
+  
+#### 2/ Compiler le front-end de l'application
+- Utilisation de yarn :
+    - `yarn install`pour installer les dépendances
+    - `yarn generate`pour lancer le script de compilation
+
+#### 3/ Créer les variables d'environnement 
+
 ```bash
 export VENV_PATH="/opt/mealie"
 export NLTK_DATA="/nltk_data/"
@@ -30,7 +37,8 @@ export PIP_DEFAULT_TIMEOUT=100 \
 export VENV_PATH="/opt/mealie"
 ````
 
-## 4/ Créer un environnement virtuel Python avec venv pour installer uv
+#### 4/ Créer un environnement virtuel Python avec venv pour installer uv et uvicorn
+
 ```bash
 # Création de l'environnement
 python3 -m venv myenv
@@ -38,17 +46,16 @@ python3 -m venv myenv
 source myenv/bin/activate
 # Installer UV
 pip install uv
+pip install uvicorn
 ```
+
 ```bash
-# COpier les fichiers
+# Copier les fichiers
 cp uv.lock mealie/uv.lock
 cp pyproject.toml mealie/pyproject.toml
 cp mealie mealie/mealie
 uv build --out-dir dist
 
-# Create the requirements file, which is used to install the built package and
-# its pinned dependencies later. mealie is included to ensure the built one is
-# what's installed.
 uv export --no-editable --no-emit-project --extra pgsql --format requirements-txt --output-file dist/requirements.txt \
     && MEALIE_VERSION=$(python -c "import tomllib; print(tomllib.load(open('pyproject.toml', 'rb'))['project']['version'])") \
     && echo "mealie[pgsql]==${MEALIE_VERSION} \\" >> dist/requirements.txt \
@@ -56,6 +63,13 @@ uv export --no-editable --no-emit-project --extra pgsql --format requirements-tx
     && echo " \\" >> dist/requirements.txt \
     && pip hash dist/mealie-${MEALIE_VERSION}.tar.gz | tail -n1 >> dist/requirements.txt
 ```
+Le reste de la compilation se fait en utilansant une wheel dans l'environnement virtuel :
+C'est un fichier qui contient le code prêt a être compiler et les données associées
+
+La compilation ne fonctionne pas car le dockerfile a plusieurs stagiaires qui créent des images différentes pour les différentes étapes de compilation et alléger l'application à la fin de la compilation. 
+Les liens entre les différentes images sont gérés par Docker et nous n'avons pas réussi à tous les comprendre.
+Le projet était trop difficiles pour nous et nous avons pris la décision de le changer.
+
 
 
 
