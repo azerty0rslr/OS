@@ -77,6 +77,7 @@ La documentation nous donne les étapes à suivre pour build le projet depuis le
 sudo apt update
 sudo apt install nodejs npm
 npm install --global yarn
+sudo apt-get install rpm
 git clone https://github.com/ente-io/ente
 cd ente/desktop
 
