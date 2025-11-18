@@ -1,0 +1,27 @@
+root@vbox:~/ente/desktop# yarn install
+yarn install v1.22.22
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+info There appears to be trouble with the npm registry (returned undefined). Retrying...
+info There appears to be trouble with the npm registry (returned undefined). Retrying...
+info There appears to be trouble with the npm registry (returned undefined). Retrying...
+info There appears to be trouble with the npm registry (returned undefined). Retrying...
+/usr/local/lib/node_modules/yarn/lib/cli.js:66658
+            throw new (_errors || _load_errors()).ResponseError(_this3.reporter.lang('requestFailed', description), res.statusCode);
+            ^
+
+ResponseError: Request failed "500 Internal Server Error"
+    at ResponseError.ExtendableBuiltin (/usr/local/lib/node_modules/yarn/lib/cli.js:696:66)
+    at new ResponseError (/usr/local/lib/node_modules/yarn/lib/cli.js:802:124)
+    at params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66658:19)
+    at self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:141410:22)
+    at Request.emit (node:events:524:28)
+    at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:142382:10)
+    at Request.emit (node:events:524:28)
+    at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:142304:12)
+    at Object.onceWrapper (node:events:638:28)
+    at IncomingMessage.emit (node:events:536:35) {
+  responseCode: 500
+}
+
+Node.js v20.19.2
