@@ -1,8 +1,8 @@
 #  Projet selfhosting
-Sur un serveur Debian 13 (trixie) nous devons installer un logiciel (Mealie) qui est un répertoire de recettes de cuisine numérisées.  
+Sur un serveur Debian 13 (trixie) nous devons installer un logiciel, nous avions choisi le logiciel Mealie qui est un répertoire de recettes de cuisine numérisées. Suite à des problèmes expliqués dans la doc, nous sommes passés sur le logiciel Ente, une plateforme de partage de photos cryptée de bout en bout (alternative à Google Photos, Apple Photos).
 Projet réalisé par Manon ROUSSELIERE et Meven DESBOIS.  
 
-## 1/ Installation du logiciel
+# 1/ Installation du logiciel
 
 ## Jour 1 : 
 ### Mealie
@@ -70,7 +70,19 @@ La compilation ne fonctionne pas car le dockerfile a plusieurs stagiaires qui cr
 Les liens entre les différentes images sont gérés par Docker et nous n'avons pas réussi à tous les comprendre.
 Le projet était trop difficiles pour nous et nous avons pris la décision de le changer.
 
+## Jour 2 :
+### Ente 
+La documentation nous donne les étapes à suivre pour build le projet depuis les sources et installer les dépendances : 
+```bash
+sudo apt update
+sudo apt install nodejs npm
+npm install --global yarn
+git clone https://github.com/ente-io/ente
+cd ente/desktop
 
+# installation des dépendances
+yarn install 
+```
 
 
 1. Installer le logiciel sur le serveur, le compiler à partir des sources directement  
