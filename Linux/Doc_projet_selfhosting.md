@@ -16,12 +16,12 @@ Sur notre serveur Debian, nous avons commencé par installer les dépendances :
     - Postgressql  
     - Yarn  
 
-Clôner le projet : ``git clone https://github.com/mealie-recipes/mealie/``  
+Clôner le projet : ```git clone https://github.com/mealie-recipes/mealie/```  
   
 #### 2/ Compiler le front-end de l'application
 Utilisation de yarn :  
-    - `yarn install`pour installer les dépendances  
-    - `yarn generate`pour lancer le script de compilation  
+    - ```yarn install``` pour installer les dépendances  
+    - ```yarn generate``` pour lancer le script de compilation  
 
 #### 3/ Créer les variables d'environnement 
 
@@ -65,7 +65,7 @@ uv export --no-editable --no-emit-project --extra pgsql --format requirements-tx
 ```
 Le reste de la compilation se fait en utilansant une wheel dans l'environnement virtuel :  
 C'est un fichier qui contient le code prêt a être compiler et les données associées.  
-
+  
 La compilation ne fonctionne pas car le dockerfile a plusieurs stages qui créent des images différentes pour les différentes étapes de compilation et alléger l'application à la fin de la compilation.  
 Les liens entre les différentes images sont gérés par Docker et nous n'avons pas réussi à tous les comprendre.  
 Le projet était trop difficiles pour nous et nous avons pris la décision de le changer.  
