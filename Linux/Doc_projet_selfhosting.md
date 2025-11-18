@@ -1,27 +1,27 @@
 #  Projet selfhosting
-Sur un serveur Debian 13 (trixie) nous devons installer un logiciel, nous avions choisi le logiciel Mealie qui est un répertoire de recettes de cuisine numérisées. Suite à des problèmes expliqués dans la doc, nous sommes passés sur le logiciel Ente, une plateforme de partage de photos cryptée de bout en bout (alternative à Google Photos, Apple Photos).
+Sur un serveur Debian 13 (trixie) nous devons installer un logiciel, nous avions choisi le logiciel Mealie qui est un répertoire de recettes de cuisine numérisées. Suite à des problèmes expliqués dans la doc, nous sommes passés sur le logiciel Ente, une plateforme de partage de photos cryptée de bout en bout (alternative à Google Photos, Apple Photos).  
 Projet réalisé par Manon ROUSSELIERE et Meven DESBOIS.  
 
 # 1/ Installation du logiciel
 
 ## Jour 1 : 
-### Mealie
-La documentation nous donne uniquement un dockerfile que nous avons essayer de traduire. Voici les étapes que nous avons suivis :
+### Mealie  
+La documentation nous donne uniquement un dockerfile que nous avons essayer de traduire. Voici les étapes que nous avons suivis :  
 
-#### 1/ Instalation des dépendances et clone du projet 
-- Sur notre serveur Debian, nous avons commencé par installer les dépendances
-    - python3 avec pip et venv
-    - Node.JS
-    - Curl
-    - Postgressql
-    - Yarn
+#### 1/ Instalation des dépendances et clone du projet  
+Sur notre serveur Debian, nous avons commencé par installer les dépendances :  
+    - python3 avec pip et venv  
+    - Node.JS  
+    - Curl  
+    - Postgressql  
+    - Yarn  
 
-- Clôner le projet : ``git clone https://github.com/mealie-recipes/mealie/``
+Clôner le projet : ``git clone https://github.com/mealie-recipes/mealie/``  
   
 #### 2/ Compiler le front-end de l'application
-- Utilisation de yarn :
-    - `yarn install`pour installer les dépendances
-    - `yarn generate`pour lancer le script de compilation
+Utilisation de yarn :  
+    - `yarn install`pour installer les dépendances  
+    - `yarn generate`pour lancer le script de compilation  
 
 #### 3/ Créer les variables d'environnement 
 
@@ -63,16 +63,16 @@ uv export --no-editable --no-emit-project --extra pgsql --format requirements-tx
     && echo " \\" >> dist/requirements.txt \
     && pip hash dist/mealie-${MEALIE_VERSION}.tar.gz | tail -n1 >> dist/requirements.txt
 ```
-Le reste de la compilation se fait en utilansant une wheel dans l'environnement virtuel :
-C'est un fichier qui contient le code prêt a être compiler et les données associées
+Le reste de la compilation se fait en utilansant une wheel dans l'environnement virtuel :  
+C'est un fichier qui contient le code prêt a être compiler et les données associées.  
 
-La compilation ne fonctionne pas car le dockerfile a plusieurs stagiaires qui créent des images différentes pour les différentes étapes de compilation et alléger l'application à la fin de la compilation. 
-Les liens entre les différentes images sont gérés par Docker et nous n'avons pas réussi à tous les comprendre.
-Le projet était trop difficiles pour nous et nous avons pris la décision de le changer.
+La compilation ne fonctionne pas car le dockerfile a plusieurs stages qui créent des images différentes pour les différentes étapes de compilation et alléger l'application à la fin de la compilation.  
+Les liens entre les différentes images sont gérés par Docker et nous n'avons pas réussi à tous les comprendre.  
+Le projet était trop difficiles pour nous et nous avons pris la décision de le changer.  
 
 ## Jour 2 :
 ### Ente 
-La documentation nous donne les étapes à suivre pour build le projet depuis les sources et installer les dépendances : 
+La documentation nous donne les étapes à suivre pour build le projet depuis les sources et installer les dépendances :  
 ```bash
 sudo apt update
 sudo apt install nodejs npm
@@ -84,11 +84,13 @@ cd ente/desktop
 # installation des dépendances
 yarn install
 
-# create a binary for your platform
+# le passer en binaire pour notre VM
 yarn build
 ```
-Problème sur les VM, les espaces de stockage sont arrivés à saturation, nous avons donc dû migrer dans le labo et recommencer. 
-Nouveau problème, en arrivant à l'étape yarn install nous avons les erreurs suivantes : Request "https://yarnpkg.com/latest-version" finished with status code 500, Request failed "500 Internal Server Error". Le serveur yarn est down. Nous devons donc attendre pour poursuivre notre TP.
+Problème sur les VM, les espaces de stockage sont arrivés à saturation, nous avons donc dû migrer dans le labo et recommencer.  
+Nouveau problème, en arrivant à l'étape yarn install nous avons les erreurs suivantes : Request "https://yarnpkg.com/latest-version" finished with status code 500, Request failed "500 Internal Server Error". Le serveur yarn est down. Nous devons donc attendre pour poursuivre notre TP.  
+
+<img width="1495" height="826" alt="image" src="https://github.com/user-attachments/assets/094ba610-4696-4a70-866d-699e75692d4f" />  
 
 
 1. Installer le logiciel sur le serveur, le compiler à partir des sources directement  
