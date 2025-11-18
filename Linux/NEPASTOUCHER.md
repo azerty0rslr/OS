@@ -303,3 +303,78 @@ COPY ./docker/entry.sh $MEALIE_HOME/run.sh
 RUN chmod +x $MEALIE_HOME/run.sh
 ENTRYPOINT ["/app/run.sh"]
 ```
+
+
+Changer de sujet, manque : 
+
+Sinon : 
+Installer les dépendances système
+
+apt update
+apt install -y python3 python3-venv python3-dev build-essential \
+    nodejs npm yarn \
+    libpq-dev libldap2-dev libsasl2-dev libssl-dev libwebp-dev
+
+
+Compiler le frontend
+
+cd mealie/frontend
+yarn install --frozen-lockfile
+yarn generate
+
+Préparer l’environnement Python comme dans le Dockerfile
+
+python3 -m venv /opt/mealie
+source /opt/mealie/bin/activate
+pip install uv
+
+
+Construire le package Python
+
+cd ../
+cp -r frontend/dist mealie/frontend/
+uv build --out-dir dist
+
+
+Exporter les requirements et faire une installation propre
+
+uv export --no-editable --no-emit-project --extra pgsql \
+    --format requirements-txt --output-file dist/requirements.txt
+
+pip install --require-hashes -r dist/requirements.txt --find-links dist
+
+
+Créer un user mealie
+
+useradd -m -r -s /bin/bash mealie
+
+Créer un fichier config
+
+/etc/mealie/config.env
+
+Créer un systemd service
+
+/etc/systemd/system/mealie.service
+
+[Unit]
+Description=Mealie Service
+After=network.target
+
+[Service]
+User=mealie
+EnvironmentFile=/etc/mealie/config.env
+ExecStart=/opt/mealie/bin/python -m mealie
+WorkingDirectory=/home/mealie
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+Activer et lancer
+
+
+systemctl daemon-reload
+systemctl enable --now mealie
+
+
+Sinon : Forgejo ou Navidrome
