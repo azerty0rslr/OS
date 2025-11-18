@@ -81,7 +81,10 @@ git clone https://github.com/ente-io/ente
 cd ente/desktop
 
 # installation des dépendances
-yarn install 
+yarn install
+
+# create a binary for your platform
+yarn build
 ```
 
 
