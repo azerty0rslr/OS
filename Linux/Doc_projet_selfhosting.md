@@ -88,8 +88,7 @@ yarn install
 yarn build
 ```
 Problème sur les VM, les espaces de stockage sont arrivés à saturation, nous avons donc dû migrer dans le labo et recommencer. 
-Request "https://yarnpkg.com/latest-version" finished with status code 500
-Request failed "500 Internal Server Error"
+Nouveau problème, en arrivant à l'étape yarn install nous avons les erreurs suivantes : Request "https://yarnpkg.com/latest-version" finished with status code 500, Request failed "500 Internal Server Error". Le serveur yarn est down. Nous devons donc attendre pour poursuivre notre TP.
 
 
 1. Installer le logiciel sur le serveur, le compiler à partir des sources directement  
