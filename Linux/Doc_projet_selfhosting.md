@@ -83,8 +83,6 @@ cd ente/desktop
 
 # installation des dépendances
 yarn install
-
-# le passer en binaire pour notre VM
 yarn build
 ```
 Problème sur les VM, les espaces de stockage sont arrivés à saturation, nous avons donc dû migrer dans le labo et recommencer.  
