@@ -91,6 +91,9 @@ Le serveur yarn est down. Nous devons donc attendre pour poursuivre notre TP.
 
 <img width="1495" height="826" alt="image" src="https://github.com/user-attachments/assets/094ba610-4696-4a70-866d-699e75692d4f" />  
 
+Nous avions une erreur avec le yarn install qui essayait d'ouvrir ssh://github.com nous avons donc dû le remplacer par https://github.com
+Pour lancer l'image de l'app, nous devons utiliser la commande (avec les droits) : ```sudo ./root/ente/desktop/dist/ente-1.7.16-beta-x86_64.AppImage -no-sandbox```
+
 
 1. Installer le logiciel sur le serveur, le compiler à partir des sources directement  
 2. Valider le bon fonctionnement du logiciel et de toutes ses fonctionnalités  
