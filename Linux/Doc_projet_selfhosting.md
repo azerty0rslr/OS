@@ -286,6 +286,18 @@ Enfin, accédez à Forgejo web en ouvrant http://localhost:3000/ dans le moteur 
 2. Configurez le logiciel cron pour qu’il exécute ce script toutes les heures  
 3. En utilisant l’utilitaire rclone , transférez le backup sur un serveur distant (ex: Google Drive)
 
+#### Restic
+Voici le script d'installation de Restic sur Linux :
+```bash
+wget https://github.com/restic/restic/releases/download/v0.15.0/restic_0.17.3_linux_amd64.bz2
+bzip2 -d restic_0.17.3_linux_amd64.bz2
+mv restic_0.17.3_linux_amd64 restic
+chmod +x restic
+sudo install restic /usr/local/bin
+
+# Vérifier l'installation de Restic
+restic version
+```
 
 
 # 3/ Sécurité
