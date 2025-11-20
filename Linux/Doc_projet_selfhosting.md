@@ -213,12 +213,15 @@ sudo systemctl enable forgejo.service
 sudo systemctl start forgejo.service
 ```
 #### Vérifier sur (http://localhost:3000/)
+#### Choix des configurations sur la page d'entré
 <img width="948" height="758" alt="image" src="https://github.com/user-attachments/assets/14cba57c-ab65-4a54-bbec-174fda0246a2" />
-
+#### Appuyer sur le boutons installer
+<img width="1885" height="743" alt="image" src="https://github.com/user-attachments/assets/7a989c8b-bab8-4a6b-b95d-c28512e2b00e" />
 #### Configuration supplémentaire dans l’app.ini de Forgejo
 ```bash
 sudo systemctl stop forgejo.service
 ```
+
  
 
 # 2/ Backup
