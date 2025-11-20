@@ -3,7 +3,10 @@ Sur un serveur Debian 13 (trixie) nous devons installer un logiciel, nous avions
 Projet réalisé par Manon ROUSSELIERE et Meven DESBOIS.  
 
 # 1/ Installation du logiciel
-
+## Objectifs :
+    1. Installer le logiciel sur le serveur, le compiler à partir des sources directement  
+    2. Valider le bon fonctionnement du logiciel et de toutes ses fonctionnalités  
+    3. Automatiser le processus d’installation 
 ## Jour 1 : 
 ### Mealie  
 La documentation nous donne uniquement un dockerfile que nous avons essayer de traduire. Voici les étapes que nous avons suivis :  
@@ -212,15 +215,11 @@ sudo systemctl start forgejo.service
 #### Vérifier sur (http://localhost:3000/)
 <img width="948" height="758" alt="image" src="https://github.com/user-attachments/assets/14cba57c-ab65-4a54-bbec-174fda0246a2" />
 
-# Further configuration in Forgejo’s app.ini
+#### Configuration supplémentaire dans l’app.ini de Forgejo
+```bash
 sudo systemctl stop forgejo.service
-
 ```
-
-
-1. Installer le logiciel sur le serveur, le compiler à partir des sources directement  
-2. Valider le bon fonctionnement du logiciel et de toutes ses fonctionnalités  
-3. Automatiser le processus d’installation  
+ 
 
 # 2/ Backup
 
