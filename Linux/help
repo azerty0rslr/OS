@@ -64,37 +64,11 @@ yarn install
 
 
 ------ 
-root@vbox:~/ente/desktop# cd ~/ente/desktop
-root@vbox:~/ente/desktop# rm -rf node_modules
-root@vbox:~/ente/desktop# yarn cache clean
-yarn cache v1.22.22
-success Cleared cache.
-Done in 1.22s.
-root@vbox:~/ente/desktop# rm -f package-lock.json
-root@vbox:~/ente/desktop# echo -e '--install.pure-lockfile true\ngit "https://github.com/"' > .yarnrc
-root@vbox:~/ente/desktop# git config --global --unset-all url."https://github.com/".insteadOf
-root@vbox:~/ente/desktop# git config --global --unset-all url."https://".insteadOf
-root@vbox:~/ente/desktop# git config --global url."https://github.com/".insteadOf ssh://git@github.com/
-root@vbox:~/ente/desktop# git config --global url."https://github.com/".insteadOf git@github.com:
-root@vbox:~/ente/desktop# git config --global url."https://github.com/".insteadOf git://github.com/
-root@vbox:~/ente/desktop# git config --global url."https://github.com/electron/".insteadOf ssh://git@github.com/electron/
-root@vbox:~/ente/desktop# git config --global --get-regexp url
-url.https://github.com/.insteadof git://github.com/
-url.https://github.com/electron/.insteadof ssh://git@github.com/electron/
-root@vbox:~/ente/desktop# yarn install
-yarn install v1.22.22
-[1/4] Resolving packages...
-[2/4] Fetching packages...
-[3/4] Linking dependencies...
-warning "electron-builder > app-builder-lib@26.0.14" has unmet peer dependency "electron-builder-squirrel-windows@26.0.14".
-[4/4] Building fresh packages...
-$ electron-builder install-app-deps
-  • electron-builder  version=26.0.14
-  • loaded configuration  file=/root/ente/desktop/electron-builder.yml
-  • executing @electron/rebuild  electronVersion=38.2.2 arch=x64 buildFromSource=false appDir=./
-  • installing native dependencies  arch=x64
-  • completed installing native dependencies
-$ node scripts/vips.js
-Done in 81.21s.
-root@vbox:~/ente/desktop# 
-
+root@vbox:~/ente/desktop# yarn dist
+yarn run v1.22.22
+error Command "dist" not found.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+root@vbox:~/ente/desktop# yarn start
+yarn run v1.22.22
+error Command "start" not found.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
