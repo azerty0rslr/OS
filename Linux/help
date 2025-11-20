@@ -187,166 +187,19 @@ Si tu veux lancer Ente Desktop automatiquement ou via un script, tu peux créer 
 cd /root/ente/desktop/dist
 ./Ente
 
-
--------
-
-root@vbox:~/ente/desktop# yarn dist
-yarn run v1.22.22
-error Command "dist" not found.
-info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
-root@vbox:~/ente/desktop# yarn start
-yarn run v1.22.22
-error Command "start" not found.
-info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
-root@vbox:~/ente/desktop# ^C
-root@vbox:~/ente/desktop# yarn build
-yarn run v1.22.22
-$ yarn build-renderer && yarn build-main
-$ cross-env-shell _ENTE_IS_DESKTOP=1 "cd ../web && yarn install && yarn build:photos && cd ../desktop && shx rm -rf out && shx cp -r ../web/apps/photos/out out"
-[1/4] Resolving packages...
-[2/4] Fetching packages...
-info There appears to be trouble with your network connection. Retrying...
-[3/4] Linking dependencies...
-warning "workspace-aggregator-f968ac8d-acda-4601-8266-d64ee1b4fccd > photos > react-leaflet@5.0.0" has unmet peer dependency "leaflet@^1.9.0".
-warning "workspace-aggregator-f968ac8d-acda-4601-8266-d64ee1b4fccd > share > hugeicons-react@0.3.0" has unmet peer dependency "react@>=16.0.0".
-warning "workspace-aggregator-f968ac8d-acda-4601-8266-d64ee1b4fccd > photos > react-leaflet > @react-leaflet/core@3.0.0" has unmet peer dependency "leaflet@^1.9.0".
-[4/4] Building fresh packages...
-$ yarn workspace photos next build
-$ /root/ente/web/node_modules/.bin/next build
-   ▲ Next.js 15.5.5
-   - Environments: .env
-
-   Linting and checking validity of types  ..
- ⚠ The Next.js plugin was not detected in your ESLint configuration. See https://nextjs.org/docs/app/api-reference/config/eslint#migrating-existing-config
- ✓ Linting and checking validity of types    
-   Creating an optimized production build ...
- ✓ Compiled successfully in 28.4s
- ✓ Collecting page data    
- ✓ Generating static pages (19/19)
- ✓ Collecting build traces    
- ✓ Exporting (19/19)
- ✓ Finalizing page optimization 
-
-Route (pages)                                 Size  First Load JS    
-┌ ○ / (1354 ms)                               5 kB        1.38 MB
-├   /_app                                      0 B         932 kB
-├ ○ /404 (1261 ms)                           301 B         933 kB
-├ ○ /change-email (1354 ms)                5.54 kB         967 kB
-├ ○ /change-password (1353 ms)             5.38 kB        1.36 MB
-├ ○ /credentials (1350 ms)                 2.79 kB         970 kB
-├ ○ /duplicates (1355 ms)                  3.94 kB         968 kB
-├ ○ /gallery (960 ms)                      85.1 kB        1.47 MB
-├ ○ /generate                                 8 kB        1.37 MB
-├ ○ /login (1353 ms)                        4.5 kB         966 kB
-├ ○ /passkeys/finish (1256 ms)               693 B         933 kB
-├ ○ /passkeys/recover                        292 B         967 kB
-├ ○ /recover                               5.16 kB         967 kB
-├ ○ /shared-albums (962 ms)                14.9 kB         1.4 MB
-├ ○ /signup                                  511 B        1.38 MB
-├ ○ /two-factor/recover                      292 B         967 kB
-├ ○ /two-factor/setup                      4.66 kB         960 kB
-├ ○ /two-factor/verify                     4.97 kB         949 kB
-└ ○ /verify                                2.17 kB         969 kB
-+ First Load JS shared by all               935 kB
-  ├ chunks/framework-ece6d82dde5df724.js   59.6 kB
-  ├ chunks/main-adb12a6b46100cb6.js        36.9 kB
-  ├ chunks/pages/_app-4f27ab19b75f8b64.js   833 kB
-  └ other shared chunks (total)            5.61 kB
-
-○  (Static)  prerendered as static content
-
-$ tsc && electron-builder
-  • electron-builder  version=26.0.14 os=6.12.57+deb13-amd64
-  • loaded configuration  file=/root/ente/desktop/electron-builder.yml
-  • writing effective config  file=dist/builder-effective-config.yaml
-  • executing @electron/rebuild  electronVersion=38.2.2 arch=x64 buildFromSource=false appDir=./
-  • installing native dependencies  arch=x64
-  • completed installing native dependencies
-  • packaging       platform=linux arch=x64 electron=38.2.2 appOutDir=dist/linux-unpacked
-  • downloading     url=https://github.com/electron/electron/releases/download/v38.2.2/electron-v38.2.2-linux-x64.zip size=115 MB parts=8
-  • downloaded      url=https://github.com/electron/electron/releases/download/v38.2.2/electron-v38.2.2-linux-x64.zip duration=2.5s
-  • building        target=AppImage arch=x64 file=dist/ente-1.7.16-beta-x86_64.AppImage
-Downloading vips-arm64
-  • downloading     url=https://github.com/electron-userland/electron-builder-binaries/releases/download/appimage-12.0.1/appimage-12.0.1.7z size=1.6 MB parts=1
-  • downloaded      url=https://github.com/electron-userland/electron-builder-binaries/releases/download/appimage-12.0.1/appimage-12.0.1.7z duration=520ms
-Downloading vips-x86_64.exe
-Downloading vips-aarch64.exe
-  • executing @electron/rebuild  electronVersion=38.2.2 arch=arm64 buildFromSource=false appDir=./
-  • installing native dependencies  arch=arm64
-  • completed installing native dependencies
-  • packaging       platform=linux arch=arm64 electron=38.2.2 appOutDir=dist/linux-arm64-unpacked
-  • downloading     url=https://github.com/electron/electron/releases/download/v38.2.2/electron-v38.2.2-linux-arm64.zip size=115 MB parts=8
-  • downloaded      url=https://github.com/electron/electron/releases/download/v38.2.2/electron-v38.2.2-linux-arm64.zip duration=4.23s
-  • building        target=AppImage arch=arm64 file=dist/ente-1.7.16-beta-arm64.AppImage
-  • building        target=deb arch=x64 file=dist/ente-1.7.16-beta-amd64.deb
-  • adding autoupdate files for: deb. (Beta feature)  resourceDir=dist/linux-unpacked/resources
-  • downloading     url=https://github.com/electron-userland/electron-builder-binaries/releases/download/fpm-1.9.3-2.3.1-linux-x86_64/fpm-1.9.3-2.3.1-linux-x86_64.7z size=5.0 MB parts=1
-  • downloaded      url=https://github.com/electron-userland/electron-builder-binaries/releases/download/fpm-1.9.3-2.3.1-linux-x86_64/fpm-1.9.3-2.3.1-linux-x86_64.7z duration=1.026s
-  • building        target=deb arch=arm64 file=dist/ente-1.7.16-beta-arm64.deb
-  • adding autoupdate files for: deb. (Beta feature)  resourceDir=dist/linux-arm64-unpacked/resources
-
-  • building        target=rpm arch=x64 file=dist/ente-1.7.16-beta-x86_64.rpm
-  • adding autoupdate files for: rpm. (Beta feature)  resourceDir=dist/linux-unpacked/resources
-  • building        target=rpm arch=arm64 file=dist/ente-1.7.16-beta-aarch64.rpm
-  • adding autoupdate files for: rpm. (Beta feature)  resourceDir=dist/linux-arm64-unpacked/resources
-  ⨯ Cannot cleanup: 
-
-Error #1 --------------------------------------------------------------------------------
-Error: Exit code: 1. Command failed: /root/.cache/electron-builder/fpm/fpm-1.9.3-2.3.1-linux-x86_64/fpm -s dir --force -t rpm -d gtk3 -d libnotify -d nss -d libXScrnSaver -d (libXtst or libXtst6) -d xdg-utils -d at-spi2-core -d (libuuid or libuuid1) --rpm-os linux --rpm-compression xzmt --architecture aarch64 --after-install /tmp/t-T3YjtB/2-after-install --after-remove /tmp/t-T3YjtB/3-after-remove --description Desktop client for Ente Photos --version 1.7.16~beta --package /root/ente/desktop/dist/ente-1.7.16-beta-aarch64.rpm --name ente --maintainer Ente <code@ente.io> --url https://github.com/ente-io/photos-desktop#readme --vendor Ente <code@ente.io> /root/ente/desktop/dist/linux-arm64-unpacked/=/opt/ente /root/ente/desktop/dist/.icon-set/icon_16x16.png=/usr/share/icons/hicolor/16x16/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_32.png=/usr/share/icons/hicolor/32x32/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_48x48.png=/usr/share/icons/hicolor/48x48/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_64.png=/usr/share/icons/hicolor/64x64/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_128.png=/usr/share/icons/hicolor/128x128/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_256.png=/usr/share/icons/hicolor/256x256/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_512.png=/usr/share/icons/hicolor/512x512/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_1024.png=/usr/share/icons/hicolor/1024x1024/apps/ente.png /tmp/t-T3YjtB/c-ente.desktop=/usr/share/applications/ente.desktop
-
-{:timestamp=>"2025-11-20T07:50:06.047116+0100", :message=>"Process failed: rpmbuild failed (exit code 1). Full command was:[\"rpmbuild\", \"-bb\", \"--target\", \"aarch64-unknown-linux\", \"--define\", \"buildroot /tmp/package-rpm-build-13cecdb7963601c78817b42273bb249ec5057759f60d68339a75949091ab/BUILD\", \"--define\", \"_topdir /tmp/package-rpm-build-13cecdb7963601c78817b42273bb249ec5057759f60d68339a75949091ab\", \"--define\", \"_sourcedir /tmp/package-rpm-build-13cecdb7963601c78817b42273bb249ec5057759f60d68339a75949091ab\", \"--define\", \"_rpmdir /tmp/package-rpm-build-13cecdb7963601c78817b42273bb249ec5057759f60d68339a75949091ab/RPMS\", \"--define\", \"_tmppath /tmp\", \"/tmp/package-rpm-build-13cecdb7963601c78817b42273bb249ec5057759f60d68339a75949091ab/SPECS/ente.spec\"]", :level=>:error}
-
-    at /root/ente/desktop/node_modules/builder-util/src/util.ts:142:18
-    at ChildProcess.exithandler (node:child_process:430:5)
-    at ChildProcess.emit (node:events:524:28)
-    at maybeClose (node:internal/child_process:1104:16)
-    at Process.ChildProcess._handle.onexit (node:internal/child_process:304:5)
-
-Error #2 --------------------------------------------------------------------------------
-Error: Exit code: 1. Command failed: /root/.cache/electron-builder/fpm/fpm-1.9.3-2.3.1-linux-x86_64/fpm -s dir --force -t rpm -d gtk3 -d libnotify -d nss -d libXScrnSaver -d (libXtst or libXtst6) -d xdg-utils -d at-spi2-core -d (libuuid or libuuid1) --rpm-os linux --rpm-compression xzmt --architecture amd64 --after-install /tmp/t-T3YjtB/2-after-install --after-remove /tmp/t-T3YjtB/3-after-remove --description Desktop client for Ente Photos --version 1.7.16~beta --package /root/ente/desktop/dist/ente-1.7.16-beta-x86_64.rpm --name ente --maintainer Ente <code@ente.io> --url https://github.com/ente-io/photos-desktop#readme --vendor Ente <code@ente.io> /root/ente/desktop/dist/linux-unpacked/=/opt/ente /root/ente/desktop/dist/.icon-set/icon_16x16.png=/usr/share/icons/hicolor/16x16/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_32.png=/usr/share/icons/hicolor/32x32/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_48x48.png=/usr/share/icons/hicolor/48x48/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_64.png=/usr/share/icons/hicolor/64x64/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_128.png=/usr/share/icons/hicolor/128x128/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_256.png=/usr/share/icons/hicolor/256x256/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_512.png=/usr/share/icons/hicolor/512x512/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_1024.png=/usr/share/icons/hicolor/1024x1024/apps/ente.png /tmp/t-T3YjtB/b-ente.desktop=/usr/share/applications/ente.desktop
-
-{:timestamp=>"2025-11-20T07:50:07.242054+0100", :message=>"Process failed: rpmbuild failed (exit code 1). Full command was:[\"rpmbuild\", \"-bb\", \"--target\", \"x86_64-unknown-linux\", \"--define\", \"buildroot /tmp/package-rpm-build-e9cac5926148ea5936cf21061ed67d064ffb08bba033de469a8e84d4270e/BUILD\", \"--define\", \"_topdir /tmp/package-rpm-build-e9cac5926148ea5936cf21061ed67d064ffb08bba033de469a8e84d4270e\", \"--define\", \"_sourcedir /tmp/package-rpm-build-e9cac5926148ea5936cf21061ed67d064ffb08bba033de469a8e84d4270e\", \"--define\", \"_rpmdir /tmp/package-rpm-build-e9cac5926148ea5936cf21061ed67d064ffb08bba033de469a8e84d4270e/RPMS\", \"--define\", \"_tmppath /tmp\", \"/tmp/package-rpm-build-e9cac5926148ea5936cf21061ed67d064ffb08bba033de469a8e84d4270e/SPECS/ente.spec\"]", :level=>:error}
-
-    at /root/ente/desktop/node_modules/builder-util/src/util.ts:142:18
-    at ChildProcess.exithandler (node:child_process:430:5)
-    at ChildProcess.emit (node:events:524:28)
-    at maybeClose (node:internal/child_process:1104:16)
-    at Process.ChildProcess._handle.onexit (node:internal/child_process:304:5)  failedTask=build stackTrace=Error: Cannot cleanup: 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    Error #1 --------------------------------------------------------------------------------
-Error: Exit code: 1. Command failed: /root/.cache/electron-builder/fpm/fpm-1.9.3-2.3.1-linux-x86_64/fpm -s dir --force -t rpm -d gtk3 -d libnotify -d nss -d libXScrnSaver -d (libXtst or libXtst6) -d xdg-utils -d at-spi2-core -d (libuuid or libuuid1) --rpm-os linux --rpm-compression xzmt --architecture aarch64 --after-install /tmp/t-T3YjtB/2-after-install --after-remove /tmp/t-T3YjtB/3-after-remove --description Desktop client for Ente Photos --version 1.7.16~beta --package /root/ente/desktop/dist/ente-1.7.16-beta-aarch64.rpm --name ente --maintainer Ente <code@ente.io> --url https://github.com/ente-io/photos-desktop#readme --vendor Ente <code@ente.io> /root/ente/desktop/dist/linux-arm64-unpacked/=/opt/ente /root/ente/desktop/dist/.icon-set/icon_16x16.png=/usr/share/icons/hicolor/16x16/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_32.png=/usr/share/icons/hicolor/32x32/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_48x48.png=/usr/share/icons/hicolor/48x48/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_64.png=/usr/share/icons/hicolor/64x64/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_128.png=/usr/share/icons/hicolor/128x128/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_256.png=/usr/share/icons/hicolor/256x256/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_512.png=/usr/share/icons/hicolor/512x512/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_1024.png=/usr/share/icons/hicolor/1024x1024/apps/ente.png /tmp/t-T3YjtB/c-ente.desktop=/usr/share/applications/ente.desktop
-
-{:timestamp=>"2025-11-20T07:50:06.047116+0100", :message=>"Process failed: rpmbuild failed (exit code 1). Full command was:[\"rpmbuild\", \"-bb\", \"--target\", \"aarch64-unknown-linux\", \"--define\", \"buildroot /tmp/package-rpm-build-13cecdb7963601c78817b42273bb249ec5057759f60d68339a75949091ab/BUILD\", \"--define\", \"_topdir /tmp/package-rpm-build-13cecdb7963601c78817b42273bb249ec5057759f60d68339a75949091ab\", \"--define\", \"_sourcedir /tmp/package-rpm-build-13cecdb7963601c78817b42273bb249ec5057759f60d68339a75949091ab\", \"--define\", \"_rpmdir /tmp/package-rpm-build-13cecdb7963601c78817b42273bb249ec5057759f60d68339a75949091ab/RPMS\", \"--define\", \"_tmppath /tmp\", \"/tmp/package-rpm-build-13cecdb7963601c78817b42273bb249ec5057759f60d68339a75949091ab/SPECS/ente.spec\"]", :level=>:error}
-
-    at /root/ente/desktop/node_modules/builder-util/src/util.ts:142:18
-    at ChildProcess.exithandler (node:child_process:430:5)
-    at ChildProcess.emit (node:events:524:28)
-    at maybeClose (node:internal/child_process:1104:16)
-    at Process.ChildProcess._handle.onexit (node:internal/child_process:304:5)
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    Error #2 --------------------------------------------------------------------------------
-Error: Exit code: 1. Command failed: /root/.cache/electron-builder/fpm/fpm-1.9.3-2.3.1-linux-x86_64/fpm -s dir --force -t rpm -d gtk3 -d libnotify -d nss -d libXScrnSaver -d (libXtst or libXtst6) -d xdg-utils -d at-spi2-core -d (libuuid or libuuid1) --rpm-os linux --rpm-compression xzmt --architecture amd64 --after-install /tmp/t-T3YjtB/2-after-install --after-remove /tmp/t-T3YjtB/3-after-remove --description Desktop client for Ente Photos --version 1.7.16~beta --package /root/ente/desktop/dist/ente-1.7.16-beta-x86_64.rpm --name ente --maintainer Ente <code@ente.io> --url https://github.com/ente-io/photos-desktop#readme --vendor Ente <code@ente.io> /root/ente/desktop/dist/linux-unpacked/=/opt/ente /root/ente/desktop/dist/.icon-set/icon_16x16.png=/usr/share/icons/hicolor/16x16/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_32.png=/usr/share/icons/hicolor/32x32/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_48x48.png=/usr/share/icons/hicolor/48x48/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_64.png=/usr/share/icons/hicolor/64x64/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_128.png=/usr/share/icons/hicolor/128x128/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_256.png=/usr/share/icons/hicolor/256x256/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_512.png=/usr/share/icons/hicolor/512x512/apps/ente.png /root/ente/desktop/dist/.icon-set/icon_1024.png=/usr/share/icons/hicolor/1024x1024/apps/ente.png /tmp/t-T3YjtB/b-ente.desktop=/usr/share/applications/ente.desktop
-
-{:timestamp=>"2025-11-20T07:50:07.242054+0100", :message=>"Process failed: rpmbuild failed (exit code 1). Full command was:[\"rpmbuild\", \"-bb\", \"--target\", \"x86_64-unknown-linux\", \"--define\", \"buildroot /tmp/package-rpm-build-e9cac5926148ea5936cf21061ed67d064ffb08bba033de469a8e84d4270e/BUILD\", \"--define\", \"_topdir /tmp/package-rpm-build-e9cac5926148ea5936cf21061ed67d064ffb08bba033de469a8e84d4270e\", \"--define\", \"_sourcedir /tmp/package-rpm-build-e9cac5926148ea5936cf21061ed67d064ffb08bba033de469a8e84d4270e\", \"--define\", \"_rpmdir /tmp/package-rpm-build-e9cac5926148ea5936cf21061ed67d064ffb08bba033de469a8e84d4270e/RPMS\", \"--define\", \"_tmppath /tmp\", \"/tmp/package-rpm-build-e9cac5926148ea5936cf21061ed67d064ffb08bba033de469a8e84d4270e/SPECS/ente.spec\"]", :level=>:error}
-
-    at /root/ente/desktop/node_modules/builder-util/src/util.ts:142:18
-    at ChildProcess.exithandler (node:child_process:430:5)
-    at ChildProcess.emit (node:events:524:28)
-    at maybeClose (node:internal/child_process:1104:16)
-    at Process.ChildProcess._handle.onexit (node:internal/child_process:304:5)
-    at throwError (/root/ente/desktop/node_modules/builder-util/src/asyncTaskManager.ts:88:11)
-    at checkErrors (/root/ente/desktop/node_modules/builder-util/src/asyncTaskManager.ts:53:9)
-    at AsyncTaskManager.awaitTasks (/root/ente/desktop/node_modules/builder-util/src/asyncTaskManager.ts:67:7)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at Packager.doBuild (/root/ente/desktop/node_modules/app-builder-lib/src/packager.ts:533:5)
-    at executeFinally (/root/ente/desktop/node_modules/builder-util/src/promise.ts:12:14)
-    at Packager.build (/root/ente/desktop/node_modules/app-builder-lib/src/packager.ts:427:31)
-    at executeFinally (/root/ente/desktop/node_modules/builder-util/src/promise.ts:12:14)
-error Command failed with exit code 1.
-info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
-error Command failed with exit code 1.
-info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
-
-
 Puis exécuter :
 
 chmod +x start_ente.sh
 ./start_ente.sh
+
+-------
+root@vbox:~/ente/desktop# cd dist
+root@vbox:~/ente/desktop/dist# ./Ente
+-bash: ./Ente: No such file or directory
+root@vbox:~/ente/desktop/dist# ls
+builder-debug.yml		 ente-1.7.16-beta-arm64.deb
+builder-effective-config.yaml	 ente-1.7.16-beta-x86_64.AppImage
+ente-1.7.16-beta-amd64.deb	 linux-arm64-unpacked
+ente-1.7.16-beta-arm64.AppImage  linux-unpacked
+root@vbox:~/ente/desktop/dist# 
+
