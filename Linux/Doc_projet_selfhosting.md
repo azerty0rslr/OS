@@ -97,7 +97,48 @@ Pour lancer l'image de l'app, nous devons utiliser la commande (avec les droits)
   
 <img width="654" height="588" alt="image" src="https://github.com/user-attachments/assets/9527cd63-f82e-4781-8be5-a25624b3afee" />  
   
+## Jour 3 :
+### Installation du serveur de Ente - Museum
+La documentation nous donne les étapes à suivre pour l'installation du serveur : 
+```bash
+# Install Go
+brew tap homebrew/core
+brew upgrade
+brew install go
 
+# Install other packages
+brew install postgresql@15
+brew install libsodium
+brew install pkg-config
+
+# Init Postgres database
+sudo mkdir -p /usr/local/var/postgres
+sudo chmod 775 /usr/local/var/postgres
+sudo chown $(whoami)  /usr/local/var/postgres
+initdb /usr/local/var/postgres
+
+# Start Postgres
+pg_ctl -D /usr/local/var/postgres -l logfile start
+
+# Create user
+createuser -s postgres
+
+# Start museum
+export ENTE_DB_USER=postgres
+go run cmd/museum/main.go
+
+ENTE_DB_USER=ente_user
+air
+
+# Testing
+$ psql -U postgres
+CREATE DATABASE ente_test_db;
+CREATE USER test_user WITH PASSWORD 'test_pass';
+GRANT ALL PRIVILEGES ON DATABASE ente_test_db TO test_user;
+
+ENV="test" go test -v ./pkg/...
+go clean -testcache  && ENV="test" go test -v ./pkg/...
+```
 
 1. Installer le logiciel sur le serveur, le compiler à partir des sources directement  
 2. Valider le bon fonctionnement du logiciel et de toutes ses fonctionnalités  
