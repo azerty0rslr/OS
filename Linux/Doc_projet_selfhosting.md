@@ -163,6 +163,53 @@ L'erreur venait de parcePricingFile, tout les fichiers étaient reliés avec les
 
 
 ### Forgejo
+La documentation nous donne les étapes à suivre installer le projet :
+```bash
+# Download
+wget https://codeberg.org/forgejo/forgejo/releases/download/v13.0.2/forgejo-13.0.2-linux-amd64
+chmod +x forgejo-13.0.2-linux-amd64
+
+# Verify GPG signature
+# d'après la doc : should be downloaded every time to make sure the latest version is used.
+gpg --keyserver keys.openpgp.org --recv EB114F5E6C0DC2BCDD183550A4B61A2DC5923710
+wget https://codeberg.org/forgejo/forgejo/releases/download/v13.0.2/forgejo-13.0.2-linux-amd64.asc
+gpg --verify forgejo-13.0.2-linux-amd64.asc forgejo-13.0.2-linux-amd64
+
+# Copy the dowload Forgejo to /usr/local/bin/
+sudo cp forgejo-x.y.z-linux-amd64 /usr/local/bin/forgejo
+sudo chmod 755 /usr/local/bin/forgejo
+
+# Install git
+sudo apt install git git-lfs
+
+# Create a user git, remplacer git par 
+sudo adduser --system --shell /bin/bash --gecos 'Git Version Control' \
+  --group --disabled-password --home /home/git git
+
+# Create Forgejo directories
+# Forgejo use and set access permissions appropriately :
+sudo mkdir /var/lib/forgejo
+sudo chown git:git /var/lib/forgejo && sudo chmod 750 /var/lib/forgejo
+
+# Forgejo’s config :
+sudo mkdir /etc/forgejo
+sudo chown root:git /etc/forgejo && sudo chmod 770 /etc/forgejo
+
+# On ne set up pas de database car on considèrera SQlite suffisant (très bien pour environ 10 users)
+
+# Install systemd service for Forgejo
+sudo wget -O /etc/systemd/system/forgejo.service https://codeberg.org/forgejo/forgejo/raw/branch/forgejo/contrib/systemd/forgejo.service
+sudo systemctl daemon-reload
+sudo systemctl enable forgejo.service
+sudo systemctl start forgejo.service
+
+# Forgejo’s web-based configuration (http://localhost:3000/)
+
+# Further configuration in Forgejo’s app.ini
+sudo systemctl stop forgejo.service
+
+```
+
 
 1. Installer le logiciel sur le serveur, le compiler à partir des sources directement  
 2. Valider le bon fonctionnement du logiciel et de toutes ses fonctionnalités  
