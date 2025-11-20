@@ -34,19 +34,32 @@ yarn build
 
 -------
 
+# 1️⃣ Aller dans le dossier desktop
+cd ~/ente/desktop
+
+# 2️⃣ Supprimer les modules et nettoyer le cache
+rm -rf node_modules
+yarn cache clean
+
+# 3️⃣ Supprimer le lock file npm qui peut causer des conflits
+rm -f package-lock.json
+
+# 4️⃣ Créer/éditer un .yarnrc pour forcer HTTPS
+echo -e '--install.pure-lockfile true\ngit "https://github.com/"' > .yarnrc
+
+# 5️⃣ Configurer Git globalement pour remplacer toutes les URL SSH GitHub par HTTPS
 git config --global --unset-all url."https://github.com/".insteadOf
 git config --global --unset-all url."https://".insteadOf
-
 git config --global url."https://github.com/".insteadOf ssh://git@github.com/
 git config --global url."https://github.com/".insteadOf git@github.com:
 git config --global url."https://github.com/".insteadOf git://github.com/
+# Règle spécifique pour electron/node-gyp
+git config --global url."https://github.com/electron/".insteadOf ssh://git@github.com/electron/
 
+# 6️⃣ Vérifier la configuration Git
 git config --global --get-regexp url
 
-yarn cache clean
-
-rm -rf node_modules
-
+# 7️⃣ Lancer l’installation Yarn proprement
 yarn install
 
 
