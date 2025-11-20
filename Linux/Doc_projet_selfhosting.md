@@ -152,8 +152,7 @@ postgres=# ALTER USER postgres PASSWORD 'postgres';
 postgres=# CREATE DATABASE ente_db;
 
 ```
-Par la suite en réexécutant le ```./main``` nous avons l'erreur suivante dans le terminal : ```WARN[0009]main.go:1130 urlSanitizer Unknown API: /```.  
-Et pas d'affichage sur http://localhost:8080/.
+Par la suite en réexécutant le ```./main``` nous avons l'erreur suivante dans le terminal : ```WARN[0009]main.go:1130 urlSanitizer Unknown API: /```. Et pas d'affichage sur http://localhost:8080/.
 
 1. Installer le logiciel sur le serveur, le compiler à partir des sources directement  
 2. Valider le bon fonctionnement du logiciel et de toutes ses fonctionnalités  
