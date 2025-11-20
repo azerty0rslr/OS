@@ -99,48 +99,7 @@ Pour lancer l'image de l'app, nous devons utiliser la commande (avec les droits)
   
 ## Jour 3 :
 ### Installation du serveur de Ente - Museum
-La documentation GITHUB nous donne les étapes à suivre pour l'installation du serveur : 
-```bash
-# Install Go
-brew tap homebrew/core
-brew upgrade
-brew install go
-
-# Install other packages
-brew install postgresql@15
-brew install libsodium
-brew install pkg-config
-
-# Init Postgres database
-sudo mkdir -p /usr/local/var/postgres
-sudo chmod 775 /usr/local/var/postgres
-sudo chown $(whoami)  /usr/local/var/postgres
-initdb /usr/local/var/postgres
-
-# Start Postgres
-pg_ctl -D /usr/local/var/postgres -l logfile start
-
-# Create user
-createuser -s postgres
-
-# Start museum
-export ENTE_DB_USER=postgres
-go run cmd/museum/main.go
-
-ENTE_DB_USER=ente_user
-air
-
-# Testing
-$ psql -U postgres
-CREATE DATABASE ente_test_db;
-CREATE USER test_user WITH PASSWORD 'test_pass';
-GRANT ALL PRIVILEGES ON DATABASE ente_test_db TO test_user;
-
-ENV="test" go test -v ./pkg/...
-go clean -testcache  && ENV="test" go test -v ./pkg/...
-```
-
-La documentation DU SITE nous donne les étapes à suivre pour l'installation du serveur : 
+La documentation du site Ente nous donne les étapes à suivre pour l'installation du serveur : 
 ```bash
 # Install Go
 sudo apt update && sudo apt upgrade
@@ -163,6 +122,7 @@ sudo apt install npm nodejs
 
 # Git, caddy, Object Storage
 
+# Clone du git si pas encore fait
 git clone https://github.com/ente-io/ente
 
 # Change into server directory, where the source code for Museum is
@@ -181,6 +141,7 @@ cp config/example.yaml ./museum.yaml
 # Run the server (http://localhost:8080)
 ./main
 ```
+Nous avons eu un problème pour l'exécution du ```./main```. En effet museum.yaml n'est pas correctement remplis. 
 
 1. Installer le logiciel sur le serveur, le compiler à partir des sources directement  
 2. Valider le bon fonctionnement du logiciel et de toutes ses fonctionnalités  
