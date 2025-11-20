@@ -153,11 +153,14 @@ postgres=# ALTER USER postgres PASSWORD 'postgres';
 postgres=# CREATE DATABASE ente_db;
 
 ```
-Et modifier museum.yaml
-<img width="294" height="124" alt="image" src="https://github.com/user-attachments/assets/34f9bef3-a39e-4a64-91c4-7bebde386722" />
+Et modifier museum.yaml  
+<img width="294" height="124" alt="image" src="https://github.com/user-attachments/assets/34f9bef3-a39e-4a64-91c4-7bebde386722" />  
 
-Par la suite en réexécutant le ```./main``` nous avons l'erreur suivante dans le terminal : ```WARN[0009]main.go:1130 urlSanitizer Unknown API: /```. Et pas d'affichage sur http://localhost:8080/. L'erreur venait de parcePricingFile, tout les fichiers étaient reliés avec les serveurs de Ente. Puisque le nombre de fichiers à modifier était trop important nous avons donc dû recommencer un nouveau projet.
-<img width="738" height="332" alt="image" src="https://github.com/user-attachments/assets/070fd623-0f0d-4fbd-961d-7a05adfac925" />
+Par la suite en réexécutant le ```./main``` nous avons l'erreur suivante dans le terminal : ```WARN[0009]main.go:1130 urlSanitizer Unknown API: /```. Et pas d'affichage sur http://localhost:8080/.  
+<img width="738" height="332" alt="image" src="https://github.com/user-attachments/assets/070fd623-0f0d-4fbd-961d-7a05adfac925" />  
+  
+L'erreur venait de parcePricingFile, tout les fichiers étaient reliés avec les serveurs de Ente. Puisque le nombre de fichiers à modifier était trop important nous avons donc dû recommencer un nouveau projet.
+
 
 ### Forgejo
 
