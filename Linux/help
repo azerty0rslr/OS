@@ -52,12 +52,18 @@ yarn install
 
 ------ 
 
-root@vbox:~/ente/desktop# nano .yarnrc
+root@vbox:~/ente/desktop# git config --global --unset-all url."https://github.com/".insteadOf
+root@vbox:~/ente/desktop# git config --global --unset-all url."https://".insteadOf
+root@vbox:~/ente/desktop# git config --global url."https://github.com/".insteadOf ssh://git@github.com/
+root@vbox:~/ente/desktop# git config --global url."https://github.com/".insteadOf git@github.com:
+root@vbox:~/ente/desktop# git config --global url."https://github.com/".insteadOf git://github.com/
+root@vbox:~/ente/desktop# git config --global --get-regexp url
+url.https://github.com/.insteadof git://github.com/
 root@vbox:~/ente/desktop# yarn cache clean
 yarn cache v1.22.22
 success Cleared cache.
-Done in 2.02s.
-root@vbox:~/ente/desktop# rm package-lock.json
+Done in 1.28s.
+root@vbox:~/ente/desktop# rm -rf node_modules
 root@vbox:~/ente/desktop# yarn install
 yarn install v1.22.22
 [1/4] Resolving packages...
@@ -75,6 +81,3 @@ Please make sure you have the correct access rights
 and the repository exists.
 info Visit https://yarnpkg.com/en/docs/cli/install for documentation about this command.
 root@vbox:~/ente/desktop# 
-
-
-
