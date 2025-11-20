@@ -34,12 +34,18 @@ yarn build
 
 -------
 
-nano .yarnrc
-git "https://github.com/"
+git config --global --unset-all url."https://github.com/".insteadOf
+git config --global --unset-all url."https://".insteadOf
+
+git config --global url."https://github.com/".insteadOf ssh://git@github.com/
+git config --global url."https://github.com/".insteadOf git@github.com:
+git config --global url."https://github.com/".insteadOf git://github.com/
+
+git config --global --get-regexp url
 
 yarn cache clean
 
-rm package-lock.json
+rm -rf node_modules
 
 yarn install
 
