@@ -30,19 +30,3 @@ cd ente/desktop
 
 yarn install
 yarn build
-
-root@vbox:~# which node
-which nodejs
-ls -l /usr/bin/node*
-root@vbox:~# which node
-root@vbox:~# which nodejs
-root@vbox:~# ls -l :
-ls: cannot access ':': No such file or directory
-root@vbox:~# cd ..
-root@vbox:/# ls -l /usr/bin/node*
-root@vbox:/# cd ~
-root@vbox:~# ls -l /usr/bin/node*
-root@vbox:~# ls
-root@vbox:~# ls
-root@vbox:~# cd
-root@vbox:~# ls
