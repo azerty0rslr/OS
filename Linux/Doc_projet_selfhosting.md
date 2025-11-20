@@ -163,6 +163,12 @@ sudo apt install npm nodejs
 
 # Git, caddy, Object Storage
 
+git clone https://github.com/ente-io/ente
+
+# Change into server directory, where the source code for Museum is
+# present inside the repo
+cd ente/server
+
 # Install the needed dependencies
 go mod tidy
 
