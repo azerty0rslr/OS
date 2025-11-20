@@ -113,5 +113,10 @@ Ce service de monitoring ne doit pas être exposé au réseau externe. On y acc�
 
 ### Documentation utilisé 
 
+Lancer le fichier, avec les droit 
+```bash
+sudo ./root/ente/desktop/dist/ente-1.7.16-beta-x86_64.AppImage -no-sandbox
+```
+<img width="654" height="588" alt="image" src="https://github.com/user-attachments/assets/9527cd63-f82e-4781-8be5-a25624b3afee" />
 
 su - : pour être sudo sans admin
