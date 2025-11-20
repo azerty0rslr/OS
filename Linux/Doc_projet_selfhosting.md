@@ -227,6 +227,7 @@ sudo systemctl stop forgejo.service
 ```
 
 ### Automatiser le processus d'installation
+#### Script Bash a mettre dans un fichier installation.sh 
 ```bash
 #script bash
 # Installation
@@ -265,11 +266,14 @@ sudo systemctl start forgejo.service
 
 # Ouvrir dans le navigateur : http://localhost:3000/
 ```  
-  
+Attention a ne pas oublier d'augmenter les droits du fichiers
+```bash
+chmod +x ./installation.sh
+```
+
 Puis exécutez le fichier d'installation (exemple ici : installation.sh) de la manière suivante :  
   
 ```bash
-chmod +x ./installation.sh
 ./installation.sh
 ```  
 
