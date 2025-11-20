@@ -12,6 +12,20 @@ sudo apt-get install -y \
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
+root@vbox:~# curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Warning: https://deb.nodesource.com/node_18.x/dists/nodistro/InRelease: Policy will reject signature within a year, see --audit for details
+
+
 
 node -v   # doit être >= 18
 npm -v
