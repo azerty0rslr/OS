@@ -93,7 +93,10 @@ Le serveur yarn est down. Nous devons donc attendre pour poursuivre notre TP.
 
 Nous avions une erreur avec le yarn install qui essayait d'ouvrir ssh://github.com nous avons donc dû le remplacer par https://github.com
 Pour lancer l'image de l'app, nous devons utiliser la commande (avec les droits) : ```sudo ./root/ente/desktop/dist/ente-1.7.16-beta-x86_64.AppImage -no-sandbox``` pour que la commande soit plus simple d'accès nous l'avons bougé d'endroit avec la commande ```sudo mv ./root/ente/desktop/dist/ente-1.7.16-beta-x86_64.AppImage /home/vboxuser/
-```. Pour lancer l'image de l'app il faut désormais faire : ```./ente-1.7.16-beta-x86_64.AppImage``` 
+```. Pour lancer l'image de l'app il faut désormais faire : ```./ente-1.7.16-beta-x86_64.AppImage```  
+  
+<img width="654" height="588" alt="image" src="https://github.com/user-attachments/assets/9527cd63-f82e-4781-8be5-a25624b3afee" />  
+  
 
 
 1. Installer le logiciel sur le serveur, le compiler à partir des sources directement  
@@ -116,11 +119,5 @@ Mettre en place un outil de monitoring de votre service (ex: Grafana), et export
 Ce service de monitoring ne doit pas être exposé au réseau externe. On y accèdera par port forwarding en SSH.  
 
 ### Documentation utilisé 
-
-Lancer le fichier, avec les droit 
-```bash
-sudo ./root/ente/desktop/dist/ente-1.7.16-beta-x86_64.AppImage -no-sandbox
-```
-<img width="654" height="588" alt="image" src="https://github.com/user-attachments/assets/9527cd63-f82e-4781-8be5-a25624b3afee" />
 
 su - : pour être sudo sans admin
