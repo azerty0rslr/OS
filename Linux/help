@@ -1,0 +1,7 @@
+root@vbox:~# apt update
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+root@vbox:~# apt install nodejs npm golang
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
