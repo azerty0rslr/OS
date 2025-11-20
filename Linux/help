@@ -64,11 +64,87 @@ yarn install
 
 
 ------ 
-root@vbox:~/ente/desktop# yarn dist
-yarn run v1.22.22
-error Command "dist" not found.
-info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
-root@vbox:~/ente/desktop# yarn start
-yarn run v1.22.22
-error Command "start" not found.
-info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+Guide résumé pour installer Ente Desktop sur Debian 13
+1️⃣ Installer les dépendances système
+sudo apt update
+sudo apt install -y \
+    curl \
+    git \
+    build-essential \
+    nodejs \
+    npm \
+    rpm \
+    golang
+
+
+Node.js doit être >=18.
+
+Vérifie :
+
+node -v
+npm -v
+go version
+
+
+Installer Yarn globalement :
+
+sudo npm install -g yarn
+yarn -v
+
+2️⃣ Cloner le projet Ente
+git clone https://github.com/ente-io/ente
+cd ente/desktop
+
+3️⃣ Configurer Git pour éviter les problèmes SSH
+
+Certains packages (ex: electron/node-gyp) utilisent SSH par défaut, ce qui provoque l’erreur Host key verification failed.
+
+# Supprimer anciennes règles conflictuelles
+git config --global --unset-all url."https://github.com/".insteadOf
+git config --global --unset-all url."https://".insteadOf
+
+# Forcer HTTPS pour GitHub
+git config --global url."https://github.com/".insteadOf ssh://git@github.com/
+git config --global url."https://github.com/".insteadOf git@github.com:
+git config --global url."https://github.com/".insteadOf git://github.com/
+# Règle spécifique pour node-gyp / Electron
+git config --global url."https://github.com/electron/".insteadOf ssh://git@github.com/electron/
+
+
+Vérifie la configuration :
+
+git config --global --get-regexp url
+
+4️⃣ Préparer Yarn et le projet
+# Supprimer les modules et lock files précédents
+rm -rf node_modules
+rm -f package-lock.json
+yarn cache clean
+
+# Créer un .yarnrc pour forcer HTTPS
+echo -e '--install.pure-lockfile true\ngit "https://github.com/"' > .yarnrc
+
+5️⃣ Installer les dépendances via Yarn
+yarn install
+
+
+Cela installe toutes les dépendances, y compris les modules natifs d’Electron.
+
+Cette étape peut prendre quelques minutes.
+
+6️⃣ Compiler Ente Desktop
+yarn build
+
+
+Cette commande crée le binaire exécutable.
+
+Le binaire se trouve généralement dans le dossier dist/.
+
+7️⃣ Lancer Ente Desktop
+cd dist
+./Ente   # ou le nom exact du fichier généré
+
+
+Pour tester en mode développement (hot reload) :
+
+yarn dev
