@@ -1,7 +1,32 @@
-root@vbox:~# apt update
+sudo apt-get update
+sudo apt-get install -y \
+    curl \
+    git \
+    build-essential \
+    nodejs \
+    npm \
+    rpm \
+    golang
 
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
 
-root@vbox:~# apt install nodejs npm golang
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
 
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+node -v   # doit être >= 18
+npm -v
+
+
+sudo npm install -g yarn
+yarn -v   # doit afficher une version ~1.22.x
+
+
+sudo apt-get install -y golang
+go version
+
+
+git clone https://github.com/ente-io/ente
+cd ente/desktop
+
+yarn install
+yarn build
