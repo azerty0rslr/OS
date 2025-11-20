@@ -194,10 +194,17 @@ chmod +x start_ente.sh
 
 -------
 
-cd ~/ente/desktop/dist
-chmod +x ente-1.7.16-beta-x86_64.AppImage   # si ce n'est pas déjà exécutable
-./ente-1.7.16-beta-x86_64.AppImage
+root@vbox:~/ente/desktop/dist# cd ~/ente/desktop/dist
+root@vbox:~/ente/desktop/dist# chmod +x ente-1.7.16-beta-x86_64.AppImage 
+root@vbox:~/ente/desktop/dist# ./ente-1.7.16-beta-x86_64.AppImage
+dlopen(): error loading libfuse.so.2
 
+AppImages require FUSE to run. 
+You might still be able to extract the contents of this AppImage 
+if you run it with the --appimage-extract option. 
+See https://github.com/AppImage/AppImageKit/wiki/FUSE 
+for more information
+root@vbox:~/ente/desktop/dist# 
 
 --------
 
