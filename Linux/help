@@ -185,20 +185,60 @@ Si tu veux lancer Ente Desktop automatiquement ou via un script, tu peux créer 
 
 #!/bin/bash
 cd /root/ente/desktop/dist
-./Ente
 
-Puis exécuter :
-
-chmod +x start_ente.sh
-./start_ente.sh
-
--------
-
-sudo apt update
+exécution : 
 sudo apt install -y fuse libfuse2
 
 cd ~/ente/desktop/dist
 ./ente-1.7.16-beta-x86_64.AppImage
+
+------
+
+root@vbox:~/ente/desktop/dist# apt-get update
+Hit:1 http://deb.debian.org/debian trixie InRelease
+Hit:2 http://deb.debian.org/debian trixie-updates InRelease                    
+Hit:3 http://security.debian.org/debian-security trixie-security InRelease     
+Hit:4 https://deb.nodesource.com/node_18.x nodistro InRelease                  
+Reading package lists... Done                        
+W: https://deb.nodesource.com/node_18.x/dists/nodistro/InRelease: Policy will reject signature within a year, see --audit for details
+root@vbox:~/ente/desktop/dist# apt-get install -y fuse libfuse2
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Note, selecting 'libfuse2t64' instead of 'libfuse2'
+The following NEW packages will be installed:
+  fuse libfuse2t64
+0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+Need to get 137 kB of archives.
+After this operation, 388 kB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian trixie/main amd64 fuse all 3.17.2-3 [16.4 kB]
+Get:2 http://deb.debian.org/debian trixie/main amd64 libfuse2t64 amd64 2.9.9-9 [121 kB]
+Fetched 137 kB in 0s (1,160 kB/s)     
+Selecting previously unselected package fuse.
+(Reading database ... 160963 files and directories currently installed.)
+Preparing to unpack .../archives/fuse_3.17.2-3_all.deb ...
+Unpacking fuse (3.17.2-3) ...
+Selecting previously unselected package libfuse2t64:amd64.
+Preparing to unpack .../libfuse2t64_2.9.9-9_amd64.deb ...
+Adding 'diversion of /lib/x86_64-linux-gnu/libfuse.so.2 to /lib/x86_64-linux-gnu/libfuse.so.2.usr-is-merged by libfuse2t64'
+Adding 'diversion of /lib/x86_64-linux-gnu/libfuse.so.2.9.9 to /lib/x86_64-linux-gnu/libfuse.so.2.9.9.usr-is-merged by libfuse2t64'
+Adding 'diversion of /lib/x86_64-linux-gnu/libulockmgr.so.1 to /lib/x86_64-linux-gnu/libulockmgr.so.1.usr-is-merged by libfuse2t64'
+Adding 'diversion of /lib/x86_64-linux-gnu/libulockmgr.so.1.0.1 to /lib/x86_64-linux-gnu/libulockmgr.so.1.0.1.usr-is-merged by libfuse2t64'
+Unpacking libfuse2t64:amd64 (2.9.9-9) ...
+Setting up fuse (3.17.2-3) ...
+Setting up libfuse2t64:amd64 (2.9.9-9) ...
+Removing 'diversion of /lib/x86_64-linux-gnu/libfuse.so.2 to /lib/x86_64-linux-gnu/libfuse.so.2.usr-is-merged by libfuse2t64'
+Removing 'diversion of /lib/x86_64-linux-gnu/libfuse.so.2.9.9 to /lib/x86_64-linux-gnu/libfuse.so.2.9.9.usr-is-merged by libfuse2t64'
+Removing 'diversion of /lib/x86_64-linux-gnu/libulockmgr.so.1 to /lib/x86_64-linux-gnu/libulockmgr.so.1.usr-is-merged by libfuse2t64'
+Removing 'diversion of /lib/x86_64-linux-gnu/libulockmgr.so.1.0.1 to /lib/x86_64-linux-gnu/libulockmgr.so.1.0.1.usr-is-merged by libfuse2t64'
+Processing triggers for libc-bin (2.41-12) ...
+root@vbox:~/ente/desktop/dist# cd ~/ente/desktop/dist
+root@vbox:~/ente/desktop/dist# ./ente-1.7.16-beta-x86_64.AppImage
+[1120/080359.127924:FATAL:electron/shell/app/electron_main_delegate.cc:311] Running as root without --no-sandbox is not supported. See https://crbug.com/638180.
+Trace/breakpoint trap
+root@vbox:~/ente/desktop/dist# 
+
+
 
 --------
 
