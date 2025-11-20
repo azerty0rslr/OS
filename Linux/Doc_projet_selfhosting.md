@@ -189,17 +189,17 @@ sudo chmod 755 /usr/local/bin/forgejo
 ```bash
 sudo apt install git git-lfs
 
-# Create a user git, remplacer git par 
+# Créer un git utilisateur, remplacer git 
 sudo adduser --system --shell /bin/bash --gecos 'Git Version Control' \
   --group --disabled-password --home /home/git git
 ```
 #### Create Forgejo directories
 ```bash
-# Forgejo use and set access permissions appropriately :
+# Forgejo utilise et définit les permissions d’accès de manière appropriée :
 sudo mkdir /var/lib/forgejo
 sudo chown git:git /var/lib/forgejo && sudo chmod 750 /var/lib/forgejo
 
-# Forgejo’s config :
+# Configuration de Forgejo :
 sudo mkdir /etc/forgejo
 sudo chown root:git /etc/forgejo && sudo chmod 770 /etc/forgejo
 
@@ -213,11 +213,15 @@ sudo systemctl enable forgejo.service
 sudo systemctl start forgejo.service
 ```
 #### Vérifier sur (http://localhost:3000/)
-#### Choix des configurations sur la page d'entré
+
+#### Choix des configurations sur la page d'entrée
 <img width="948" height="758" alt="image" src="https://github.com/user-attachments/assets/14cba57c-ab65-4a54-bbec-174fda0246a2" />
+
 #### Appuyer sur le boutons installer
 <img width="1885" height="743" alt="image" src="https://github.com/user-attachments/assets/7a989c8b-bab8-4a6b-b95d-c28512e2b00e" />
+
 #### Configuration supplémentaire dans l’app.ini de Forgejo
+
 ```bash
 sudo systemctl stop forgejo.service
 ```
