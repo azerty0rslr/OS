@@ -193,13 +193,80 @@ chmod +x start_ente.sh
 ./start_ente.sh
 
 -------
-root@vbox:~/ente/desktop# cd dist
-root@vbox:~/ente/desktop/dist# ./Ente
--bash: ./Ente: No such file or directory
-root@vbox:~/ente/desktop/dist# ls
-builder-debug.yml		 ente-1.7.16-beta-arm64.deb
-builder-effective-config.yaml	 ente-1.7.16-beta-x86_64.AppImage
-ente-1.7.16-beta-amd64.deb	 linux-arm64-unpacked
-ente-1.7.16-beta-arm64.AppImage  linux-unpacked
-root@vbox:~/ente/desktop/dist# 
 
+cd ~/ente/desktop/dist
+chmod +x ente-1.7.16-beta-x86_64.AppImage   # si ce n'est pas déjà exécutable
+./ente-1.7.16-beta-x86_64.AppImage
+
+
+--------
+
+1️⃣ Script Shell pour lancer Ente
+
+Crée un fichier start-ente.sh par exemple :
+
+#!/bin/bash
+# Script pour lancer Ente Desktop
+
+# Chemin vers l'AppImage
+ENTE_APPIMAGE="/root/ente/desktop/dist/ente-1.7.16-beta-x86_64.AppImage"
+
+# Vérifie si le fichier existe
+if [ ! -f "$ENTE_APPIMAGE" ]; then
+    echo "Erreur : AppImage introuvable à $ENTE_APPIMAGE"
+    exit 1
+fi
+
+# Rendre l'AppImage exécutable
+chmod +x "$ENTE_APPIMAGE"
+
+# Lancer Ente Desktop
+"$ENTE_APPIMAGE"
+
+
+Rends le script exécutable :
+
+chmod +x start-ente.sh
+
+
+Tu peux maintenant tester :
+
+./start-ente.sh
+
+2️⃣ Option : Lancer automatiquement avec systemd
+
+Crée un fichier ente.service dans /etc/systemd/system/ :
+
+[Unit]
+Description=Ente Desktop
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/root/ente/desktop/start-ente.sh
+Restart=on-failure
+User=root
+WorkingDirectory=/root/ente/desktop
+
+[Install]
+WantedBy=multi-user.target
+
+
+Recharge systemd :
+
+sudo systemctl daemon-reload
+
+
+Active le service pour qu’il démarre automatiquement :
+
+sudo systemctl enable ente.service
+
+
+Démarre le service maintenant :
+
+sudo systemctl start ente.service
+
+
+Vérifie le statut :
+
+sudo systemctl status ente.service
