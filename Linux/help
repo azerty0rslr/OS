@@ -34,15 +34,15 @@ yarn build
 
 -------
 
-git config --global url."https://github.com/".insteadOf ssh://git@github.com/
-git config --global url."https://github.com/".insteadOf git@github.com:
-
-git config --global --get-regexp url
+nano .yarnrc
+git "https://github.com/"
 
 yarn cache clean
 
-cd ~/ente/desktop
+rm package-lock.json
+
 yarn install
+
 
 ------ 
 
