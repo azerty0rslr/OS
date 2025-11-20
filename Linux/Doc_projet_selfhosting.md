@@ -99,7 +99,7 @@ Pour lancer l'image de l'app, nous devons utiliser la commande (avec les droits)
   
 ## Jour 3 :
 ### Installation du serveur de Ente - Museum
-La documentation nous donne les étapes à suivre pour l'installation du serveur : 
+La documentation GITHUB nous donne les étapes à suivre pour l'installation du serveur : 
 ```bash
 # Install Go
 brew tap homebrew/core
@@ -138,6 +138,42 @@ GRANT ALL PRIVILEGES ON DATABASE ente_test_db TO test_user;
 
 ENV="test" go test -v ./pkg/...
 go clean -testcache  && ENV="test" go test -v ./pkg/...
+```
+
+La documentation DU SITE nous donne les étapes à suivre pour l'installation du serveur : 
+```bash
+# Install Go
+sudo apt update && sudo apt upgrade
+sudo apt install golang-go
+
+# Install PostgreSQL et libsodium
+sudo apt install postgresql
+sudo apt install libsodium23 libsodium-dev
+
+sudo systemctl enable postgresql
+sudo systemctl start postgresql
+
+sudo systemctl status postgresql
+
+# Install pkg-config
+sudo apt install pkg-config
+
+# Install npm and Node
+sudo apt install npm nodejs
+
+# Git, caddy, Object Storage
+
+# Install the needed dependencies
+go mod tidy
+
+# Build the server
+go build cmd/museum/main.go
+
+# Create museum.yaml
+cp config/example.yaml ./museum.yaml
+
+# Run the server (http://localhost:8080)
+./main
 ```
 
 1. Installer le logiciel sur le serveur, le compiler à partir des sources directement  
