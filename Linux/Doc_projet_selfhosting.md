@@ -1,5 +1,5 @@
 #  Projet selfhosting
-Sur un serveur Debian 13 (trixie) nous devons installer un logiciel, nous avions choisi le logiciel Mealie qui est un répertoire de recettes de cuisine numérisées. Suite à des problèmes expliqués dans la doc, nous sommes passés sur le logiciel Ente, une plateforme de partage de photos cryptée de bout en bout (alternative à Google Photos, Apple Photos).  
+Sur un serveur Debian 13 (trixie) nous devons installer un logiciel, nous avions choisi le logiciel Mealie qui est un répertoire de recettes de cuisine numérisées. Suite à des problèmes expliqués dans la doc, nous sommes passés sur le logiciel Ente, une plateforme de partage de photos cryptée de bout en bout (alternative à Google Photos, Apple Photos). Enfin, suite à des problèmes également expliqués dans la doc, nous avons dû passer sur le logiciel Forgejo, un serveur de forge git.  
 Projet réalisé par Manon ROUSSELIERE et Meven DESBOIS.  
 
 # 1/ Installation du logiciel
@@ -277,10 +277,12 @@ Enfin, accédez à Forgejo web en ouvrant http://localhost:3000/ dans le moteur 
 
 
 # 2/ Backup
-
+## Objectifs : 
 1. En utilisant le logiciel restic , créer un script qui archive les données importante du service  
 2. Configurez le logiciel cron pour qu’il exécute ce script toutes les heures  
-3. En utilisant l’utilitaire rclone , transférez le backup sur un serveur distant (ex: Google Drive)  
+3. En utilisant l’utilitaire rclone , transférez le backup sur un serveur distant (ex: Google Drive)
+
+
 
 # 3/ Sécurité
 1. Mettre en place les règles de pare-feux pour n’accepter que le traffic sur le port de votre service  
