@@ -31,47 +31,6 @@ cd ente/desktop
 yarn install
 yarn build
 
-root@vbox:~# # retirer anciennes traces (facultatif mais propre)
-sudo apt-get remove --purge -y nodejs npm
-sudo apt-get autoremove -y
-
-# installer Node 20 (inclut npm)
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-sudo apt-get update
-sudo apt-get install -y nodejs
-
-# vérifier
-node --version
-npm --version
 which node
-which npm
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-Warning: https://deb.nodesource.com/node_20.x/dists/nodistro/InRelease: Policy will reject signature within a year, see --audit for details
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-Warning: https://deb.nodesource.com/node_20.x/dists/nodistro/InRelease: Policy will reject signature within a year, see --audit for details
-W: https://deb.nodesource.com/node_20.x/dists/nodistro/InRelease: Policy will reject signature within a year, see --audit for details
-root@vbox:~# node --version
-root@vbox:~# node version
-node:internal/modules/cjs/loader:1210
-  throw err;
-  ^
-
-Error: Cannot find module '/root/version'
-    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
-    at Module._load (node:internal/modules/cjs/loader:1038:27)
-    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
-    at node:internal/main/run_main_module:28:49 {
-  code: 'MODULE_NOT_FOUND',
-  requireStack: []
-}
-
-Node.js v20.19.5
-root@vbox:~# 
-
+which nodejs
+ls -l /usr/bin/node*
