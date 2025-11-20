@@ -305,5 +305,5 @@ Ce service de monitoring ne doit pas être exposé au réseau externe. On y acc�
 
 ### Documentation utilisé 
 
-su - : pour être sudo sans admin
+su - : pour être sudo sans admin  
 restic : https://www.youtube.com/watch?v=5DjNjqLuLSs
