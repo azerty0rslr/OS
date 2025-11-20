@@ -32,22 +32,17 @@ yarn install
 yarn build
 
 
-root@vbox:~# node -v
-root@vbox:~# npm -v
-root@vbox:~# npm
-root@vbox:~# node version
-node:internal/modules/cjs/loader:1210
-  throw err;
-  ^
+# retirer anciennes traces (facultatif mais propre)
+sudo apt-get remove --purge -y nodejs npm
+sudo apt-get autoremove -y
 
-Error: Cannot find module '/root/version'
-    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
-    at Module._load (node:internal/modules/cjs/loader:1038:27)
-    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
-    at node:internal/main/run_main_module:28:49 {
-  code: 'MODULE_NOT_FOUND',
-  requireStack: []
-}
+# installer Node 20 (inclut npm)
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get update
+sudo apt-get install -y nodejs
 
-Node.js v20.19.5
-
+# vérifier
+node --version
+npm --version
+which node
+which npm
