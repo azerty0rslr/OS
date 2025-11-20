@@ -202,25 +202,13 @@ su - enteuser
 cd ~/ente/desktop/dist
 ./ente-1.7.16-beta-x86_64.AppImage
 
-root@vbox:~/ente/desktop/dist# useradd -m -s /bin/bash enteuser
-root@vbox:~/ente/desktop/dist# passwd enteuser
-New password: 
-Retype new password: 
-passwd: password updated successfully
-root@vbox:~/ente/desktop/dist# chown -R enteuser:enteuser ~/ente
-root@vbox:~/ente/desktop/dist# exit
-logout
-vboxuser@vbox:~$ su - enteuser
-Password: 
-enteuser@vbox:~$ cd ~/ente/desktop/dist
--bash: cd: /home/enteuser/ente/desktop/dist: No such file or directory
-enteuser@vbox:~$ su -
-Password: 
-root@vbox:~# su - enteuser
-enteuser@vbox:~$ cd ~/ente/desktop/dist
--bash: cd: /home/enteuser/ente/desktop/dist: No such file or directory
-enteuser@vbox:~$ ^C
+# En root
+mv /root/ente /home/enteuser/
+chown -R enteuser:enteuser /home/enteuser/ente
 
+su - enteuser
+cd ~/ente/desktop/dist
+./ente-1.7.16-beta-x86_64.AppImage
 
 --------
 
