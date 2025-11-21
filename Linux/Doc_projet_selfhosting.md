@@ -309,23 +309,8 @@ Voici le script d'installation de Restic sur Linux :
 ```bash
 apt-get install restic
 restic version
-```
-
-#### Configuration de restic en local
-```bash
-# Configuration
-restic -r /chemin/vers/le/repo init
-
-# Sauvegarde
-restic backup /chemin/vers/les/donnees
-restic backup /chemin/vers/les/donnees --exclude "/chemin/vers/exclure"
-
-# Restaurer (un snapshot)
-restic restore ID-du-snapshot --target /chemin/de/restauration
-# Restaurer (un fichier)
-restic restore ID-du-snapshot --target /chemin/de/restauration --include "/chemin/vers/fichier"
 ```  
-
+  
 #### Script backup.sh pour créer un repo de backup avec restic 
 Accessible ensuite dans `/var/backups/forgejo_restic_repo`  
 ```bash
@@ -351,7 +336,7 @@ sudo restic backup "$forgejo_data" "$forgejo_conf" "$sqlite_db" --repo "$restic_
 echo "Backup dans -> $restic_repo"
 echo "Faites cd $restic_repo pour y acceder"
 ```  
-
+  
 #### Script restore.sh pour restaurer les fichiers du repo `forgejo_restic_repo` avec restic
 ```bash
 #!/bin/bash
