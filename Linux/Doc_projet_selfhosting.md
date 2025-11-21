@@ -1,17 +1,21 @@
 #  Projet selfhosting
-Sur un serveur Debian 13 (trixie) nous devons installer un logiciel, nous avions choisi le logiciel Mealie qui est un répertoire de recettes de cuisine numérisées. Suite à des problèmes expliqués dans la doc, nous sommes passés sur le logiciel Ente, une plateforme de partage de photos cryptée de bout en bout (alternative à Google Photos, Apple Photos). Enfin, suite à des problèmes également expliqués dans la doc, nous avons dû passer sur le logiciel Forgejo, un serveur de forge git.  
-Projet réalisé par Manon ROUSSELIERE et Meven DESBOIS.  
+**Sur un serveur Debian 13 (trixie), nous devons installer un logiciel. Nous avions choisi le logiciel Mealie qui est un répertoire de recettes de cuisine numérisées.
+Suite à des problèmes expliqués dans la doc, nous sommes passés sur le logiciel Ente, une plateforme de partage de photos cryptée de bout en bout (alternative à Google Photos, Apple Photos).
+Enfin, suite à d'autres problèmes également expliqués dans la doc, nous avons dû passer sur le logiciel Forgejo, un serveur de forge Git.  
+Projet réalisé par Manon ROUSSELIERE et Meven DESBOIS.** 
 
 # 1/ Installation du logiciel
+
 ## Objectifs :
     1. Installer le logiciel sur le serveur, le compiler à partir des sources directement  
     2. Valider le bon fonctionnement du logiciel et de toutes ses fonctionnalités  
     3. Automatiser le processus d’installation 
+    
 ## Jour 1 : 
-### Mealie  
+## Mealie  
 La documentation nous donne uniquement un dockerfile que nous avons essayer de traduire. Voici les étapes que nous avons suivis :  
 
-#### 1/ Instalation des dépendances et clone du projet  
+### 1/ Instalation des dépendances et clone du projet  
 Sur notre serveur Debian, nous avons commencé par installer les dépendances :  
     - python3 avec pip et venv  
     - Node.JS  
@@ -21,12 +25,12 @@ Sur notre serveur Debian, nous avons commencé par installer les dépendances :
 
 Clôner le projet : ```git clone https://github.com/mealie-recipes/mealie/```  
   
-#### 2/ Compiler le front-end de l'application
+### 2/ Compiler le front-end de l'application
 Utilisation de yarn :  
     - ```yarn install``` pour installer les dépendances  
     - ```yarn generate``` pour lancer le script de compilation  
 
-#### 3/ Créer les variables d'environnement 
+### 3/ Créer les variables d'environnement 
 
 ```bash
 export VENV_PATH="/opt/mealie"
@@ -40,7 +44,7 @@ export PIP_DEFAULT_TIMEOUT=100 \
 export VENV_PATH="/opt/mealie"
 ````
 
-#### 4/ Créer un environnement virtuel Python avec venv pour installer uv et uvicorn
+### 4/ Créer un environnement virtuel Python avec venv pour installer uv et uvicorn
 
 ```bash
 # Création de l'environnement
@@ -74,7 +78,8 @@ Les liens entre les différentes images sont gérés par Docker et nous n'avons 
 Le projet était trop difficiles pour nous et nous avons pris la décision de le changer.  
 
 ## Jour 2 :
-### Ente 
+## Ente 
+
 La documentation nous donne les étapes à suivre pour build le projet depuis les sources et installer les dépendances :  
 ```bash
 sudo apt update
@@ -101,7 +106,7 @@ Pour lancer l'image de l'app, nous devons utiliser la commande (avec les droits)
 <img width="654" height="588" alt="image" src="https://github.com/user-attachments/assets/9527cd63-f82e-4781-8be5-a25624b3afee" />  
   
 ## Jour 3 :
-### Installation du serveur de Ente - Museum
+## Installation du serveur de Ente - Museum
 La documentation du site Ente nous donne les étapes à suivre pour l'installation du serveur : 
 ```bash
 # Install Go
@@ -165,27 +170,27 @@ Par la suite en réexécutant le ```./main``` nous avons l'erreur suivante dans 
 L'erreur venait de parcePricingFile, tout les fichiers étaient reliés avec les serveurs de Ente. Puisque le nombre de fichiers à modifier était trop important nous avons donc dû recommencer un nouveau projet.
 
 
-### Forgejo
+## Forgejo
 La documentation nous donne les étapes à suivre installer le projet :
 ```bash
 # Download
 wget https://codeberg.org/forgejo/forgejo/releases/download/v13.0.2/forgejo-13.0.2-linux-amd64
 chmod +x forgejo-13.0.2-linux-amd64
 ```
-#### Verify GPG signature
-#### d'après la doc : should be downloaded every time to make sure the latest version is used.
+### Verify GPG signature
+### d'après la doc : should be downloaded every time to make sure the latest version is used.
 ```bash
 gpg --keyserver keys.openpgp.org --recv EB114F5E6C0DC2BCDD183550A4B61A2DC5923710
 wget https://codeberg.org/forgejo/forgejo/releases/download/v13.0.2/forgejo-13.0.2-linux-amd64.asc
 gpg --verify forgejo-13.0.2-linux-amd64.asc forgejo-13.0.2-linux-amd64
 ```
-#### Copy the dowload Forgejo to /usr/local/bin/
+### Copy the dowload Forgejo to /usr/local/bin/
 ```bash
 sudo cp forgejo-x.y.z-linux-amd64 /usr/local/bin/forgejo
 sudo chmod 755 /usr/local/bin/forgejo
 ```
 
-#### Install git
+### Install git
 ```bash
 sudo apt install git git-lfs
 
@@ -193,7 +198,7 @@ sudo apt install git git-lfs
 sudo adduser --system --shell /bin/bash --gecos 'Git Version Control' \
   --group --disabled-password --home /home/git git
 ```
-#### Create Forgejo directories
+### Create Forgejo directories
 ```bash
 # Forgejo utilise et définit les permissions d’accès de manière appropriée :
 sudo mkdir /var/lib/forgejo
@@ -205,29 +210,29 @@ sudo chown root:git /etc/forgejo && sudo chmod 770 /etc/forgejo
 
 # On ne set up pas de database car on considèrera SQlite suffisant (très bien pour environ 10 users)
 ```
-#### Install systemd service for Forgejo
+### Install systemd service for Forgejo
 ```bash
 sudo wget -O /etc/systemd/system/forgejo.service https://codeberg.org/forgejo/forgejo/raw/branch/forgejo/contrib/systemd/forgejo.service
 sudo systemctl daemon-reload
 sudo systemctl enable forgejo.service
 sudo systemctl start forgejo.service
 ```
-#### Vérifier sur (http://localhost:3000/)
+### Vérifier sur (http://localhost:3000/)
 
-#### Choix des configurations sur la page d'entrée
+### Choix des configurations sur la page d'entrée
 <img width="948" height="758" alt="image" src="https://github.com/user-attachments/assets/14cba57c-ab65-4a54-bbec-174fda0246a2" />
 
-#### Appuyer sur le boutons installer
+### Appuyer sur le boutons installer
 <img width="1885" height="743" alt="image" src="https://github.com/user-attachments/assets/7a989c8b-bab8-4a6b-b95d-c28512e2b00e" />
 
-#### Configuration supplémentaire dans l’app.ini de Forgejo
+### Configuration supplémentaire dans l’app.ini de Forgejo
 
 ```bash
 sudo systemctl stop forgejo.service
 ```
 
 ### Automatiser le processus d'installation
-#### Script Bash a mettre dans un fichier installation.sh 
+### Script Bash a mettre dans un fichier installation.sh 
 ```bash
 #script bash
 # Installation
@@ -266,7 +271,7 @@ sudo systemctl start forgejo.service
 
 # Ouvrir dans le navigateur : http://localhost:3000/
 ```  
-Attention a ne pas oublier d'augmenter les droits du fichiers
+*Attention a ne pas oublier d'augmenter les droits du fichiers*
 ```bash
 chmod +x ./installation.sh
 ```
