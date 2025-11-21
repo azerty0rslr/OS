@@ -7,9 +7,9 @@ Projet réalisé par Manon ROUSSELIERE et Meven DESBOIS.**
 # 1/ Installation du logiciel
 
 ## Objectifs :
-    1. Installer le logiciel sur le serveur, le compiler à partir des sources directement  
-    2. Valider le bon fonctionnement du logiciel et de toutes ses fonctionnalités  
-    3. Automatiser le processus d’installation 
+1. Installer le logiciel sur le serveur, le compiler à partir des sources directement  
+2. Valider le bon fonctionnement du logiciel et de toutes ses fonctionnalités  
+3. Automatiser le processus d’installation 
     
 ## Jour 1 : 
 ## Mealie  
@@ -70,6 +70,7 @@ uv export --no-editable --no-emit-project --extra pgsql --format requirements-tx
     && echo " \\" >> dist/requirements.txt \
     && pip hash dist/mealie-${MEALIE_VERSION}.tar.gz | tail -n1 >> dist/requirements.txt
 ```
+
 Le reste de la compilation se fait en utilisant une wheel dans l'environnement virtuel :  
 C'est un fichier qui contient le code prêt à être compilé et les données associées.  
   
@@ -94,21 +95,21 @@ cd ente/desktop
 yarn install
 yarn build
 ```
+  
 Problème sur les VM, les espaces de stockage sont arrivés à saturation, nous avons donc dû migrer dans le labo et recommencer.  
 Nouveau problème, en arrivant à l'étape ```yarn install``` nous avons les erreurs suivantes : ```Request "https://yarnpkg.com/latest-version" finished with status code 500```, ```Request failed "500 Internal Server Error"```.  
 Le serveur yarn est down. Nous devons donc attendre pour poursuivre notre TP.  
-
+  
 <img width="1495" height="826" alt="image" src="https://github.com/user-attachments/assets/094ba610-4696-4a70-866d-699e75692d4f" />  
-
-Nous avions une erreur avec le yarn install qui essayait d'ouvrir ssh://github.com nous avons donc dû le remplacer par https://github.com
-Pour lancer l'image de l'app, nous devons utiliser la commande (avec les droits) : ```sudo ./root/ente/desktop/dist/ente-1.7.16-beta-x86_64.AppImage -no-sandbox``` pour que la commande soit plus simple d'accès nous l'avons bougé d'endroit avec la commande ```sudo mv ./root/ente/desktop/dist/ente-1.7.16-beta-x86_64.AppImage /home/vboxuser/
-```. Pour lancer l'image de l'app il faut désormais faire : ```./ente-1.7.16-beta-x86_64.AppImage```  
+  
+Nous avions une erreur avec le yarn install qui essayait d'ouvrir ssh://github.com nous avons donc dû le remplacer par https://github.com.  
+Pour lancer l'image de l'app, nous devons utiliser la commande (avec les droits) : ```sudo ./root/ente/desktop/dist/ente-1.7.16-beta-x86_64.AppImage -no-sandbox``` pour que la commande soit plus simple d'accès nous l'avons bougé d'endroit avec la commande ```sudo mv ./root/ente/desktop/dist/ente-1.7.16-beta-x86_64.AppImage /home/vboxuser/```. Pour lancer l'image de l'app il faut désormais faire : ```./ente-1.7.16-beta-x86_64.AppImage```.  
   
 <img width="654" height="588" alt="image" src="https://github.com/user-attachments/assets/9527cd63-f82e-4781-8be5-a25624b3afee" />  
   
 ## Jour 3 :
 ## Installation du serveur de Ente - Museum
-La documentation du site Ente nous donne les étapes à suivre pour l'installation du serveur : 
+La documentation du site Ente nous donne les étapes à suivre pour l'installation du serveur :  
 ```bash
 # Install Go
 sudo apt update && sudo apt upgrade
@@ -149,9 +150,12 @@ cp config/example.yaml ./museum.yaml
 
 # Run the server (http://localhost:8080)
 ./main
-<img width="744" height="459" alt="image" src="https://github.com/user-attachments/assets/b9c903ce-74ba-40fb-9df0-c39db8c3555f" />
 ```
-Nous avons eu un problème pour l'exécution du ```./main```. En effet museum.yaml n'est pas correctement remplis. 
+
+<img width="744" height="459" alt="image" src="https://github.com/user-attachments/assets/b9c903ce-74ba-40fb-9df0-c39db8c3555f" />  
+  
+Nous avons eu un problème pour l'exécution du ```./main```. En effet museum.yaml n'est pas correctement remplis.  
+  
 ```bash
 # Modifier identifiants postgres
 sudo -i -u postgres
@@ -162,36 +166,42 @@ postgres=# ALTER USER postgres PASSWORD 'postgres';
 postgres=# CREATE DATABASE ente_db;
 
 ```
+  
 Et modifier museum.yaml  
+  
 <img width="294" height="124" alt="image" src="https://github.com/user-attachments/assets/34f9bef3-a39e-4a64-91c4-7bebde386722" />  
-
+  
 Par la suite en réexécutant le ```./main``` nous avons l'erreur suivante dans le terminal : ```WARN[0009]main.go:1130 urlSanitizer Unknown API: /```. Et pas d'affichage sur http://localhost:8080/.  
+  
 <img width="738" height="332" alt="image" src="https://github.com/user-attachments/assets/070fd623-0f0d-4fbd-961d-7a05adfac925" />  
   
-L'erreur venait de parcePricingFile, tout les fichiers étaient reliés avec les serveurs de Ente. Puisque le nombre de fichiers à modifier était trop important nous avons donc dû recommencer un nouveau projet.
+L'erreur venait de ```parcePricingFile```, tout les fichiers étaient reliés avec les serveurs de Ente. Puisque le nombre de fichiers à modifier était trop important nous avons donc dû recommencer un nouveau projet.  
 
 
 ## Forgejo
-La documentation nous donne les étapes à suivre installer le projet :
+La documentation nous donne les étapes à suivre installer le projet :  
 ```bash
 # Download
 wget https://codeberg.org/forgejo/forgejo/releases/download/v13.0.2/forgejo-13.0.2-linux-amd64
 chmod +x forgejo-13.0.2-linux-amd64
 ```
-### Verify GPG signature
-### d'après la doc : should be downloaded every time to make sure the latest version is used.
+  
+### Vérifier la signature GPG 
+D'après la doc il faut l'installer à chaque fois pour être sûr qu'on utilise la dernière version.  
+  
 ```bash
 gpg --keyserver keys.openpgp.org --recv EB114F5E6C0DC2BCDD183550A4B61A2DC5923710
 wget https://codeberg.org/forgejo/forgejo/releases/download/v13.0.2/forgejo-13.0.2-linux-amd64.asc
 gpg --verify forgejo-13.0.2-linux-amd64.asc forgejo-13.0.2-linux-amd64
 ```
-### Copy the dowload Forgejo to /usr/local/bin/
+  
+### Copier le téléchargement de Forgejo sur /usr/local/bin/
 ```bash
 sudo cp forgejo-x.y.z-linux-amd64 /usr/local/bin/forgejo
 sudo chmod 755 /usr/local/bin/forgejo
-```
-
-### Install git
+```  
+  
+### Installer git
 ```bash
 sudo apt install git git-lfs
 
@@ -199,7 +209,8 @@ sudo apt install git git-lfs
 sudo adduser --system --shell /bin/bash --gecos 'Git Version Control' \
   --group --disabled-password --home /home/git git
 ```
-### Create Forgejo directories
+  
+### Créer les répertoires pour Forgejo
 ```bash
 # Forgejo utilise et définit les permissions d’accès de manière appropriée :
 sudo mkdir /var/lib/forgejo
@@ -211,28 +222,29 @@ sudo chown root:git /etc/forgejo && sudo chmod 770 /etc/forgejo
 
 # On ne set up pas de database car on considèrera SQlite suffisant (très bien pour environ 10 users)
 ```
-### Install systemd service for Forgejo
+
+### Installer systemd pour Forgejo
 ```bash
 sudo wget -O /etc/systemd/system/forgejo.service https://codeberg.org/forgejo/forgejo/raw/branch/forgejo/contrib/systemd/forgejo.service
 sudo systemctl daemon-reload
 sudo systemctl enable forgejo.service
 sudo systemctl start forgejo.service
 ```
-### Vérifier sur (http://localhost:3000/)
+  
+## Vérifier sur http://localhost:3000/ que tout fonctionne bien
 
 ### Choix des configurations sur la page d'entrée
-<img width="948" height="758" alt="image" src="https://github.com/user-attachments/assets/14cba57c-ab65-4a54-bbec-174fda0246a2" />
-
+<img width="948" height="758" alt="image" src="https://github.com/user-attachments/assets/14cba57c-ab65-4a54-bbec-174fda0246a2" />  
+  
 ### Appuyer sur le boutons installer
-<img width="1885" height="743" alt="image" src="https://github.com/user-attachments/assets/7a989c8b-bab8-4a6b-b95d-c28512e2b00e" />
-
+<img width="1885" height="743" alt="image" src="https://github.com/user-attachments/assets/7a989c8b-bab8-4a6b-b95d-c28512e2b00e" />  
+  
 ### Configuration supplémentaire dans l’app.ini de Forgejo
-
 ```bash
 sudo systemctl stop forgejo.service
-```
+```  
 
-### Automatiser le processus d'installation
+## Automatiser le processus d'installation
 ### Script Bash a mettre dans un fichier installation.sh 
 ```bash
 #script bash
@@ -271,19 +283,20 @@ sudo systemctl enable forgejo.service
 sudo systemctl start forgejo.service
 
 # Ouvrir dans le navigateur : http://localhost:3000/
-```  
-*Attention a ne pas oublier d'augmenter les droits du fichiers*
+```
+  
+*Attention a ne pas oublier d'augmenter les droits du fichiers*  
 ```bash
 chmod +x ./installation.sh
-```
-
+```  
+  
 Puis exécutez le fichier d'installation (exemple ici : installation.sh) de la manière suivante :  
   
 ```bash
 ./installation.sh
 ```  
-
-Enfin, accédez à Forgejo web en ouvrant http://localhost:3000/ dans le moteur de recherche.
+  
+Enfin, accédez à Forgejo web en ouvrant http://localhost:3000/ dans le moteur de recherche.  
 
 
 # 2/ Backup
@@ -293,7 +306,7 @@ Enfin, accédez à Forgejo web en ouvrant http://localhost:3000/ dans le moteur 
     3. En utilisant l’utilitaire rclone , transférez le backup sur un serveur distant (ex: Google Drive)
 
 ### Restic
-Voici le script d'installation de Restic sur Linux :
+Voici le script d'installation de Restic sur Linux :  
 ```bash
 apt-get install restic
 restic version
@@ -312,10 +325,10 @@ restic backup /chemin/vers/les/donnees --exclude "/chemin/vers/exclure"
 restic restore ID-du-snapshot --target /chemin/de/restauration
 # Restaurer (un fichier)
 restic restore ID-du-snapshot --target /chemin/de/restauration --include "/chemin/vers/fichier"
-```
+```  
 
 #### Script backup.sh pour créer un repo de backup avec restic 
-Accessible ensuite dans `/var/backups/forgejo_restic_repo`
+Accessible ensuite dans `/var/backups/forgejo_restic_repo`  
 ```bash
 #!/bin/bash
 
@@ -338,7 +351,7 @@ sudo restic backup "$forgejo_data" "$forgejo_conf" "$sqlite_db" --repo "$restic_
 
 echo "Backup dans -> $restic_repo"
 echo "Faites cd $restic_repo pour y acceder"
-````
+```  
 
 #### Script restore.sh pour restaurer les fichiers du repo `forgejo_restic_repo` avec restic
 ```bash
@@ -357,33 +370,34 @@ sudo restic -r "$restic_repo" restore latest --target /
 
 echo "Restauration dans $forgejo_data et $forgejo_conf"
 echo "Faites cd $forgejo_data ou cd $forgejo_conf pour y acceder"
-````
+```  
 
 ### Cron
 #### Configuration de cron - sauvegarde automatique en utilisant le script backup.sh
-Acceder au fichier crontab
+Accéder au fichier crontab  
 ```bash
 crontab -e
-````
-
-Ajouter l'automatisation
+```
+  
+Ajouter l'automatisation  
 ```bash
 1 * * * * backup.sh >> /var/log/backup_forgejo.log 2>&1
 ```
 
 ### Rclone
-Installation d'après la doc officielle : 
+Installation d'après la doc officielle :  
 ```bash
 sudo -v ; curl https://rclone.org/install.sh | sudo bash
 ```
+  
 ```bash
 # Configuration pour se connecter avec notre compte Google Drive
 rclone config
 
 # Taper "n" puis "Entrée" puis "New remote"
 # Pour plus d'info sur la config voir la doc
-```
-
+```  
+  
 # 3/ Sécurité
 Objectif :
     1. Mettre en place les règles de pare-feux pour n’accepter que le traffic sur le port de votre service  
@@ -405,8 +419,8 @@ sudo iptables -A OUTPUT -p tcp --sport 3000 -j ACCEPT
 # Sauvegarder les règles
 sudo apt install iptables-persistent
 sudo netfilter-persistent save
-```
-
+```  
+  
 Si besoin de supprimer une règle :  
 ```bash
 iptables -D INPUT 2
@@ -414,7 +428,6 @@ iptables -D INPUT 2
 ```
   
 <img width="756" height="508" alt="image" src="https://github.com/user-attachments/assets/457c4665-2dce-4e27-a74c-4f228e60cc8f" />  
-
   
 
 ## Documentations utilisées :
