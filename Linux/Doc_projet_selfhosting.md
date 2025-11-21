@@ -283,7 +283,8 @@ sudo systemctl start forgejo.service
 
 # Ouvrir dans le navigateur : http://localhost:3000/
 ```
-  
+
+Placez-vous où vous avez enregistré installation.sh.  
 *Attention a ne pas oublier d'augmenter les droits du fichiers*  
 ```bash
 chmod +x ./installation.sh
