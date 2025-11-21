@@ -286,14 +286,32 @@ Enfin, accédez à Forgejo web en ouvrant http://localhost:3000/ dans le moteur 
 2. Configurez le logiciel cron pour qu’il exécute ce script toutes les heures  
 3. En utilisant l’utilitaire rclone , transférez le backup sur un serveur distant (ex: Google Drive)
 
-#### Restic
+### Restic
 Voici le script d'installation de Restic sur Linux :
 ```bash
 apt-get install restic
 restic version
 ```
 
+#### Configuration de restic en local
+```bash
+# Configuration
+restic -r /chemin/vers/le/repo init
 
+# Sauvegarde
+restic backup /chemin/vers/les/donnees
+restic backup /chemin/vers/les/donnees --exclude "/chemin/vers/exclure"
+
+# Restaurer (un snapshot)
+restic restore ID-du-snapshot --target /chemin/de/restauration
+# Restaurer (un fichier)
+restic restore ID-du-snapshot --target /chemin/de/restauration --include "/chemin/vers/fichier"
+```
+
+#### Configuration de cron - sauvegarde automatique
+```bash
+0 2 * * * /usr/local/bin/restic backup /chemin/vers/les/donnees >> /var/log/restic_backup.log 2>&1
+```
 # 3/ Sécurité
 1. Mettre en place les règles de pare-feux pour n’accepter que le traffic sur le port de votre service  
 2. Configurez fail2ban pour que les tentatives de bruteforce (ex: login failed 5 fois de suite) soient repérées  
@@ -306,4 +324,4 @@ Ce service de monitoring ne doit pas être exposé au réseau externe. On y acc�
 ### Documentation utilisé 
 
 su - : pour être sudo sans admin  
-restic : https://www.youtube.com/watch?v=5DjNjqLuLSs
+restic : https://blog.stephane-robert.info/docs/cloud/outils/restic et https://restic.readthedocs.io/en/stable/020_installation.html
