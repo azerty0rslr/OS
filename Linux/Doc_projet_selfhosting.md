@@ -4,6 +4,9 @@ Suite à des problèmes expliqués dans la doc, nous sommes passés sur le logic
 Enfin, suite à d'autres problèmes également expliqués dans la doc, nous avons dû passer sur le logiciel Forgejo, un serveur de forge Git.  
 Projet réalisé par Manon ROUSSELIERE et Meven DESBOIS.** 
 
+---
+**Les scripts sont disponibles dans le dossier script du ZIP**
+---
 # 1/ Installation du logiciel
 
 ## Objectifs :
