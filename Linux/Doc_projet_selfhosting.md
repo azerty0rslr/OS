@@ -310,7 +310,7 @@ restic restore ID-du-snapshot --target /chemin/de/restauration --include "/chemi
 
 #### Configuration de cron - sauvegarde automatique
 ```bash
-0 2 * * * /usr/local/bin/restic backup /chemin/vers/les/donnees >> /var/log/restic_backup.log 2>&1
+0 * * * * /usr/local/bin/restic backup /chemin/vers/les/donnees >> /var/log/restic_backup.log 2>&1
 ```
 
 #### Script backup.sh pour créer une backup
