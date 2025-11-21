@@ -312,6 +312,50 @@ restic restore ID-du-snapshot --target /chemin/de/restauration --include "/chemi
 ```bash
 0 2 * * * /usr/local/bin/restic backup /chemin/vers/les/donnees >> /var/log/restic_backup.log 2>&1
 ```
+
+#### Script backup.sh pour créer une backup
+```bash
+#!/bin/bash
+sudo apt install restic
+sudo apt install rsync
+
+forgejo_data="/var/lib/forgejo"
+forgejo_conf="/etc/forgejo"
+backup_dir="/var/backups/forgejo"
+
+mkdir -p "$backup_dir"
+
+# Backup des datas
+sudo rsync -Aavx "$forgejo_data/" "$backup_dir/data/"
+
+# Backup des configs
+sudo rsync -Aavx "$forgejo_conf/" "$backup_dir/conf/"
+
+# Backup SQLite
+sudo cp "$forgejo_data/data/forgejo.db" "$backup_dir/forgejo.db"
+````
+
+#### Script restore.sh pour restaurer les fichiers de la dernière backup
+```bash
+#!/bin/bash
+sudo apt install restic
+sudo apt install rsync
+
+forgejo_data="/var/lib/forgejo"
+forgejo_conf="/etc/forgejo"
+backup_dir="/var/backups/forgejo"
+
+mkdir -p "$backup_dir"
+
+# Backup des datas
+sudo rsync -Aavx "$forgejo_data/" "$backup_dir/data/"
+
+# Backup des configs
+sudo rsync -Aavx "$forgejo_conf/" "$backup_dir/conf/"
+
+# Backup SQLite
+sudo cp "$forgejo_data/data/forgejo.db" "$backup_dir/forgejo.db"
+````
 # 3/ Sécurité
 1. Mettre en place les règles de pare-feux pour n’accepter que le traffic sur le port de votre service  
 2. Configurez fail2ban pour que les tentatives de bruteforce (ex: login failed 5 fois de suite) soient repérées  
