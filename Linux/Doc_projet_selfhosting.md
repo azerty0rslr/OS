@@ -338,6 +338,7 @@ Ce service de monitoring ne doit pas être exposé au réseau externe. On y acc�
 
 ### Documentation utilisé 
 
-su - : pour être sudo sans admin  
-restic : https://blog.stephane-robert.info/docs/cloud/outils/restic et https://restic.readthedocs.io/en/stable/020_installation.html
-pare-feu : https://www.ninjaone.com/fr/blog/comment-configurer-un-pare-feu-linux
+restic : https://blog.stephane-robert.info/docs/cloud/outils/restic et https://restic.readthedocs.io/en/stable/020_installation.html  
+pare-feu : https://www.ninjaone.com/fr/blog/comment-configurer-un-pare-feu-linux  
+  
+Remerciement à Baptiste DUPUIS, Johann GUIMBERTEAU et Timothée CERCUEIL pour leurs aide sur nos différents projets.  
