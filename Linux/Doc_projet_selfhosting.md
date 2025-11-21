@@ -238,10 +238,34 @@ sudo systemctl start forgejo.service
 ### Appuyer sur le boutons installer
 <img width="1885" height="743" alt="image" src="https://github.com/user-attachments/assets/7a989c8b-bab8-4a6b-b95d-c28512e2b00e" />  
   
-### Configuration supplémentaire dans l’app.ini de Forgejo
+### Pour faire des configurations supplémentaires dans l'app.ini de Forgejo
 ```bash
 sudo systemctl stop forgejo.service
-```  
+
+# en tant que root on a modifier /etc/forgejo/app.ini
+nano app.ini
+# Ajout de
+[repository]
+ROOT = /var/lib/forgejo/data/forgejo-repositories
+
+[repository.upload]
+;; max size for files to the repo via web interface, in MB,
+;; defaults to 3 (this sets a limit of about 4GB)
+FILE_MAX_SIZE = 4095
+;; by default 5 files can be uploaded at once, increase to 20
+MAX_FILES = 20
+
+[git.timeout]
+DEFAULT = 3600 ; Git operations default timeout seconds
+MIGRATE = 6000 ; Migrate external repositories timeout seconds
+MIRROR  = 3000 ; Mirror external repositories timeout seconds
+CLONE   = 3000 ; Git clone from internal repositories timeout seconds
+PULL    = 3000 ; Git pull from internal repositories timeout seconds
+GC      = 600  ; Git repository GC timeout seconds
+```
+Des modifications suplémentaire sont disponible sur la doc de forgejo :
+https://forgejo.org/docs/latest/admin/config-cheat-sheet/
+
 
 ## Automatiser le processus d'installation
 ### Script Bash a mettre dans un fichier installation.sh 
