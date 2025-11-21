@@ -301,9 +301,9 @@ Enfin, accédez à Forgejo web en ouvrant http://localhost:3000/ dans le moteur 
 
 # 2/ Backup
 ## Objectifs : 
-    1. En utilisant le logiciel restic , créer un script qui archive les données importante du service  
-    2. Configurez le logiciel cron pour qu’il exécute ce script toutes les heures  
-    3. En utilisant l’utilitaire rclone , transférez le backup sur un serveur distant (ex: Google Drive)
+1. En utilisant le logiciel restic , créer un script qui archive les données importante du service  
+2. Configurez le logiciel cron pour qu’il exécute ce script toutes les heures  
+3. En utilisant l’utilitaire rclone , transférez le backup sur un serveur distant (ex: Google Drive)  
 
 ### Restic
 Voici le script d'installation de Restic sur Linux :  
@@ -399,10 +399,10 @@ rclone config
 ```  
   
 # 3/ Sécurité
-Objectif :
+## Objectifs :
     1. Mettre en place les règles de pare-feux pour n’accepter que le traffic sur le port de votre service  
     2. Configurez fail2ban pour que les tentatives de bruteforce (ex: login failed 5 fois de suite) soient repérées  
-    De même, repérez l’énumération web (lorsqu’un attaquant essaie plein de pages au hasard)
+    De même, repérez l’énumération web (lorsqu’un attaquant essaie plein de pages au hasard)  
 
 ### Mettre des règles de pare-feux
 ```bash
