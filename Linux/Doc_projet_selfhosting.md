@@ -355,8 +355,14 @@ echo "Faites cd $forgejo_data ou cd $forgejo_conf pour y acceder"
 
 ### Cron
 #### Configuration de cron - sauvegarde automatique en utilisant le script backup.sh
+Acceder au fichier crontab
 ```bash
-0 * * * * /usr/local/bin/restic backup /chemin/vers/les/donnees/a/sauvegarder >> /var/log/restic_backup.log 2>&1
+crontab -e
+````
+
+Ajouter l'automatisation
+```bash
+1 * * * * backup.sh >> /var/log/backup_forgejo.log 2>&1
 ```
 
 ### Rclone
