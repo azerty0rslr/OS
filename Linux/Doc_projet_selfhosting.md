@@ -372,6 +372,7 @@ Ajouter l'automatisation
 ### Rclone
 Installation d'après la doc officielle :  
 ```bash
+sudo apt-get install curl
 sudo -v ; curl https://rclone.org/install.sh | sudo bash
 ```
   
