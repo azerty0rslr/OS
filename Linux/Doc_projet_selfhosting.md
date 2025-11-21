@@ -379,6 +379,9 @@ rclone config
 
 ### Mettre des règles de pare-feux
 ```bash
+# On installe iptables
+sudo apt-get install iptables
+
 # Liste des règles en vigueur
 sudo iptables -L -v -n 
 
