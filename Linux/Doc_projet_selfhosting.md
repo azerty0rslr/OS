@@ -288,9 +288,9 @@ Enfin, accédez à Forgejo web en ouvrant http://localhost:3000/ dans le moteur 
 
 # 2/ Backup
 ## Objectifs : 
-1. En utilisant le logiciel restic , créer un script qui archive les données importante du service  
-2. Configurez le logiciel cron pour qu’il exécute ce script toutes les heures  
-3. En utilisant l’utilitaire rclone , transférez le backup sur un serveur distant (ex: Google Drive)
+    1. En utilisant le logiciel restic , créer un script qui archive les données importante du service  
+    2. Configurez le logiciel cron pour qu’il exécute ce script toutes les heures  
+    3. En utilisant l’utilitaire rclone , transférez le backup sur un serveur distant (ex: Google Drive)
 
 ### Restic
 Voici le script d'installation de Restic sur Linux :
@@ -385,9 +385,10 @@ rclone config
 ```
 
 # 3/ Sécurité
-1. Mettre en place les règles de pare-feux pour n’accepter que le traffic sur le port de votre service  
-2. Configurez fail2ban pour que les tentatives de bruteforce (ex: login failed 5 fois de suite) soient repérées  
- De même, repérez l’énumération web (lorsqu’un attaquant essaie plein de pages au hasard)
+Objectif :
+    1. Mettre en place les règles de pare-feux pour n’accepter que le traffic sur le port de votre service  
+    2. Configurez fail2ban pour que les tentatives de bruteforce (ex: login failed 5 fois de suite) soient repérées  
+    De même, repérez l’énumération web (lorsqu’un attaquant essaie plein de pages au hasard)
 
 ### Mettre des règles de pare-feux
 ```bash
@@ -414,12 +415,9 @@ iptables -D INPUT 2
   
 <img width="756" height="508" alt="image" src="https://github.com/user-attachments/assets/457c4665-2dce-4e27-a74c-4f228e60cc8f" />  
 
+  
 
-# 4/ Monitoring
-Mettre en place un outil de monitoring de votre service (ex: Grafana), et exporter des métriques depuis le serveur vers ce service.  
-Ce service de monitoring ne doit pas être exposé au réseau externe. On y accèdera par port forwarding en SSH.  
-
-### Documentation utilisé 
+## Documentations utilisées :
 debian : https://wiki.debian.org/fr/CommandLineInterface  
 mealie : https://github.com/mealie-recipes/mealie/tree/mealie-next/docker  
 ente : https://ente.io/help/self-hosting/  
