@@ -415,9 +415,13 @@ Mettre en place un outil de monitoring de votre service (ex: Grafana), et export
 Ce service de monitoring ne doit pas être exposé au réseau externe. On y accèdera par port forwarding en SSH.  
 
 ### Documentation utilisé 
-
+debian : https://wiki.debian.org/fr/CommandLineInterface
+mealie : https://github.com/mealie-recipes/mealie/tree/mealie-next/docker
+ente : https://ente.io/help/self-hosting/
+forgejo : https://forgejo.org/docs/latest/admin/installation/binary/
 restic : https://blog.stephane-robert.info/docs/cloud/outils/restic et https://restic.readthedocs.io/en/stable/020_installation.html  
 pare-feu : https://www.ninjaone.com/fr/blog/comment-configurer-un-pare-feu-linux  
+cron : https://doc.ubuntu-fr.org/cron
 rclone : https://www.eliastiksofts.com/blog/2024/08/mettre-en-place-une-sauvegarde-de-ses-donnees-avec-restic-et-google-drive et https://rclone.org/downloads  
   
 Remerciement à Baptiste DUPUIS, Johann GUINBERTEAU et Timothée CERCUEIL pour leurs aide sur nos différents projets.  
