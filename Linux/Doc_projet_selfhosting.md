@@ -333,26 +333,23 @@ echo "Backup dans -> $restic_repo"
 echo "Faites cd $restic_repo pour y acceder"
 ````
 
-#### Script restore.sh pour restaurer les fichiers de la dernière backup
+#### Script restore.sh pour restaurer les fichiers du repo `forgejo_restic_repo` avec restic
 ```bash
 #!/bin/bash
-sudo apt install restic
-sudo apt install rsync
 
+sudo apt update
+sudo apt install -y restic
 forgejo_data="/var/lib/forgejo"
 forgejo_conf="/etc/forgejo"
-backup_dir="/var/backups/forgejo"
+restic_repo="/var/backups/forgejo_restic_repo"
 
-mkdir -p "$backup_dir"
+export RESTIC_PASSWORD="votre_mot_de_passe_depot"
 
-# Backup des datas
-sudo rsync -Aavx "$forgejo_data/" "$backup_dir/data/"
+#Restauration de la dernière snapshot
+sudo restic -r "$restic_repo" restore latest --target /
 
-# Backup des configs
-sudo rsync -Aavx "$forgejo_conf/" "$backup_dir/conf/"
-
-# Backup SQLite
-sudo cp "$forgejo_data/data/forgejo.db" "$backup_dir/forgejo.db"
+echo "Restauration dans $forgejo_data et $forgejo_conf"
+echo "Faites cd $forgejo_data ou cd $forgejo_conf pour y acceder"
 ````
 
 ### Cron
