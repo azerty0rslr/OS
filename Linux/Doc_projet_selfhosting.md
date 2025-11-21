@@ -101,9 +101,19 @@ Nouveau problème, en arrivant à l'étape ```yarn install``` nous avons les err
 Le serveur yarn est down. Nous devons donc attendre pour poursuivre notre TP.  
   
 <img width="1495" height="826" alt="image" src="https://github.com/user-attachments/assets/094ba610-4696-4a70-866d-699e75692d4f" />  
-  
-Nous avions une erreur avec le yarn install qui essayait d'ouvrir ssh://github.com nous avons donc dû le remplacer par https://github.com.  
-Pour lancer l'image de l'app, nous devons utiliser la commande (avec les droits) : ```sudo ./root/ente/desktop/dist/ente-1.7.16-beta-x86_64.AppImage -no-sandbox``` pour que la commande soit plus simple d'accès nous l'avons bougé d'endroit avec la commande ```sudo mv ./root/ente/desktop/dist/ente-1.7.16-beta-x86_64.AppImage /home/vboxuser/```. Pour lancer l'image de l'app il faut désormais faire : ```./ente-1.7.16-beta-x86_64.AppImage```.  
+
+### Image de Ente
+La doc de Ente nous proposait de lancer une image de l'app puisque celle-ci fonctionne avec les serveurs de Ente :
+```bash
+# Lancer l'image avec les droits
+sudo ./root/ente/desktop/dist/ente-1.7.16-beta-x86_64.AppImage -no-sandbox
+
+# Déplacer la commande pour qu'elle soit plus simple d'accès
+sudo mv ./root/ente/desktop/dist/ente-1.7.16-beta-x86_64.AppImage /home/vboxuser/
+
+# Lancer l'image de l'app au plus simple
+./ente-1.7.16-beta-x86_64.AppImage
+``` 
   
 <img width="654" height="588" alt="image" src="https://github.com/user-attachments/assets/9527cd63-f82e-4781-8be5-a25624b3afee" />  
   
