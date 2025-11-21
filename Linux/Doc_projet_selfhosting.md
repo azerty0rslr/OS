@@ -309,6 +309,7 @@ restic restore ID-du-snapshot --target /chemin/de/restauration --include "/chemi
 ```
 
 #### Script backup.sh pour créer un repo de backup avec restic 
+Accessible ensuite dans `/var/backups/forgejo_restic_repo`
 ```bash
 #!/bin/bash
 
@@ -353,7 +354,7 @@ echo "Faites cd $forgejo_data ou cd $forgejo_conf pour y acceder"
 ````
 
 ### Cron
-#### Configuration de cron - sauvegarde automatique
+#### Configuration de cron - sauvegarde automatique en utilisant le script backup.sh
 ```bash
 0 * * * * /usr/local/bin/restic backup /chemin/vers/les/donnees/a/sauvegarder >> /var/log/restic_backup.log 2>&1
 ```
