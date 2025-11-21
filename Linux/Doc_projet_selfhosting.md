@@ -308,12 +308,6 @@ restic restore ID-du-snapshot --target /chemin/de/restauration
 restic restore ID-du-snapshot --target /chemin/de/restauration --include "/chemin/vers/fichier"
 ```
 
-### Cron
-#### Configuration de cron - sauvegarde automatique
-```bash
-0 * * * * /usr/local/bin/restic backup /chemin/vers/les/donnees/a/sauvegarder >> /var/log/restic_backup.log 2>&1
-```
-
 #### Script backup.sh pour créer une backup
 ```bash
 #!/bin/bash
@@ -357,6 +351,12 @@ sudo rsync -Aavx "$forgejo_conf/" "$backup_dir/conf/"
 # Backup SQLite
 sudo cp "$forgejo_data/data/forgejo.db" "$backup_dir/forgejo.db"
 ````
+
+### Cron
+#### Configuration de cron - sauvegarde automatique
+```bash
+0 * * * * /usr/local/bin/restic backup /chemin/vers/les/donnees/a/sauvegarder >> /var/log/restic_backup.log 2>&1
+```
 
 ### Rclone
 Installation d'après la doc officielle : 
