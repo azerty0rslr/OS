@@ -394,17 +394,7 @@ rclone config
 sudo apt-get install iptables
 
 # Liste des règles en vigueur
-sudo iptables -L -v -n 
-
-# Pour supprimer par défaut tout le trafic entrant :
-sudo iptables -P INPUT DROP
-
-# Pour supprimer par défaut tout le trafic sortant :
-sudo iptables -P OUTPUT DROP
-
-# Pour autoriser le trafic du port 80 :
-sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-sudo iptables -A OUTPUT -p tcp --sport 80 -j ACCEPT
+sudo iptables -L
 
 # Pour autoriser le trafic du port 3000 (Forgejo) :
 sudo iptables -A INPUT -p tcp --dport 3000 -j ACCEPT
@@ -414,6 +404,15 @@ sudo iptables -A OUTPUT -p tcp --sport 3000 -j ACCEPT
 sudo apt install iptables-persistent
 sudo netfilter-persistent save
 ```
+
+Si besoin de supprimer une règle :  
+```bash
+iptables -D INPUT 2
+# Je supprime la deuxième ligne d'INPUT
+```
+  
+<img width="756" height="508" alt="image" src="https://github.com/user-attachments/assets/457c4665-2dce-4e27-a74c-4f228e60cc8f" />  
+
 
 # 4/ Monitoring
 Mettre en place un outil de monitoring de votre service (ex: Grafana), et exporter des métriques depuis le serveur vers ce service.  
