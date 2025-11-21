@@ -70,12 +70,13 @@ uv export --no-editable --no-emit-project --extra pgsql --format requirements-tx
     && echo " \\" >> dist/requirements.txt \
     && pip hash dist/mealie-${MEALIE_VERSION}.tar.gz | tail -n1 >> dist/requirements.txt
 ```
-Le reste de la compilation se fait en utilansant une wheel dans l'environnement virtuel :  
-C'est un fichier qui contient le code prêt a être compiler et les données associées.  
+Le reste de la compilation se fait en utilisant une wheel dans l'environnement virtuel :  
+C'est un fichier qui contient le code prêt à être compilé et les données associées.  
   
 La compilation ne fonctionne pas car le dockerfile a plusieurs stages qui créent des images différentes pour les différentes étapes de compilation et alléger l'application à la fin de la compilation.  
 Les liens entre les différentes images sont gérés par Docker et nous n'avons pas réussi à tous les comprendre.  
-Le projet était trop difficiles pour nous et nous avons pris la décision de le changer.  
+Le projet était trop difficile pour nous et nous avons pris la décision de le changer.  
+
 
 ## Jour 2 :
 ## Ente 
