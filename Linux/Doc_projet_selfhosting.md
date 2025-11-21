@@ -315,7 +315,22 @@ restic restore ID-du-snapshot --target /chemin/de/restauration --include "/chemi
 # 3/ Sécurité
 1. Mettre en place les règles de pare-feux pour n’accepter que le traffic sur le port de votre service  
 2. Configurez fail2ban pour que les tentatives de bruteforce (ex: login failed 5 fois de suite) soient repérées  
- De même, repérez l’énumération web (lorsqu’un attaquant essaie plein de pages au hasard)  
+ De même, repérez l’énumération web (lorsqu’un attaquant essaie plein de pages au hasard)
+
+### Mettre des règles de pare-feux
+```bash
+# Liste des règles en vigueur
+sudo iptables -L -v -n 
+
+# Pour supprimer par défaut tout le trafic entrant :
+sudo iptables -P INPUT DROP
+
+# Pour supprimer par défaut tout le trafic sortant :
+sudo iptables -P OUTPUT DROP
+
+# Pour autoriser le trafic SSH entrant sur le port 22 :
+sudo iptables -A INPUT -p tcp –dport 22 -j ACCEPT
+```
 
 # 4/ Monitoring
 Mettre en place un outil de monitoring de votre service (ex: Grafana), et exporter des métriques depuis le serveur vers ce service.  
@@ -325,3 +340,4 @@ Ce service de monitoring ne doit pas être exposé au réseau externe. On y acc�
 
 su - : pour être sudo sans admin  
 restic : https://blog.stephane-robert.info/docs/cloud/outils/restic et https://restic.readthedocs.io/en/stable/020_installation.html
+pare-feu : https://www.ninjaone.com/fr/blog/comment-configurer-un-pare-feu-linux
