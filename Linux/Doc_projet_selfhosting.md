@@ -308,26 +308,29 @@ restic restore ID-du-snapshot --target /chemin/de/restauration
 restic restore ID-du-snapshot --target /chemin/de/restauration --include "/chemin/vers/fichier"
 ```
 
-#### Script backup.sh pour créer une backup
+#### Script backup.sh pour créer un repo de backup avec restic 
 ```bash
 #!/bin/bash
-sudo apt install restic
-sudo apt install rsync
 
+sudo apt update
+sudo apt install -y restic
 forgejo_data="/var/lib/forgejo"
 forgejo_conf="/etc/forgejo"
-backup_dir="/var/backups/forgejo"
+sqlite_db="/var/lib/forgejo/data/forgejo.db"
+restic_repo="/var/backups/forgejo_restic_repo"
 
-mkdir -p "$backup_dir"
+export RESTIC_PASSWORD="votre_mot_de_passe_depot"
 
-# Backup des datas
-sudo rsync -Aavx "$forgejo_data/" "$backup_dir/data/"
+# Si le repo n'existe pas 
+if [ ! -d "$restic_repo" ]; then
+    sudo restic init --repo "$restic_repo"
+fi
 
-# Backup des configs
-sudo rsync -Aavx "$forgejo_conf/" "$backup_dir/conf/"
+# Lancer la sauvegarde
+sudo restic backup "$forgejo_data" "$forgejo_conf" "$sqlite_db" --repo "$restic_repo"
 
-# Backup SQLite
-sudo cp "$forgejo_data/data/forgejo.db" "$backup_dir/forgejo.db"
+echo "Backup dans -> $restic_repo"
+echo "Faites cd $restic_repo pour y acceder"
 ````
 
 #### Script restore.sh pour restaurer les fichiers de la dernière backup
