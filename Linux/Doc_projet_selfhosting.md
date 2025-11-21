@@ -391,8 +391,17 @@ sudo iptables -P INPUT DROP
 # Pour supprimer par défaut tout le trafic sortant :
 sudo iptables -P OUTPUT DROP
 
-# Pour autoriser le trafic SSH entrant sur le port 22 :
-sudo iptables -A INPUT -p tcp –dport 22 -j ACCEPT
+# Pour autoriser le trafic du port 80 :
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -A OUTPUT -p tcp --sport 80 -j ACCEPT
+
+# Pour autoriser le trafic du port 3000 (Forgejo) :
+sudo iptables -A INPUT -p tcp --dport 3000 -j ACCEPT
+sudo iptables -A OUTPUT -p tcp --sport 3000 -j ACCEPT
+
+# Sauvegarder les règles
+sudo apt install iptables-persistent
+sudo netfilter-persistent save
 ```
 
 # 4/ Monitoring
