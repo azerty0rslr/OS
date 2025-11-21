@@ -308,9 +308,10 @@ restic restore ID-du-snapshot --target /chemin/de/restauration
 restic restore ID-du-snapshot --target /chemin/de/restauration --include "/chemin/vers/fichier"
 ```
 
+### Cron
 #### Configuration de cron - sauvegarde automatique
 ```bash
-0 * * * * /usr/local/bin/restic backup /chemin/vers/les/donnees >> /var/log/restic_backup.log 2>&1
+0 * * * * /usr/local/bin/restic backup /chemin/vers/les/donnees/a/sauvegarder >> /var/log/restic_backup.log 2>&1
 ```
 
 #### Script backup.sh pour créer une backup
@@ -356,6 +357,20 @@ sudo rsync -Aavx "$forgejo_conf/" "$backup_dir/conf/"
 # Backup SQLite
 sudo cp "$forgejo_data/data/forgejo.db" "$backup_dir/forgejo.db"
 ````
+
+### Rclone
+Installation d'après la doc officielle : 
+```bash
+sudo -v ; curl https://rclone.org/install.sh | sudo bash
+```
+```bash
+# Configuration pour se connecter avec notre compte Google Drive
+rclone config
+
+# Taper "n" puis "Entrée" puis "New remote"
+# Pour plus d'info sur la config voir la doc
+```
+
 # 3/ Sécurité
 1. Mettre en place les règles de pare-feux pour n’accepter que le traffic sur le port de votre service  
 2. Configurez fail2ban pour que les tentatives de bruteforce (ex: login failed 5 fois de suite) soient repérées  
@@ -384,5 +399,6 @@ Ce service de monitoring ne doit pas être exposé au réseau externe. On y acc�
 
 restic : https://blog.stephane-robert.info/docs/cloud/outils/restic et https://restic.readthedocs.io/en/stable/020_installation.html  
 pare-feu : https://www.ninjaone.com/fr/blog/comment-configurer-un-pare-feu-linux  
+rclone : https://www.eliastiksofts.com/blog/2024/08/mettre-en-place-une-sauvegarde-de-ses-donnees-avec-restic-et-google-drive et https://rclone.org/downloads  
   
 Remerciement à Baptiste DUPUIS, Johann GUINBERTEAU et Timothée CERCUEIL pour leurs aide sur nos différents projets.  
