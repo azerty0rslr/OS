@@ -405,6 +405,11 @@ sudo iptables -A OUTPUT -p tcp --sport 3000 -j ACCEPT
 sudo apt install iptables-persistent
 sudo netfilter-persistent save
 ```  
+
+Pour vérifier que les règles de pare-feu sont bien en vigueur :  
+```bash
+sudo iptables -L
+```  
   
 Si besoin de supprimer une règle :  
 ```bash
