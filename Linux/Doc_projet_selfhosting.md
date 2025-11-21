@@ -151,11 +151,10 @@ cp config/example.yaml ./museum.yaml
 # Run the server (http://localhost:8080)
 ./main
 ```
+Nous avons eu un problème pour l'exécution du ```./main```. En effet museum.yaml n'est pas correctement remplis.  
 
 <img width="744" height="459" alt="image" src="https://github.com/user-attachments/assets/b9c903ce-74ba-40fb-9df0-c39db8c3555f" />  
-  
-Nous avons eu un problème pour l'exécution du ```./main```. En effet museum.yaml n'est pas correctement remplis.  
-  
+    
 ```bash
 # Modifier identifiants postgres
 sudo -i -u postgres
