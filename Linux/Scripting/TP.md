@@ -30,22 +30,57 @@ MOST_SERVED=$(echo "$CHEM" | sort | uniq -c | sort -nr)
 
 
 # 4/ MOST_SERVED et les extensions
-# écraser MOST_SERVED avec une boucle pour retirer les lignes avec les extensions de la liste (grep -v) (PAS QUI CONTIENNENT CE MOT)
+# écraser MOST_SERVED avec une boucle pour retirer les lignes avec les extensions de la liste (grep -v) (PAS QUI CONTIENNENT CE MOT donc $ à la fin pour stipuler fin de ligne)
 LIST=("png" "css" "ico" "js")
 for ext in "${LIST[@]}"; do
-	MOST_SERVED=$(echo "$MOST_SERVED" | grep -v "\.{ext}")
+	MOST_SERVED=$(echo "$MOST_SERVED" | grep -v "\.${ext}$")
 done
 
 echo $MOST_SERVED
 
-```
+# 5/ Requêtes suppérieures à 10
+> most_served.txt
+
+# read -r pour lire MOST_SERVED SANS interpréter les /
+echo "$MOST_SERVED" | while read -r nombre che ; do
+	# condition > 10 apparission
+	if [[ "$nombre" -gt 10 ]]; then
+		# on mets le résultat à part dans le bon format
+		echo "${che} : ${nombre}" >> most_served.txt
+	fi
+done
 
 
-104.28.255.131 - - [31/Jul/2024:23:28:00 +0200] "GET /rss HTTP/1.1" 200 2237 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Thunderbird/102.15.1"
-5.75.242.127 - - [31/Jul/2024:23:32:17 +0200] "GET /rss HTTP/1.1" 200 2237 "-" "Mozilla/5.0 (compatible; Miniflux/2.1.4; +https://miniflux.app)"
-47.128.42.165 - - [31/Jul/2024:23:32:45 +0200] "GET /tag/blog HTTP/1.1" 200 874 "-" "Mozilla/5.0 (compatible; Bytespider; spider-feedback@bytedance.com) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.0.0 Safari/537.36"
-47.128.42.165 - - [31/Jul/2024:23:32:45 +0200] "GET /static/logo_micro.png HTTP/1.1" 200 84314 "https://litchipi.site/tag/blog" "Mozilla/5.0 (compatible; Bytespider; spider-feedback@bytedance.com) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.0.0 Safari/537.36"
-47.128.42.165 - - [31/Jul/2024:23:32:46 +0200] "GET /static/logo.png HTTP/1.1" 200 14534 "https://litchipi.site/tag/blog" "Mozilla/5.0 (compatible; Bytespider; spider-feedback@bytedance.com) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.0.0 Safari/537.36"
-202.171.146.81 - - [31/Jul/2024:23:49:53 +0200] "GET /rss HTTP/1.1" 200 2500 "-" "URL/Emacs Emacs/29.3 (X11; x86_64-pc-linux-gnu)"
-104.28.223.131 - - [31/Jul/2024:23:59:00 +0200] "GET /rss HTTP/1.1" 200 2237 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Thunderbird/102.15.1"
+# 6/ Blacklister des IP du fichier NGINX_ACCESS_LOG
+> ip_blacklist.txt
+
+# ceux qu'il faut trouver et blacklist
+LIST_INTERDITE=("admin" "debug" "login" ".git")
+
+for i in "${LIST_INTERDITE[@]}"; do
+	# stock de ceux qui correspondent
+	STOCK=$(echo "$NGINX_ACCESS_LOG" | grep -i "$i")
+	
+	# récupérer l'ip (en 1) pour le stocker dans le fichier
+	IP=$(echo "$STOCK" | awk '{print $1}')
+	
+	# stocker dans fichier
+	echo "$IP" >> ip_blacklist.txt
+done
+
+# 7/ Blacklister les méthodes différentes de GET, POST, HEAD
+# retirer les lignes qui sont différentes de GET, POST, HEAD
+DIFFERENT=$(echo "$NGINX_ACCESS_LOG" | grep -v "GET POST HEAD")
+
+# prendre les IP
+IP_DIFF=$(echo "$DIFFERENT" | awk '{print $1}')
+
+# ajouter au fichier
+echo "$IP_DIFF" >> ip_blacklist.txt
+
+# trier et supprimer les doubles
+sort ip_blacklist.txt > ip_blacklist.txt
+uniq ip_blacklist.txt > ip_blacklist.txt
+
+```x64; rv:102.0) Gecko/20100101 Thunderbird/102.15.1"
 
