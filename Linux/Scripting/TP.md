@@ -82,5 +82,4 @@ echo "$IP_DIFF" >> ip_blacklist.txt
 sort ip_blacklist.txt > ip_blacklist.txt
 uniq ip_blacklist.txt > ip_blacklist.txt
 
-```x64; rv:102.0) Gecko/20100101 Thunderbird/102.15.1"
-
+```
