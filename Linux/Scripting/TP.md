@@ -59,7 +59,7 @@ LIST_INTERDITE=("admin" "debug" "login" ".git")
 
 for i in "${LIST_INTERDITE[@]}"; do
 	# stock de ceux qui correspondent
-	STOCK=$(echo "$NGINX_ACCESS_LOG" | grep -i "$i")
+	STOCK=$(grep -i "$i" "$NGINX_ACCESS_LOG")
 	
 	# récupérer l'ip (en 1) pour le stocker dans le fichier
 	IP=$(echo "$STOCK" | awk '{print $1}')
@@ -70,7 +70,7 @@ done
 
 # 7/ Blacklister les méthodes différentes de GET, POST, HEAD
 # retirer les lignes qui sont différentes de GET, POST, HEAD
-DIFFERENT=$(echo "$NGINX_ACCESS_LOG" | grep -v "GET POST HEAD")
+DIFFERENT=$(grep -v '"(GET|POST|HEAD) ' "$NGINX_ACCESS_LOG")
 
 # prendre les IP
 IP_DIFF=$(echo "$DIFFERENT" | awk '{print $1}')
@@ -79,7 +79,8 @@ IP_DIFF=$(echo "$DIFFERENT" | awk '{print $1}')
 echo "$IP_DIFF" >> ip_blacklist.txt
 
 # trier et supprimer les doubles
-sort ip_blacklist.txt > ip_blacklist.txt
-uniq ip_blacklist.txt > ip_blacklist.txt
+sort ip_blacklist.txt > ip_tri.txt
+uniq ip_tri.txt > ip_blacklist.txt
+
 
 ```
