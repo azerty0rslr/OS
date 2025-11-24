@@ -1,3 +1,4 @@
+```bash
 # 1/ Condition 3 arguments renseignés
 
 # si le nombre d'argument renseigné est différent de 3 - erreur
@@ -37,3 +38,5 @@ echo $MOST_SERVED
 
 
 # 4/ 
+
+```
