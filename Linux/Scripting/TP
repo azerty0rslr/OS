@@ -1,1 +1,39 @@
+# 1/ Condition 3 arguments renseignés
 
+# si le nombre d'argument renseigné est différent de 3 - erreur
+if [[ "$#" -ne 3 ]]; then
+	echo "Usage : $0 <actix_log> <nginx_access_log> <nginx_error_log>"; 
+	exit 1; 
+fi
+
+
+# 2/ Initialiser une variable avec le chemin absolu du fichier
+
+# on a donc les 3 arguments, on récupère leurs chemins absolus
+	ACTIX_LOG=$(realpath -s $1)
+	NGINX_ACCESS_LOG=$(realpath -s $2)
+	NGINX_ERROR_LOG=$(realpath -s $3)
+	echo $ACTIX_LOG $NGINX_ACCESS_LOG $NGINX_ERROR_LOG
+
+
+# 3/ ACTIX_LOG et les requêtes
+
+# récupère les requête GET avec status 200
+REQ=$(grep "200 | GET" $ACTIX_LOG)
+
+# parmis ces requêtes n'afficher QUE le chemin
+>fichier.txt
+echo "$REQ" | awk '{print $7}' > fichier.txt
+
+# tri par ordre alphabétique et compter le nombre de lignes UNIQUES
+sort fichier.txt > tri.txt
+uniq tri.txt > solo.txt
+COUNT=$(wc -l solo.txt)
+echo $COUNT
+
+# tri par nombre d'occurence et enregistrer résultat dans MOST_SERVED
+MOST_SERVED=$(uniq tri.txt -c |sort)
+echo $MOST_SERVED
+
+
+# 4/ 
