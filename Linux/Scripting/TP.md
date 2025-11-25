@@ -18,7 +18,6 @@ echo $ACTIX_LOG $NGINX_ACCESS_LOG $NGINX_ERROR_LOG
 
 
 # 3/ ACTIX_LOG et les requêtes
-
 # récupère les requête GET avec status 200 (grep)
 REQ=$(grep "200 | GET" $ACTIX_LOG)
 
@@ -30,24 +29,24 @@ MOST_SERVED=$(echo "$CHEM" | sort | uniq -c | sort -nr)
 
 
 # 4/ MOST_SERVED et les extensions
-# écraser MOST_SERVED avec une boucle pour retirer les lignes avec les extensions de la liste (grep -v) (PAS QUI CONTIENNENT CE MOT donc $ à la fin pour stipuler fin de ligne)
+# écraser MOST_SERVED avec une boucle pour retirer les lignes avec les extensions de la liste (grep -v) (PAS QUI CONTIENNENT CE MOT donc \.$ à la fin pour stipuler fin de ligne)
 LIST=("png" "css" "ico" "js")
 for ext in "${LIST[@]}"; do
 	MOST_SERVED=$(echo "$MOST_SERVED" | grep -v "\.${ext}$")
 done
 
-echo $MOST_SERVED
 
 # 5/ Requêtes suppérieures à 10
 > most_served.txt
 
 # read -r pour lire MOST_SERVED SANS interpréter les /
-echo "$MOST_SERVED" | while read -r nombre che ; do
+echo "$MOST_SERVED" | while read -r nombre chemin ; do
 	# condition > 10 apparission
 	if [[ "$nombre" -gt 10 ]]; then
 		# on mets le résultat à part dans le bon format
-		echo "${che} : ${nombre}" >> most_served.txt
+		echo "$chemin : $nombre" >> most_served.txt
 	fi
+	
 done
 
 
@@ -59,21 +58,22 @@ LIST_INTERDITE=("admin" "debug" "login" ".git")
 
 for i in "${LIST_INTERDITE[@]}"; do
 	# stock de ceux qui correspondent
-	STOCK=$(grep -i "$i" "$NGINX_ACCESS_LOG")
-	
+	STOCK=$(grep "$i" "$NGINX_ACCESS_LOG")
 	# récupérer l'ip (en 1) pour le stocker dans le fichier
 	IP=$(echo "$STOCK" | awk '{print $1}')
-	
 	# stocker dans fichier
 	echo "$IP" >> ip_blacklist.txt
 done
 
-# 7/ Blacklister les méthodes différentes de GET, POST, HEAD
-# retirer les lignes qui sont différentes de GET, POST, HEAD
-DIFFERENT=$(grep -v '"(GET|POST|HEAD) ' "$NGINX_ACCESS_LOG")
 
-# prendre les IP
-IP_DIFF=$(echo "$DIFFERENT" | awk '{print $1}')
+# 7/ Blacklister les méthodes différentes de GET, POST, HEAD
+# retire les lignes GET POST HEAD
+NGINX_ACCESS=$(grep -v "GET" "$NGINX_ACCESS_LOG")
+NGINX_ACCESS=$(echo "$NGINX_ACCESS" | grep -v "POST")
+NGINX_ACCESS=$(echo "$NGINX_ACCESS" | grep -v "HEAD")
+
+# prendre les IP de ce qui reste (donc plus de GET, POST, HEAD)
+IP_DIFF=$(echo "$NGINX_ACCESS" | awk '{print $1}')
 
 # ajouter au fichier
 echo "$IP_DIFF" >> ip_blacklist.txt
@@ -83,4 +83,16 @@ sort ip_blacklist.txt > ip_tri.txt
 uniq ip_tri.txt > ip_blacklist.txt
 
 
+#8/ Repérer les downtimes
+# faire grep pour trouver les erreurs nommées 
+ERR=$(grep "connect() failed (111: Unknown error) while connecting to upstream" "$NGINX_ERROR_LOG") 
+	
+# récupérer la date et l'heure et les mettres au bon format dans variable DOWNTIME
+DOWNTIME=$(echo "$ERR" | awk '{print $1 " " $2 " DOWN"}')
+	
+# mettre au bon format (date heure DOWN)
+echo $DOWNTIME
+
+
+# 9/ Récupérer la date de ACTIX_LOG
 ```
