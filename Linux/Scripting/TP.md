@@ -87,12 +87,20 @@ uniq ip_tri.txt > ip_blacklist.txt
 # faire grep pour trouver les erreurs nommées 
 ERR=$(grep "connect() failed (111: Unknown error) while connecting to upstream" "$NGINX_ERROR_LOG") 
 	
-# récupérer la date et l'heure et les mettres au bon format dans variable DOWNTIME
+# récupérer la date et l'heure et les mettres au bon format (date heure DOWN) dans une variable DOWNTIME
 DOWNTIME=$(echo "$ERR" | awk '{print $1 " " $2 " DOWN"}')
-	
-# mettre au bon format (date heure DOWN)
-echo $DOWNTIME
 
 
 # 9/ Récupérer la date de ACTIX_LOG
+# dans ACTIX_LOG récupérer la partie liée à la date
+DATE=$(awk '{print $1}' "$ACTIX_LOG")
+
+# grâce aux regex et à la commande sed -nr "s+<votre regex ici>.*+<format>+p"
+DATE_REGEX="([0-9]{4})-([0-9]{2})-([0-9]{2})"
+TIME_REGEX="([0-9]{2}):([0-9]{2}):([0-9]{2})"
+
+# transformer la date au format YYYY/MM/DD H:M:S UP et enregistrer dans variable UPTIME
+# Pas le temps de finir je n'ai que la partie avec l'année
+UPTIME=$(echo "$DATE" | sed -nr "s+$DATE_REGEX.*+/\1/\2/\3/+p")
+echo $UPTIME
 ```
