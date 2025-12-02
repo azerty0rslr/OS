@@ -8,4 +8,6 @@ Dans le DNS :
 - zone de recherche inversée : interroger le serveur DNS avec une IP pour avoir un nom de domaine
 
 Full Qualified Domaine Name : le nom de domaine avec un . à la fin (google.com.)  
-On achète (location) les noms de domaines à l'Affaic, qui utilise des sous-traitants (gandi, OVH ...) ayant des DNS.
+On achète (location) les noms de domaines à l'Afnic, qui utilise des sous-traitants (gandi, OVH ...) ayant des DNS.  
+who.is récupère les infos liées au nom de domaine.  
+DNS menteurs : permets de bloquer des sites  
