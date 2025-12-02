@@ -22,3 +22,13 @@ Faire suivant jusqu'à atteindre cette page
 Puis ajouter les services sélectionnés et faire suivant.  
 <img width="801" height="572" alt="image" src="https://github.com/user-attachments/assets/7042967d-dec5-4ad5-a210-2b217e7d2fd1" />  
 Continuer jusqu'à l'installation.
+
+<img width="785" height="582" alt="image" src="https://github.com/user-attachments/assets/7fccb551-153a-4f33-8e92-24ec448459f0" />
+Puis continuer
+<img width="786" height="583" alt="image" src="https://github.com/user-attachments/assets/b982c548-b9ea-445a-9d58-b1924d5d4449" />
+Laissez les chemins par défaut : 
+<img width="786" height="582" alt="image" src="https://github.com/user-attachments/assets/e3ce81c1-c3be-4b82-a2b3-7637330b6ac0" />
+Puis continuez jusqu'à l'installation.
+Le script généré est le suivant : 
+<img width="770" height="415" alt="image" src="https://github.com/user-attachments/assets/2991fedc-c0fe-44c7-860a-c3ac45b8be07" />  
+
