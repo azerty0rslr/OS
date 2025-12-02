@@ -23,6 +23,7 @@ Puis ajouter les services sélectionnés et faire suivant.
 <img width="801" height="572" alt="image" src="https://github.com/user-attachments/assets/7042967d-dec5-4ad5-a210-2b217e7d2fd1" />  
 Continuer jusqu'à l'installation.
 
+NE PAS OUBLIER DE CONFIGURER UN MOT DE PASSE POUR LA SESSION ADMINISTRATEUR.
 <img width="785" height="582" alt="image" src="https://github.com/user-attachments/assets/7fccb551-153a-4f33-8e92-24ec448459f0" />
 Puis continuer
 <img width="786" height="583" alt="image" src="https://github.com/user-attachments/assets/b982c548-b9ea-445a-9d58-b1924d5d4449" />
@@ -31,4 +32,15 @@ Laissez les chemins par défaut :
 Puis continuez jusqu'à l'installation.
 Le script généré est le suivant : 
 <img width="770" height="415" alt="image" src="https://github.com/user-attachments/assets/2991fedc-c0fe-44c7-860a-c3ac45b8be07" />  
+
+Doc très utile : https://www.it-connect.fr/creer-un-domaine-ad-avec-windows-server-2016/
+
+## WSUS
+Windows Server Update Services : outils de gestion de mises à jour - centralisé, moins de bande passante, garanti la conformité et sécurité des systèmes.
+Récupère les Maj depuis microsoft Update, les admins approuvent ou non ces mises à jour. 
+WSUS est un rôle, même début que l'active directory.
+<img width="791" height="567" alt="image" src="https://github.com/user-attachments/assets/12fab298-1276-471b-af43-632c678aa54f" />  
+On le stock dans un dossier précis pour qu'il soit localisé : 
+<img width="792" height="567" alt="image" src="https://github.com/user-attachments/assets/2c0d20ad-a887-489e-b059-a65f8a7b501b" />  
+
 
