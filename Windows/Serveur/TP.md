@@ -15,3 +15,10 @@ Faire propriétés de Protocole Internet version 4
 <img width="415" height="466" alt="image" src="https://github.com/user-attachments/assets/df3e18c5-65d9-4f54-bc92-f34e039a7274" />  
 
 ### Installation AD
+Faire ajouter des rôles et fonctionnalités
+<img width="1032" height="773" alt="image" src="https://github.com/user-attachments/assets/61da4286-c62e-4606-a0cb-1fe4268b695d" />  
+Faire suivant jusqu'à atteindre cette page  
+<img width="792" height="558" alt="image" src="https://github.com/user-attachments/assets/aba2d97e-837f-4c22-ad51-96132e5e6e6a" />  
+Puis ajouter les services sélectionnés et faire suivant.  
+<img width="801" height="572" alt="image" src="https://github.com/user-attachments/assets/7042967d-dec5-4ad5-a210-2b217e7d2fd1" />  
+Continuer jusqu'à l'installation.
