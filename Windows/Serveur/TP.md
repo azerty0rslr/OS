@@ -42,5 +42,9 @@ WSUS est un rôle, même début que l'active directory.
 <img width="791" height="567" alt="image" src="https://github.com/user-attachments/assets/12fab298-1276-471b-af43-632c678aa54f" />  
 On le stock dans un dossier précis pour qu'il soit localisé : 
 <img width="792" height="567" alt="image" src="https://github.com/user-attachments/assets/2c0d20ad-a887-489e-b059-a65f8a7b501b" />  
+On installe WSUS puis on redémarre. Pour vérifier qu'il a bien été installer vérifier dans Outils -> Service WSUS
+<img width="751" height="557" alt="image" src="https://github.com/user-attachments/assets/dd178129-20a5-420f-8bfc-d4c59713f82a" />
+Puis continuer jusqu'à Start Connecting (très long) : 
+<img width="757" height="555" alt="image" src="https://github.com/user-attachments/assets/c2d5cdc5-cc74-4b8a-b084-a6e69b238969" />
 
 
