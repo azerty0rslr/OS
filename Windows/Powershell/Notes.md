@@ -5,6 +5,8 @@ Chaque commande retourne un objet, les objets ont des attributs associés (évit
 Variable d'environnement ne sont pas des variables Powershell
 
 ## Cmdlets
-Ne sont pas liés à un logiciel. Des abstractions vers des systèmes existants.
-
-Voir la doc de group-object pour l'exo
+Ne sont pas liés à un logiciel. Des abstractions vers des systèmes existants.  
+  
+Voir la doc de group-object pour l'exo   
+  
+Découvrir des packages de scripts powershell : https://www.powershellgallery.com/packages/Wsus-Maintenance/  
