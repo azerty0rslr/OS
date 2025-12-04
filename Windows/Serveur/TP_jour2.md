@@ -25,19 +25,36 @@ Vous devez proposer au moins 10 GPO avancées, réparties en :
   
 ## Sécurité du poste
 Exemples possibles :  
-- Désactivation de PowerShell pour les utilisateurs standard  
-- Restriction d’accès au panneau de configuration  
-- Désactivation du stockage USB  
-- Mise en place d’un écran de veille verrouillé obligatoire  
-- Mise en place de GPO dédié a Firefox **(obligatoire celle la!)**  
+- Désactivation de PowerShell pour les utilisateurs standard
+- Restriction d’accès au panneau de configuration
+- Désactivation du stockage USB
+- Mise en place d’un écran de veille verrouillé obligatoire
+- Mise en place de GPO dédié a Firefox **(obligatoire celle la!)**
 
 ## Corporatisme & identité visuelle
 - Fond d’écran imposé selon le site  
 - Messages légaux au login  
 - Configuration du menu Start / barre des tâches  
 - Désactivation Microsoft Store  
-- Déploiement automatique de logiciels via GPO (MSI)  
+- Déploiement automatique de logiciels via GPO (MSI)
 
+### Mise en application
+#### Création des OU
+Aller dans Outils -> Utilisateurs et ordinateurs Active Directory :  
+<img width="761" height="535" alt="image" src="https://github.com/user-attachments/assets/086cca28-8f06-4e68-823f-2f0ddcec1136" />  
+Créer les nouveaux OU :  
+<img width="758" height="536" alt="image" src="https://github.com/user-attachments/assets/db5cb6e8-de18-49b5-9a2f-c7a10ce81bb8" />  
+Puis créer toutes les divisions nécessaires :  
+<img width="758" height="535" alt="image" src="https://github.com/user-attachments/assets/96e1202d-bf59-4a51-ab74-d77c23747332" />  
+
+#### Mise en place des GPO
+**Sécurité du poste :**
+
+
+**Corporatisme et identité visuelle :**
+
+
+  
 # Mission 3 — Déploiement concret du POC
 Sur un environnement Windows Server + client Windows :  
 1. Créez une OU POC-GPO  
