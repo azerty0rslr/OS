@@ -65,13 +65,19 @@ Faire attention à ce que l'Active Directory et SYSVOL soit sur la même version
 Permettent d'ajouter des GPO pour par exemple les vieux serveurs pour s'adapter aux ajouts du systèmes. Problèmes de retro-compatibilité. 
 
 - ADM/ADMX : modèles d'administration
-- ADML : fichier linguistique pour les modèles d'administration
+- ADML : fichier linguistiqueour les modèles d'administration
 
 .exe = programme
 .msi = package (contient un .exe + de quoi automatiser un .exe)
 
 SSO (Single Sign On) : délègue la connection (exemple : se connecter à partir de gmail)  
-Héritage : la GPO parente s'applique aux GPO enfants EN REVANCHE si GPO sur le même sujet la GPO enfant gagne.  
+Héritage : la GPO parente s'applique aux GPO enfants EN REVANCHE si GPO sur le même sujet la GPO enfant gagne. En revanche grâce à ENFORCED le GPO parents écrase le GPO enfant.  
 
-# WMI
-Filtres WMI permettent de faire le tri d'à qui s'applique la GPO. Filtre d'abord par version d'OS puis permet de construire la requête WMI (type format SQL). 
+### WMI
+Filtres WMI permettent de faire le tri d'à qui s'applique la GPO ou quel groupe n'y a pas accès. Filtre d'abord par version d'OS puis permet de construire la requête WMI (type format SQL).  
+Infound Rules : permet de modifier les règles de pare-feu.
+On peut sauvegarder une GPO (recommandé de tout mettre au même endroit), pas nécessairement au même endrit que la machine. 
+Fusion possible de deux GPO
+GPO starter : template de départ pour les autres GPO si les GPO se mettent à jour pas nécessarire
+
+On peut modifier les GPO SAUF celles dans Widows Settings
