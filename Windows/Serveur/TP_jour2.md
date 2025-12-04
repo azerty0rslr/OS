@@ -76,12 +76,38 @@ Ajouter la nouvelle règle de chemin d'accès n'autorisant pas Powershell (faire
 <img width="415" height="467" alt="image" src="https://github.com/user-attachments/assets/1125bb75-362a-401a-94c2-3d8e43a98a22" />  
 Afin d'assurer une protection efficace, il faut bloquer l'ensemble des exécutables Powershell suivant, sinon la configuration sera incomplète :  
 <img width="580" height="86" alt="image" src="https://github.com/user-attachments/assets/59974b35-3baa-4b89-9d45-ccccc849e4b3" />
-(Si il existe un fichier PowerShell 7 - 64 bits le bloquer aussi).  
+(Si il existe un fichier PowerShell 7 - 64 bits le bloquer aussi).
+PowerShell est désormais bloqué sur les 4 groupes sauf sur le serveur de gestion.
 
+- Restriction d’accès au panneau de configuration
+Créer une nouvelle GPO
+<img width="766" height="542" alt="image" src="https://github.com/user-attachments/assets/d673d3e5-5957-46ee-bb54-56b68fb6c1e7" />
+Faire "Modifier" sur la GPO, puis dans Configuration utilisateur > Stratégies > Modèles d'administration > Panneau de configuration cliquer sur Interdire l'accès au Panneau de configuration et l'application Paramètres du PC
+<img width="800" height="573" alt="image" src="https://github.com/user-attachments/assets/2bc50d4d-10c0-4743-ad87-4ea3024888bf" />
+Double cliquer, sélectionner activer puis Ok.
+<img width="690" height="645" alt="image" src="https://github.com/user-attachments/assets/77317e90-f2c6-4084-8ba9-302379d73981" />
+Le panneau de configuration est désormais bloqué sur les 4 groupes sauf sur le serveur de gestion.
 
-- Restriction d’accès au panneau de configuration  
-- Désactivation du stockage USB  
-- Mise en place d’un écran de veille verrouillé obligatoire  
+- Désactivation du stockage USB
+Créer une nouvelle GPO
+<img width="762" height="405" alt="image" src="https://github.com/user-attachments/assets/a8c3bd3b-4def-4978-ad7b-a8fc68f5a439" />
+Faire "Modifier" sur la GPO, puis dans Configuration ordinateur > Stratégies > Modèles d'administration > Système > Accès au stockage amovible cliquer sur Disques amovibles : refuser l'accès en exécution
+<img width="802" height="592" alt="image" src="https://github.com/user-attachments/assets/b1c80eea-375f-4109-9eb0-5012be686729" />
+Double cliquer, sélectionner activer puis Ok.
+<img width="690" height="647" alt="image" src="https://github.com/user-attachments/assets/e46f0344-1b9e-44b9-a83b-6709dbc8d12f" />
+Répéter l'opération pour les deux autres règles relatives aux disques amovibles.
+<img width="583" height="128" alt="image" src="https://github.com/user-attachments/assets/c3e7ca19-1eef-47e6-a17d-a448083b8d87" />
+Le stockage USB est désormais bloqué sur les 4 groupes sauf sur le serveur de gestion.
+
+- Mise en place d’un écran de veille verrouillé obligatoire
+Créer une nouvelle GPO
+<img width="763" height="537" alt="image" src="https://github.com/user-attachments/assets/4c8e6058-8337-4ed0-8b1b-8ab0c729bc77" />
+Faire "Modifier" sur la GPO, puis dans Configuration ordinateur > Stratégies > Paramètres Windows > Paramètres de sécurité > Stratégies locales > Options de sécurité cliquer sur Ouverture de session interactive : limite d'inactivité de l'ordinateur
+<img width="805" height="590" alt="image" src="https://github.com/user-attachments/assets/c0842607-acc9-4d59-a5da-48728257979a" />
+Double cliquer, sélectionner "Définir ce paramètre de stratégie" puis entrer le temps de mise en veille voulu (ici 6000sec soit 10min) puis faire ok.
+<img width="428" height="522" alt="image" src="https://github.com/user-attachments/assets/f08e0c23-e0a8-4f9b-89c3-e0e6099eabbd" />
+Un écran de veille verrouillé apparaît donc désormais au bout de 10min d'inactivité sur les 4 groupes sauf sur le serveur de gestion.
+
 - Mise en place de GPO dédié a Firefox (obligatoire celle la!)  
 
 **Corporatisme et identité visuelle :**
