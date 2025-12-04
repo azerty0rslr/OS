@@ -40,8 +40,14 @@ Licences : rien n'est gratuit, possèdent un support
 ## GPO
 Permet d'imposer des règles (de sécurités (pas de terminal), corporate (imposer un fond d'écran)) sur des machines à distance.
 GPO de base (à la racine du domaine) : Default Domain Policy (si on ajoute une GPO à cette échelle elle sera affecté à tout le domaine)
-GPO s'applique en décendant donc les fichiers en dessous ont cette GPO pas les fichiers au dessus. Les GPO peuvent être liés pour par exemple appliqués la même GPO mais à certains domaines. 
-
-Groupe de sécurité : groupe dans l'AD spécifique à la sécurité 
-
-Default Domain Policy : aller dans settings pour voir ce qu'il y a dedans (ce qui est relatif aux mots de passes)
+GPO s'applique en décendant donc les fichiers en dessous ont cette GPO pas les fichiers au dessus. Les GPO peuvent être liés pour par exemple appliqués la même GPO mais à certains domaines.  
+  
+Groupe de sécurité : groupe dans l'AD spécifique à la sécurité  
+  
+Default Domain Policy : aller dans settings pour voir ce qu'il y a dedans (ce qui est relatif aux mots de passes - mots de passe relatifs interdit par la RGPD)  
+  
+Chiffrement : transformer une info pour qu'elle ne soit pas lisible.  
+Hashage : destruction d'une information de manière unique.  
+- Méthode de sécurisation du hashage - salage : ajoute des caractères à la fin du mot de passe pour avoir des hash différents.  
+  
+MDP sécurisé : changement de mots de passe réguliés (nul pousse à un MDP simple), multi-facteurs de vérification SMS-mail (hackable), vérification par une autre app (Google Authentificator), vérification matériel (badge).
