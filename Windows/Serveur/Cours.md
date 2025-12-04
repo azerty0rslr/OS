@@ -28,4 +28,20 @@ Un nom de domaine ne vaut pas nécessairement UNE ip.
 On peut choisir quelles machines sont affectées par les maj (groupes, individuellement, totalité). Si MAJ importante 1.18 à 1.19, voir toujours pour l'aval des personnes consernées. On peut créer des GPO (pour par exemple installer des MAJ en local, interdire de faire des MAJ depuis internet).  
 Pour déployer MAJ sur grosse entreprise d'abord le faire sur une machine test pour voir si tout les logiciels démarres encore.  
 Possible d'ajouter des machines à WSUS même si pas sur le domaine grâce aux GPO (GPO : modification de la base de registre).  
+WSUS fonctionne en HTTP mais il est possible de configurer un certificat SSL pour sécuriser les trafics entre vos serveurs WSUS et les machines clientes du dit serveur.  
+  
+Alternatives : Microsoft Intune (PAYANT mais nouveau WSUS lié à office 365)  
+Micrrosoft Enndpoint Configuration manager  
+Azure Update Management (que les serveurs)  
+Windows Autopatch (lié à office 365)  
+  
+Licences : rien n'est gratuit, possèdent un support  
 
+## GPO
+Permet d'imposer des règles (de sécurités (pas de terminal), corporate (imposer un fond d'écran)) sur des machines à distance.
+GPO de base (à la racine du domaine) : Default Domain Policy (si on ajoute une GPO à cette échelle elle sera affecté à tout le domaine)
+GPO s'applique en décendant donc les fichiers en dessous ont cette GPO pas les fichiers au dessus. Les GPO peuvent être liés pour par exemple appliqués la même GPO mais à certains domaines. 
+
+Groupe de sécurité : groupe dans l'AD spécifique à la sécurité 
+
+Default Domain Policy : aller dans settings pour voir ce qu'il y a dedans (ce qui est relatif aux mots de passes)
