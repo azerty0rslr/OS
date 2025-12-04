@@ -50,4 +50,5 @@ Chiffrement : transformer une info pour qu'elle ne soit pas lisible.
 Hashage : destruction d'une information de manière unique.  
 - Méthode de sécurisation du hashage - salage : ajoute des caractères à la fin du mot de passe pour avoir des hash différents.  
   
-MDP sécurisé : changement de mots de passe réguliés (nul pousse à un MDP simple), multi-facteurs de vérification SMS-mail (hackable), vérification par une autre app (Google Authentificator), vérification matériel (badge).
+MDP sécurisé : changement de mots de passe réguliés (nul pousse à un MDP simple), multi-facteurs de vérification SMS-mail (hackable), vérification par une autre app (Google Authentificator), vérification matériel (badge).  
+
