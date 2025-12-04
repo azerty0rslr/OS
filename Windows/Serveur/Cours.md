@@ -52,3 +52,26 @@ Hashage : destruction d'une information de manière unique.
   
 MDP sécurisé : changement de mots de passe réguliés (nul pousse à un MDP simple), multi-facteurs de vérification SMS-mail (hackable), vérification par une autre app (Google Authentificator), vérification matériel (badge).  
 
+### Les conteneurs 
+Les GPO sont reliées à un container de stratégie :  
+- GPC (dans l'Active Directory) : Group Policy Container, sait où est stocker la GPO  
+- GPT (dans le dossier SYSVOL de remoteworks.loc) : Group Policy Template, stock la GPO  
+  
+Fichier remoteworks.loc : un dossier par forêt avec des policies (là où sont stockés les GPO)  
+GPO à différentes versions quand il est modifié. La version est accessible dans le GUID de la GPO (dans SYSVOL) sur le fichier GPT.  
+Faire attention à ce que l'Active Directory et SYSVOL soit sur la même version OU ERREUR.
+
+### Magasin central et fichiers ADM, ADMX, ADML
+Permettent d'ajouter des GPO pour par exemple les vieux serveurs pour s'adapter aux ajouts du systèmes. Problèmes de retro-compatibilité. 
+
+- ADM/ADMX : modèles d'administration
+- ADML : fichier linguistique pour les modèles d'administration
+
+.exe = programme
+.msi = package (contient un .exe + de quoi automatiser un .exe)
+
+SSO (Single Sign On) : délègue la connection (exemple : se connecter à partir de gmail)  
+Héritage : la GPO parente s'applique aux GPO enfants EN REVANCHE si GPO sur le même sujet la GPO enfant gagne.  
+
+# WMI
+Filtres WMI permettent de faire le tri d'à qui s'applique la GPO. Filtre d'abord par version d'OS puis permet de construire la requête WMI (type format SQL). 
