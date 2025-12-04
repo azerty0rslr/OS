@@ -24,3 +24,8 @@ Un nom de domaine ne vaut pas nécessairement UNE ip.
 - NAPTR : donne accès aux règles de réécriture de l’information permettant de lier  le nom de domaine et une ressource (RFC3403).  
 - TXT : permet à l’administrateur d’insérer un texte quelconque pour un enregistrement DNS.
 
+## WSUS
+On peut choisir quelles machines sont affectées par les maj (groupes, individuellement, totalité). Si MAJ importante 1.18 à 1.19, voir toujours pour l'aval des personnes consernées. On peut créer des GPO (pour par exemple installer des MAJ en local, interdire de faire des MAJ depuis internet).  
+Pour déployer MAJ sur grosse entreprise d'abord le faire sur une machine test pour voir si tout les logiciels démarres encore.  
+Possible d'ajouter des machines à WSUS même si pas sur le domaine grâce aux GPO (GPO : modification de la base de registre).  
+
