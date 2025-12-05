@@ -84,8 +84,21 @@ Double cliquer, sélectionner "Définir ce paramètre de stratégie" puis entrer
 <img width="428" height="522" alt="image" src="https://github.com/user-attachments/assets/f08e0c23-e0a8-4f9b-89c3-e0e6099eabbd" />  
 Un écran de veille verrouillé apparaît donc désormais au bout de 10min d'inactivité sur les 4 groupes sauf sur le serveur de gestion.  
   
-- Mise en place de GPO dédié a Firefox (obligatoire celle la!)  
-  
+- Mise en place de GPO dédié a Firefox (obligatoire celle la!)
+Accéder à l'installation de l'ADMX sur https://github.com/mozilla/policy-templates/releases
+Dans les fichiers téléchargés récupérer les parties admx + ceux relatifs aux langues françaises et anglaises
+<img width="777" height="373" alt="image" src="https://github.com/user-attachments/assets/1bd8f6f2-3954-4f9b-a272-ed3f0bf9993d" />
+Les stocker dans \\WINSERV\sysvol\manon.rou\Policies\PolicyDefinitions
+<img width="766" height="291" alt="image" src="https://github.com/user-attachments/assets/09532500-3321-4611-ac2b-03ee3824db9c" />
+Créer une GPO
+<img width="757" height="542" alt="image" src="https://github.com/user-attachments/assets/77392829-f1a8-459f-adb5-fe5084be1014" />
+Faire "Modifier" sur la GPO, puis dans Configuration ordinateur -> Stratégies -> Modèles d'administration : définitions de stratégies récupérées à partir du magasin central -> Mozilla -> Firefox -> Analyse de contenu (DLP) puis double cliquer sur "Liste d'URL refusées (expression régulière)"
+<img width="786" height="567" alt="image" src="https://github.com/user-attachments/assets/bacad51a-1b19-4fb4-8912-42e14a9b37ac" />
+Dans Liste d'URL refusées (expression régulière), cliquer sur Activer mettre les URLs concernés (ici on bloque Youtube) puis faire Ok.
+<img width="690" height="642" alt="image" src="https://github.com/user-attachments/assets/5eab8975-c266-4e5a-a4ea-a5e0396f3656" />
+Une GPO pour bloquer Youtube sur Firefox est désormais mise en place sur les 4 groupes sauf sur le serveur de gestion.
+
+
 **Corporatisme et identité visuelle :**
 - Fond d’écran imposé selon le site  
 Créer une GPO dans l'une des villes, nous la lierons aux autres du même nom plus tard  
