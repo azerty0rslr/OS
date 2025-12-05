@@ -184,13 +184,32 @@ Le déploiement automatique de Firefox est désormais activé sur les 4 groupes 
   
 # Mission 3 — Déploiement concret du POC
 Sur un environnement Windows Server + client Windows :  
-1. Créez une OU POC-GPO  
-2. Ajoutez un poste et un utilisateur de test  
-3. Créez et appliquez 10 GPO minimum parmi votre sélection  
-4. Vérifiez leur application via : ```gpupdate /force```  ```gpresult /h rapport.html```  
+1. Créez une OU POC-GPO
+Dans Outils -> Utilisateurs et ordinateurs Active Directory, je crée une OU POC-GPO parmis mes Services  
+<img width="753" height="531" alt="image" src="https://github.com/user-attachments/assets/15bea5d2-8a1e-4ebf-b721-58c48ba8f59e" />  
+
+2. Ajoutez un poste et un utilisateur de test
+
+Création de l'utilisateur de test
+<img width="442" height="383" alt="image" src="https://github.com/user-attachments/assets/81598a72-4a44-4d66-83b3-f8268d3e287e" />
+<img width="441" height="386" alt="image" src="https://github.com/user-attachments/assets/386ed5d1-d7bf-4e77-afcf-9c5701dbf39f" />
+Faire terminer pour clôturer la création de notre utilisateur de test
+<img width="443" height="385" alt="image" src="https://github.com/user-attachments/assets/c3869138-56ad-4145-92df-2aac65975342" />
+
+3. Créez et appliquez 10 GPO minimum parmi votre sélection
+Voir la Mission 2
+
+4. Vérifiez leur application via : ```gpupdate /force```  ```gpresult /h rapport.html```
+
+
 5. Documentez vos observations (captures obligatoires)  
-  
+Voir Mission 2 et 3
+
+
 # Livrable
 Rédaction d'un document explicitant votre travail sur les 3 missions.  
 Pour la mission 3 il faudra fournir une documentation de la mise en place (screenshot et commentaire).  
 Fournissez également une sauvegarde des GPO que vous avez mis en place  
+
+### Documentation utilisé
+GPO : utilisation de https://www.it-connect.fr, https://github.com/mozilla/policy-templates/releases, https://www.olfeo.com/ ainsi que des cours fournis
