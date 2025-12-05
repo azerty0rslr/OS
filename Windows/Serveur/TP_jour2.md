@@ -111,10 +111,30 @@ Un écran de veille verrouillé apparaît donc désormais au bout de 10min d'ina
 - Mise en place de GPO dédié a Firefox (obligatoire celle la!)  
 
 **Corporatisme et identité visuelle :**
-- Fond d’écran imposé selon le site  
-- Messages légaux au login  
+- Fond d’écran imposé selon le site
+Créer une GPO dans l'une des villes, nous la lierons aux autres du même nom plus tard
+<img width="772" height="392" alt="image" src="https://github.com/user-attachments/assets/7bf5f3f3-0a4b-4df9-818b-e55b96e5f5c2" />
+Télécharger et stocker l'image destiné au fond d'écran
+Faire "Modifier" sur la GPO, puis dans « Configuration ordinateur », « Préférences », « Paramètres Windows » et « Fichiers » cliquer sur Nouveau avec le clic droit
+<img width="802" height="591" alt="image" src="https://github.com/user-attachments/assets/57e93210-23a6-41f2-9f18-110a793980a0" />
+
+- Messages légaux au login
+Créer une GPO
+<img width="765" height="537" alt="image" src="https://github.com/user-attachments/assets/8888edc4-bd7c-4301-a22a-ec192ad35cb3" />
+Faire "Modifier" sur la GPO, puis dans <img width="765" height="537" alt="image" src="https://github.com/user-attachments/assets/89570443-7dbd-45cf-a69b-f6e086398673" />
+
+
+
 - Configuration du menu Start / barre des tâches  
-- Désactivation Microsoft Store  
+- Désactivation Microsoft Store
+Créer une GPO
+<img width="761" height="542" alt="image" src="https://github.com/user-attachments/assets/5f0fb192-d471-4980-aa96-4184239c3fc0" />
+Faire "Modifier" sur la GPO, puis dans Configuration utilisateur, Stratégies, Modèles d’administration, Composants Windows, Windows Store double cliquer sur Désactiver l’application Windows Store
+<img width="798" height="590" alt="image" src="https://github.com/user-attachments/assets/c5b49a1d-a671-4868-9fd7-adb51f45f8b8" />
+Double cliquer et faire activer puis ok
+<img width="692" height="647" alt="image" src="https://github.com/user-attachments/assets/ced2e83d-ef9c-4021-92e5-15aeb092fece" />
+Microsoft Store est désormais désactivé sur les 4 groupes sauf sur le serveur de gestion.
+
 - Déploiement automatique de logiciels via GPO (MSI)  
 
   
