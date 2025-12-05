@@ -81,3 +81,17 @@ Fusion possible de deux GPO
 GPO starter : template de départ pour les autres GPO si les GPO se mettent à jour pas nécessarire
 
 On peut modifier les GPO SAUF celles dans Widows Settings
+
+
+## Docker
+VM ne consomme que de l'électricité mais ne consomme pas de place (physique et stockage)
+VM = deux machines COMPLETEMENT différentes mais il reste un OS maître
+Hypervisuer de type 1 =! hyperviseur de type 2 (vm à l'ancienne ne comprenant pas de matériel fictif ni d'os)
+Les conteneurs n'existent pas sous Windows (alternative WSL)
+Kernel = noyau (OS), lien entre matériel et logiciel 
+Différentes structures pour la virtualisation : 3
+
+Docker est un conteneur avec des règles spécifiques. Docker est un programme qui créer des conteneurs (programme) à durée de vie limité, qui ne prend donc pas de place. 
+L'OS et les extensions sont descrutibles. Si le docker coupe il ne détruit pas le container. On peut même créer une image du container
+Ressemblance aux snapshot. 
+Container : image = snapchot de la partie figé 
