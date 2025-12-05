@@ -150,7 +150,23 @@ Double cliquer et faire activer puis ok
 Microsoft Store est désormais désactivé sur les 4 groupes sauf sur le serveur de gestion.  
   
 - Déploiement automatique de logiciels via GPO (MSI)  
-
+Créer un dossier partager pour y stocker le logiciel MSI, y modifier les paramètres comme sur la capture d'écran.
+<img width="897" height="632" alt="image" src="https://github.com/user-attachments/assets/51681430-054f-4206-8de8-63caf94f35d2" />  
+<img width="365" height="458" alt="image" src="https://github.com/user-attachments/assets/3e47c5c4-04fe-468b-95e6-8e6d6c8e72f0" />
+Partage accessible via \\WINSERV\Application$
+Installer l'application souhaité pour le déploiement automatique
+<img width="450" height="347" alt="image" src="https://github.com/user-attachments/assets/8d665f1e-a671-4712-b711-8e27ebca5379" />
+Le déplacer dans le partage
+<img width="777" height="350" alt="image" src="https://github.com/user-attachments/assets/22efa1e8-1d5b-4e0e-bdca-fbcbf0f76326" />
+Créer une GPO
+<img width="747" height="517" alt="image" src="https://github.com/user-attachments/assets/b95d8b0a-f475-4b18-80c3-16f9a283e326" />
+Faire "Modifier" sur la GPO, puis dans Configuration ordinateur > Stratégies > Paramètres du logiciel > Installation de logiciel puis clic droit Nouveau -> Package 
+<img width="462" height="402" alt="image" src="https://github.com/user-attachments/assets/f97fb416-71c6-49f9-9f85-54a9a1524c82" />
+Rentrer le chemin réseau vers le partage pour rechercher le fichier MSI
+<img width="622" height="487" alt="image" src="https://github.com/user-attachments/assets/e8a05b7f-2da7-418f-b6eb-67270448054b" />
+Cocher "Attribuer" puis Ok
+<img width="358" height="262" alt="image" src="https://github.com/user-attachments/assets/630234e0-b6d3-41d8-8faa-5b40982dce02" />
+Le déploiement automatique de Firefox est désormais activé sur les 4 groupes sauf sur le serveur de gestion. 
 
   
 # Mission 3 — Déploiement concret du POC
