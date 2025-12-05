@@ -121,9 +121,13 @@ Faire "Modifier" sur la GPO, puis dans « Configuration ordinateur », « Préf�
 - Messages légaux au login
 Créer une GPO
 <img width="765" height="537" alt="image" src="https://github.com/user-attachments/assets/8888edc4-bd7c-4301-a22a-ec192ad35cb3" />
-Faire "Modifier" sur la GPO, puis dans <img width="765" height="537" alt="image" src="https://github.com/user-attachments/assets/89570443-7dbd-45cf-a69b-f6e086398673" />
-
-
+Faire "Modifier" sur la GPO, puis dans « Configuration ordinateur », "Stratégie" « Paramètres Windows », « Paramètres de sécurité », « Stratégies locales » et « Options de sécurité »
+<img width="823" height="613" alt="image" src="https://github.com/user-attachments/assets/1dd6e04a-ecdb-4b90-91a9-4404e55bc82a" />
+Double cliquer sur Ouverture de session interactive : titre du message pour les utilisateurs essayant de se connecter et remplissez le titre de votre message comme il suit
+<img width="422" height="521" alt="image" src="https://github.com/user-attachments/assets/8d09060c-7bee-4d3a-b71c-68678574bc3f" />
+Faire OK puis double cliquer sur Ouverture de session interactive : contenu du message pour les utilisateurs essayant de se connecter et remplissez le contenu de votre message comme il suit et faire OK
+<img width="428" height="516" alt="image" src="https://github.com/user-attachments/assets/df8c43f6-34ef-4bed-bd8c-35a63b0cedf7" />
+Un message s'affiche désormais à la connexion sur les 4 groupes sauf sur le serveur de gestion.
 
 - Configuration du menu Start / barre des tâches  
 - Désactivation Microsoft Store
